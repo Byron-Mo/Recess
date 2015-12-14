@@ -1,46 +1,25 @@
 # Schema Information
 
-## notes
+## reviews
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-title       | string    | not null
+rating      | integer   | not null, inclusion: { in: (0..5).to_a }
 body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+reviewer_id | integer   | not null, foreign key (references users), indexed
+location_id | integer   | not null, foreign key (references locations), indexed
 
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
-
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
-
-## tags
+## locations
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 name        | string    | not null
-
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
+region      | string    | not null
+price       | integer   | not null, inclusion: { in: (1..5).to_a } (this is a maybe)
+activity    | string    | not null, inclusion: { in: %w(Culture/History, Beachfront, Adventure) }
+body        | text      | not null
+rating      | integer   | not null, average of user reviews
+image       | string    | not null, picture used in background
 
 ## users
 column name     | data type | details
@@ -49,3 +28,24 @@ id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
+
+## preferences
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+region      | string    | not null
+price       | integer   | not null, inclusion: { in: (1..5).to_a } (this is a maybe)
+activity    | string    | not null, inclusion: { in: %w(Culture/History, Beachfront, Adventure) }
+user_id     | integer   | not null, foreign key (references users), indexed
+
+## UserBeenToLocation
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign_key (references users), indexed
+location_id | integer   | not null, foreign_key (references locations), indexed
+
+## UserWantToLocation
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign_key (references users), indexed
+location_id | integer   | not null, foreign_key (references locations), indexed

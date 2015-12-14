@@ -1,44 +1,29 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3: Incorporate Flux in Locations page (2 days)
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
-* SearchIndex
+* LocationIndexItem
+  - ReviewsIndex
+    - ReviewIndexItem (contains author, rating, and body)
 
 ### Stores
-* Notebook
+* LocationStore
 
 ### Actions
-* ApiActions.receiveAllNotebooks -> triggered by ApiUtil
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
-* NotebookActions.fetchAllNotebooks -> triggers ApiUtil
-* NotebookActions.fetchSingleNotebook
-* NotebookActions.createNotebook
-* NotebookActions.editNotebook
-* NotebookActions.destroyNotebook
+* LocationActions.fetchLocation -> triggered by ApiUtil
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchLocation
 
 ## Gems/Libraries
+* Flux Dispatcher (npm)
+* React
+* ReactDOM
+* React Router

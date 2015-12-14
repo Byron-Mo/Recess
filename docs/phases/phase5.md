@@ -1,40 +1,41 @@
-# Phase 5: Reminders and Garbage Collection
-
+# Phase 5: Recommendations and beginnings of User Home Page (2.5 days)
 ## Rails
 ### Models
-* Reminder
+* UserBeenToLocation
+* UserWantToLocation
 
 ### Controllers
-* Api::RemindersController (create, destroy, index, show, update)
+* Api::UserBeentoLocationsController
+* Api::UserWantToLocationsController
 
 ### Views
-* reminders/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* RemindersIndex
-  - ReminderIndexItem
-* ReminderShow
-* ReminderForm
+* Index
+  - Map
 
 ### Stores
-* Reminder
+* UserBeenToLocationStore
+* UserWantToLocationStore
 
 ### Actions
-* ApiActions.receiveAllReminders -> triggered by ApiUtil
-* ApiActions.receiveSingleReminder
-* ApiActions.deleteReminder
-* ReminderActions.fetchAllReminders -> triggers ApiUtil
-* ReminderActions.fetchSingleReminder
-* ReminderActions.createReminder
-* ReminderActions.updateReminder
-* ReminderActions.destroyReminder
+* UserBeenToLocationActions.createUserBeenToLocation
+* UserBeenToLocationActions.editUserBeenToLocation
+* UserBeenToLocationActions.destroyUserBeenToLocation
+* UserWantToLocationActions.createUserWantToLocation
+* UserWantToLocationActions.editUserWantToLocation
+* UserWantToLocationActions.destroyUserWantToLocation
 
 ### ApiUtil
-* ApiUtil.fetchAllReminders
-* ApiUtil.fetchSingleReminder
-* ApiUtil.createReminder
-* ApiUtil.updateReminder
-* ApiUtil.destroyReminder
+* ApiUtil.createUserBeenToLocation
+* ApiUtil.editUserBeenToLocation
+* ApiUtil.destroyUserBeenToLocation
+* ApiUtil.createUserWantToLocation
+* ApiUtil.editUserWantToLocation
+* ApiUtil.destroyUserWantToLocation
 
 ## Gems/Libraries
+* Flux Dispatcher (npm)
+* React
+* ReactDOM

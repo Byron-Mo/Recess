@@ -6,19 +6,17 @@
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
+Recess is a web application inspired by Goodreads, providing recommendations to your next vacation. Recess is built using Ruby on Rails and React.js, allowing users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags and search notes by tag
-- [ ] Search through notes for blocks of text
-- [ ] Apply complex styling to notes while editing
-- [ ] Set reminders on notes
+- [ ] Mark places they've been to or like to go on a map
+- [ ] Create, read, edit, and delete reviews of destinations they've been to
+- [ ] Interactively select preferences for their next vacation
+- [ ] Search and view locations and reviews (auto suggest as user types)
+- [ ] Receive vacation recommendations
 
 ## Design Docs
 * [View Wireframes][view]
@@ -29,71 +27,55 @@ and React.js. FresherNote allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
+### Phase 1: User Authentication, Review and Location Model, and JSON API (1.5 days)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+Phase 1 will be implementing user signup and authentication using BCrypt. User Log In and Sign Up pages will be created with React Route, thus preventing the pages from redirecting when alternating from one another. Set up JSON API for reviews and locations.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Review form, User Reviews index, Reviews CRUD (1.5 days)
 
-Phase 2 is focused on setting up Flux, the React Router, and the React view
-structure for the main application. After the basic Flux architecture has been
-set up, a Note store will be implemented and a set of actions corresponding to
-the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+Phase 2 adds a form allowing users to create a review. A Reviews 'Index' will be nested under the user's show page and React views will be created for the Reviews' 'IndexItem' and 'ItemDetail'. These reviews are queried from the user. Update and Destroy handlers will also be provided in the 'IndexItem' or 'ItemDetail'.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Incorporate Flux in Locations page (1.5 days)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+Each location's show page will contain user reviews associated with that location. Reviews will be queried from the location and implemented using the React view structure. Look into styling Locations show page and consider implementing infinite scroll displaying user reviews.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Next Vacation Preference Form (1.5 days)
 
-Using the react-quill library (based on Quill.js), allow for complex styling of
-notes.
+Phase 4 will be focused on creating an interactive form allowing the user to select preferences for his/her next vacation. Using Google's Map API, React, and Flux, render a map that allows user to select a region of the world. Add options for user to select type of activity and price
 
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: Recommendations and beginnings of User Home Page (3 days)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+Query for recommended locations based off of user's preferences. Recommendations will be dependent on region, activity, review ratings, and price, in descending order of importance. Use Google's Map API and render a map that allows user to place markers indicating places he/she has been to or want to go. Markers will be differentiated by color. Add buttons that allow users to go to vacation preference form and add review form. Add Search form that auto suggests when a user searches for a location.
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
+### Phase 6: User Home Page and Home Page (2 days)
 
-Bootstrap will have been used to keep things organized up until now, but in
-Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+Finish styling landing page and Create Home Page. Goal is to make a more modern looking page similar to the likes of TaskRabbit and Mint. Focus on styling various parts of the site and incorporate CSS transitions to make the client experience more interactive.
+
+[Details][phase-six]
+
+### Phase 7: Seed locations and reviews data (1 day)
+
+Phase 7 will be seed the database with vacation destinations and some user reviews.
 
 ### Bonus Features (TBD)
-- [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Multiple sessions
+- [ ] Rate user reviews
+- [ ] Allow users to upload images in reviews
+- [ ] PM other users
+- [ ] Add pages that show top locations for their respective Activity type
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+[phase-six]: ./docs/phases/phase6.md

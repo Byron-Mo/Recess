@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Review form, User Reviews index, Reviews CRUD (1.5 days)
 
 ## Rails
 ### Models
@@ -9,30 +9,34 @@
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* UserIndexItem
+  - ReviewsIndex
+    - ReviewIndexItem
+      - ReviewItemDetail
+* ReviewsForm
 
 ### Stores
-* Note
+* ReviewsStore
+* UserStore
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ReviewActions.fetchAllReviews -> triggered by ApiUtil
+* ReviewActions.fetchReview
+* ReviewActions.createReview
+* ReviewActions.editReview
+* ReviewActions.destroyReview
+* UserActions.fetchUser
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchUser
+* ApiUtil.fetchAllReviews
+* ApiUtil.fetchReview
+* ApiUtil.createReview
+* ApiUtil.editReview
+* ApiUtil.destroyReview
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)
-* Twitter Bootstrap
+* React
+* ReactDOM
+* React Router

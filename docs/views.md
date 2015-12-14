@@ -1,26 +1,38 @@
 # View Wireframes
 
+## Home Page
+![home-page]
+
 ## New User
 ![new-user]
 
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## User Home Page
+![user-home-page]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## User Show
+![user-show]
 
-## NoteBookForm
-![notebook-form]
+## Review Form
+![review-form]
 
-## Component Heirarchy
+## Preference Form
+![preference-form]
+
+## Location Show
+![location-show]
+
+## Component Hierarchy
 ![component-heirarchy]
 
+[home-page]: ./wireframes/home_page.png
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[user-home-page]: ./wireframes/user_home_page.png
+[user-show]: ./wireframes/user_show.png
+[review-form]: ./wireframes/review_form.png
+[preference-form]: ./wireframes/preference_form.png
+[location-show]: ./wireframes/location_show.png
 [component-heirarchy]: ./wireframes/component_heirarchy.png
