@@ -25,14 +25,14 @@
 ![location-show]
 
 ## Component Hierarchy
-![component-heirarchy]
+![component-hierarchy]
 
 [home-page]: ./wireframes/home_page.png
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
+[new-user]: ./wireframes/sign_up.png
+[new-session]: ./wireframes/log_in.png
 [user-home-page]: ./wireframes/user_home_page.png
 [user-show]: ./wireframes/user_show.png
 [review-form]: ./wireframes/review_form.png
 [preference-form]: ./wireframes/preference_form.png
 [location-show]: ./wireframes/location_show.png
-[component-heirarchy]: ./wireframes/component_heirarchy.png
+[component-hierarchy]: ./wireframes/component_hierarchy.png
