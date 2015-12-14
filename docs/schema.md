@@ -39,12 +39,14 @@ activity    | string    | not null, inclusion: { in: %w(Culture/History, Beachfr
 user_id     | integer   | not null, foreign key (references users), indexed
 
 ## UserBeenToLocation
+column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign_key (references users), indexed
 location_id | integer   | not null, foreign_key (references locations), indexed
 
 ## UserWantToLocation
+column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign_key (references users), indexed
