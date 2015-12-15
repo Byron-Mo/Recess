@@ -18,7 +18,6 @@ region      | string    | not null
 price       | integer   | not null, inclusion: { in: (1..5).to_a } (this is a maybe)
 activity    | string    | not null, inclusion: { in: %w(Culture/History, Beachfront, Adventure) }
 body        | text      | not null
-rating      | integer   | not null, average of user reviews
 image       | string    | not null, picture used in background
 
 ## users

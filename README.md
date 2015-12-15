@@ -1,7 +1,7 @@
 # Recess
 
-[Heroku link][heroku] 
-[heroku]: http://www.herokuapp.com
+[Heroku link][heroku]
+[heroku]: https://recess.herokuapp.com/
 
 ## Minimum Viable Product
 
