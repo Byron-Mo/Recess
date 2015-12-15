@@ -1,4 +1,8 @@
 class Api::ReviewsController < ApplicationController
+  def index
+    @reviews = Review.all
+  end
+
   def create
     @review = current_user.reviews.new(review_params)
 
