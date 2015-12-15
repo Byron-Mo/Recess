@@ -1,0 +1,32 @@
+{
+  "name": "Recess",
+  "version": "1.0.0",
+  "description": "[Heroku link][heroku]  [heroku]: http://www.herokuapp.com",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Byron-Mo/Recess.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Byron-Mo/Recess/issues"
+  },
+  "homepage": "https://github.com/Byron-Mo/Recess#readme",
+  "dependencies": {
+    "babel-core": "^6.3.17",
+    "babel-loader": "^6.2.0",
+    "babel-preset-react": "^6.3.13",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^1.12.9"
+  }
+}
