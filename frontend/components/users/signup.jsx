@@ -16,8 +16,9 @@ var Signup = React.createClass({
     this.listener = UserStore.addListener(this.updateState)
   },
 
-  componentWillUnMount: function() {
+  componentWillUnmount: function() {
     UserStore.resetState();
+    // this.listener.abort();
     this.listener.remove();
   },
 
@@ -27,7 +28,8 @@ var Signup = React.createClass({
       alert(this.state.errors)
     } else {
       var url = '/user/' + this.state.user.username
-      this.props.history.push(url)
+      var id = {id: this.state.user.username}
+      this.props.history.pushState(null, url, id)
     };
   },
 

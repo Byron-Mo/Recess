@@ -13,8 +13,8 @@ class Api::SessionsController < ApplicationController
     end
 
   end
-
-  def destroy
-    logout!
-  end
+  # 
+  # def destroy
+  #   logout!
+  # end
 end

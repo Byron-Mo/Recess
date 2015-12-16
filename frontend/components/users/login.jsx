@@ -16,7 +16,7 @@ var Login = React.createClass({
     this.listener = SessionStore.addListener(this.updateState);
   },
 
-  componentWillUnMount: function() {
+  componentWillUnmount: function() {
     SessionStore.resetState();
     this.listener.remove();
   },
@@ -27,11 +27,12 @@ var Login = React.createClass({
       // errors: SessionStore.fetchErrors()
     });
 
-    if (this.state.user === undefined || this.state.user === "") {
+    if (this.state.user === undefined) {
       alert("Invalid Credentials");
     } else {
       var url = '/user/' + this.state.user.username;
-      this.props.history.push(url);
+      var id = {id: this.state.user.username}
+      this.props.history.pushState(null, url, id);
     }
   },
 

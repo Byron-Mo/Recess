@@ -51,6 +51,8 @@
 .user-input {
   width: 400px;
   height: 30px;
+  font-family: "Courier New";
+  font-size: 16px;
 }
 
 .user-input:active {

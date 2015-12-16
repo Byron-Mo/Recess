@@ -1,5 +1,6 @@
 var UserActions = require('../actions/UserActions'),
-    SessionActions = require('../actions/SessionActions');
+    SessionActions = require('../actions/SessionActions'),
+    ReviewActions = require('../actions/ReviewActions');
 
 ApiUtil = {
   createUser: function(user) {
@@ -45,6 +46,64 @@ ApiUtil = {
       url: 'session',
       type: 'DELETE',
       success: SessionActions.logoutSession()
+    })
+  },
+
+  createReview: function(review) {
+    $.ajax({
+      url: 'api/reviews',
+      type: 'POST',
+      data: {review: review},
+      success: function(response) {
+        ReviewActions.receiveReview(response)
+      },
+      error: function(response) {
+        ReviewActions.error(response)
+      }
+    })
+  },
+
+  updateReview: function(id) {
+    $.ajax({
+      url: 'api/reviews/' + id,
+      type: 'PATCH',
+      data: {id: id},
+      success: function(response) {
+        ReviewActions.receiveReview(response)
+      },
+      error: function(response) {
+        ReviewActions.error(response)
+      }
+    })
+  },
+
+  destroyReview: function(id) {
+    $.ajax({
+      url: 'api/reviews/' + id,
+      type: 'DELETE',
+      success: function() {
+        ReviewActions.destroyReview(id)
+      }
+    })
+  },
+
+  fetchReviews: function(userid) {
+    $.ajax({
+      url: '/api/users/' + userid + '/reviews',
+      type: 'GET',
+      success: function(reviews) {
+        ReviewActions.receiveAllReviews(reviews)
+      }
+    })
+  },
+
+  fetchReview: function(id) {
+    $.ajax({
+      url: '/api/reviews/' + id,
+      type: 'GET',
+      success: function(review) {
+        ReviewActions.receiveReview(review)
+      }
     })
   }
 };

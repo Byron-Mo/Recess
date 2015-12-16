@@ -6,8 +6,8 @@ var React = require('react'),
 
 var UserHomepage = React.createClass({
   handleSubmit: function() {
-    ApiUtil.logoutSession();
     // debugger
+    ApiUtil.logoutSession();
     this.props.history.pushState(null, '/')
   },
 
@@ -17,6 +17,8 @@ var UserHomepage = React.createClass({
         <input type="button" value="Log out" onClick={this.handleSubmit}></input>
         <br></br>
         user home page
+        <br></br>
+        <Link to="/review/new">Add Review</Link>
       </div>
     )
   }
