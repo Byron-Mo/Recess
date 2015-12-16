@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
-  validates :rating, :body, :reviewer_id, :location_id, presence: true
+  validates :rating, :body, :user_id, :location_id, presence: true
 
-  belongs_to :reviewer
+  belongs_to :user
   belongs_to :location
 end

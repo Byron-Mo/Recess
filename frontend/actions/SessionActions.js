@@ -14,6 +14,13 @@ var SessionActions = {
       actionType: SessionConstants.LOGOUT_SESSION,
       session: session
     })
+  },
+
+  error: function(response) {
+    Dispatcher.dispatch({
+      actionType: SessionConstants.ERROR,
+      response: response
+    })
   }
 };
 

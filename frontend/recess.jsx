@@ -4,12 +4,18 @@ var React = require('react'),
     Route = require('react-router').Route,
     IndexRoute = require('react-router').IndexRoute,
     App = require('./components/App'),
-    Index = require('./components/index');
+    Index = require('./components/index'),
+    Signup = require('./components/users/signup'),
+    Login = require('./components/users/login'),
+    UserHomepage = require('./components/homepages/user_homepage');
 
 var RecessRouter = (
-  <Router>
+   <Router>
     <Route path="/" component={App}>
       <IndexRoute component={Index}/>
+      <Route path="signup" component={Signup} />
+      <Route path="login" component={Login} />
+      <Route path="/user/:userid" component={UserHomepage} />
     </Route>
   </Router>
 );

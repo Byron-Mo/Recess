@@ -29,14 +29,14 @@ ActiveRecord::Schema.define(version: 20151215054604) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating",      null: false
     t.text     "body",        null: false
-    t.integer  "reviewer_id", null: false
+    t.integer  "user_id",     null: false
     t.integer  "location_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   add_index "reviews", ["location_id"], name: "index_reviews_on_location_id", using: :btree
-  add_index "reviews", ["reviewer_id"], name: "index_reviews_on_reviewer_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
