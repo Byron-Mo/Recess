@@ -6,10 +6,6 @@ var App = React.createClass({
     return(
       <div>
         <header><h1>App here</h1></header>
-        <ul>
-          <li><Link to="/signup">Sign up </Link></li>
-          <li><Link to="/login">Log in</Link></li>
-        </ul>
         {this.props.children}
       </div>
     )

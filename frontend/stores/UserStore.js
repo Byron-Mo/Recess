@@ -23,10 +23,16 @@ UserStore.fetchErrors = function() {
 };
 
 UserStore.error = function(response) {
+  _errors = [];
   response.responseJSON.forEach(function(msg) {
     _errors.push(msg)
   })
   UserStore.__emitChange();
+};
+
+UserStore.resetState = function() {
+  _users = [];
+  _errors = [];
 };
 
 UserStore.__onDispatch = function(payload) {

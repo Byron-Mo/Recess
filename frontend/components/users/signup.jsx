@@ -2,7 +2,8 @@ var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../util/apiutil'),
     History = require('react-router').History,
-    UserStore = require('../../stores/UserStore');
+    UserStore = require('../../stores/UserStore'),
+    Link = require('react-router').Link;
 
 var Signup = React.createClass({
   mixins: [LinkedStateMixin, History],
@@ -12,7 +13,12 @@ var Signup = React.createClass({
   },
 
   componentDidMount: function() {
-    UserStore.addListener(this.updateState)
+    this.listener = UserStore.addListener(this.updateState)
+  },
+
+  componentWillUnMount: function() {
+    UserStore.resetState();
+    this.listener.remove();
   },
 
   updateState: function() {
@@ -37,19 +43,22 @@ var Signup = React.createClass({
 
   render: function() {
     return(
-      <form className="user" onSubmit={this.handleSubmit}>
-        <label className="signuplogin">Username</label>
-        <br></br>
-        <input type="text" valueLink={this.linkState("username")}></input>
-        <br></br><br></br>
-        <label className="signuplogin">Password</label>
-        <br></br>
-        <input type="password" valueLink={this.linkState("password")}></input>
-        <br></br><br></br>
-        <input type="submit" value="Create account" className="signuplogin-btn"></input>
-        <br></br><br></br>
+      <div className="signup-login-form">
 
-      </form>
+        <form className="user" onSubmit={this.handleSubmit}>
+          <label className="signuplogin">Username</label>
+          <br></br>
+          <input type="text" valueLink={this.linkState("username")} className="user-input"></input>
+          <br></br><br></br>
+          <label className="signuplogin">Password</label>
+          <br></br>
+          <input type="password" valueLink={this.linkState("password")} className="user-input"></input>
+          <br></br><br></br>
+          <input type="submit" value="Create account" className="signuplogin-btn"></input>
+          <br></br>
+          <Link to="/login" className="signlog-redirect">Log in</Link>
+        </form>
+      </div>
     )
   }
 });

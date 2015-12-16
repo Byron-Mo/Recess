@@ -42,7 +42,7 @@ ApiUtil = {
 
   logoutSession: function() {
     $.ajax({
-      url: 'api/session',
+      url: 'session',
       type: 'DELETE',
       success: SessionActions.logoutSession()
     })

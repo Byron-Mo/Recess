@@ -2,7 +2,8 @@ var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../util/apiutil'),
     History = require('react-router').History,
-    SessionStore = require('../../stores/SessionStore');
+    SessionStore = require('../../stores/SessionStore'),
+    Link = require('react-router').Link;
 
 var Login = React.createClass({
   mixins: [LinkedStateMixin, History],
@@ -12,17 +13,22 @@ var Login = React.createClass({
   },
 
   componentDidMount: function() {
-    SessionStore.addListener(this.updateState);
+    this.listener = SessionStore.addListener(this.updateState);
+  },
+
+  componentWillUnMount: function() {
+    SessionStore.resetState();
+    this.listener.remove();
   },
 
   updateState: function() {
     this.setState({
       user: SessionStore.fetchUser(),
-      errors: SessionStore.fetchErrors()
+      // errors: SessionStore.fetchErrors()
     });
 
-    if (this.state.user === undefined) {
-      alert(this.state.errors);
+    if (this.state.user === undefined || this.state.user === "") {
+      alert("Invalid Credentials");
     } else {
       var url = '/user/' + this.state.user.username;
       this.props.history.push(url);
@@ -42,19 +48,21 @@ var Login = React.createClass({
 
   render: function() {
     return(
-      <form className="user" onSubmit={this.handleSubmit}>
-        <label className="signuplogin">Username</label>
-        <br></br>
-        <input type="text" valueLink={this.linkState("username")}></input>
-        <br></br><br></br>
-        <label className="signuplogin">Password</label>
-        <br></br>
-        <input type="password" valueLink={this.linkState("password")}></input>
-        <br></br><br></br>
-        <input type="submit" value="Log in" className="signuplogin-btn"></input>
-        <br></br><br></br>
-
-      </form>
+      <div className="signup-login-form">
+        <form className="user" onSubmit={this.handleSubmit}>
+          <label className="signuplogin">Username</label>
+          <br></br>
+          <input type="text" valueLink={this.linkState("username")} className="user-input"></input>
+          <br></br><br></br>
+          <label className="signuplogin">Password</label>
+          <br></br>
+          <input type="password" valueLink={this.linkState("password")} className="user-input"></input>
+          <br></br><br></br>
+          <input type="submit" value="Log in" className="signuplogin-btn"></input>
+          <br></br>
+          <Link to="/signup" className="signlog-redirect">Sign up</Link>
+        </form>
+      </div>
     )
   }
 });

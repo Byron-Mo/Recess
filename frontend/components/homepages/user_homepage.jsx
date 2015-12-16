@@ -1,34 +1,21 @@
 var React = require('react'),
-    UserStore = require('../../stores/UserStore'),
-    // History = require('react-router').History,
-    ApiUtil = require('../../util/apiutil');
+    // UserStore = require('../../stores/UserStore'),
+    History = require('react-router').History,
+    ApiUtil = require('../../util/apiutil'),
+    Link = require('react-router').Link;
 
 var UserHomepage = React.createClass({
-  // getInitialState: function() {
-  //   return { user: this.getStatefromStore() }
-  // },
-  //
-  // updateState: function() {
-  //   this.setState({ user: this.getStateFromStore() })
-  // },
-  //
-  // componentWillReceiveProps: function(newProps) {
-  //   ApiUtil.fetchUser(newProps.params.id)
-  // },
-  //
-  // componentDidMount: function() {
-  //   UserStore.addListener(this.updateState);
-  //   ApiUtil.fetchUser(this.props.params.id)
-  // },
-  //
-  // getStatefromStore: function() {
-  //   return UserStore.find(parseInt(this.props.params.id))
-  // },
+  handleSubmit: function() {
+    ApiUtil.logoutSession();
+    // debugger
+    this.props.history.pushState(null, '/')
+  },
 
   render: function() {
-    // debugger
     return(
       <div>
+        <input type="button" value="Log out" onClick={this.handleSubmit}></input>
+        <br></br>
         user home page
       </div>
     )
