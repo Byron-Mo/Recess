@@ -24,20 +24,18 @@ var UserHomepage = React.createClass({
     this.listener.remove();
   },
 
-  handleSubmit: function() {
-    // debugger
-    ApiUtil.logoutSession();
-    this.props.history.pushState(null, '/')
-  },
+  // handleSubmit: function() {
+  //   ApiUtil.logoutSession();
+  //   this.props.history.pushState(null, '/')
+  // },
 
   render: function() {
     return(
       <div>
-        <input type="button" value="Log out" onClick={this.handleSubmit}></input>
         <br></br>
         user home page
         <br></br>
-        <LocationInput locations={this.state.locations} />
+        <LocationInput locations={this.state.locations} userid={this.props.location.query.id}/>
         <br></br>
         <Link to="/review/new">Add Review</Link>
       </div>

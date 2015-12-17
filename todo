@@ -1,0 +1,10 @@
+-do autocomplete
+-refactor errorstore
+-make a ajax request to get current user name from window.CURRENT_USER_ID
+-location input has this.props.locations that it used to find the user input
+when he searches for a location
+-location input will pass the location object to the location index item page
+-location index item page will contain the review form
+-location index item page will contain reviews
+-refactor app component to a nav component
+-require user to be logged in to visit pages

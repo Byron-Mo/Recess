@@ -1,7 +1,8 @@
 var UserActions = require('../actions/UserActions'),
     SessionActions = require('../actions/SessionActions'),
     ReviewActions = require('../actions/ReviewActions'),
-    LocationActions = require('../actions/LocationActions');
+    LocationActions = require('../actions/LocationActions'),
+    ErrorActions = require('../actions/ErrorActions');
 
 ApiUtil = {
   createUser: function(user) {
@@ -10,7 +11,7 @@ ApiUtil = {
       type: "POST",
       data: {user: user},
       success: function(response) {
-        UserActions.createUser(response)
+        UserActions.receiveUser(response)
       },
       error: function(response) {
         UserActions.error(response)
@@ -19,16 +20,12 @@ ApiUtil = {
   },
 
   createSession: function(user) {
-    // $.post('api/session', {user: user}, function(response) {
-    //   SessionActions.createSession(response);
-    // })
-
     $.ajax({
       url: 'api/session',
       type: "POST",
       data: {user: user},
       success: function(response) {
-        SessionActions.createSession(response)
+        UserActions.receiveUser(response)
       },
       error: function(response) {
         SessionActions.error(response)
@@ -37,8 +34,12 @@ ApiUtil = {
   },
 
   fetchUser: function(id) {
-    $.get('api/user/' + id, {}, function(response) {
-      UserActions.receiveUser(response);
+    $.ajax({
+      url: 'api/users/' + id,
+      type: 'GET',
+      success: function(response) {
+        UserActions.receiveUser(response);
+      }
     })
   },
 
@@ -46,7 +47,7 @@ ApiUtil = {
     $.ajax({
       url: 'session',
       type: 'DELETE',
-      success: SessionActions.logoutSession()
+      success: UserActions.logoutUser()
     })
   },
 

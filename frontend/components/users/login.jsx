@@ -2,7 +2,8 @@ var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../util/apiutil'),
     History = require('react-router').History,
-    SessionStore = require('../../stores/SessionStore'),
+    // SessionStore = require('../../stores/SessionStore'),
+    UserStore = require('../../stores/UserStore'),
     Link = require('react-router').Link;
 
 var Login = React.createClass({
@@ -13,7 +14,7 @@ var Login = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listener = SessionStore.addListener(this.updateState);
+    this.listener = UserStore.addListener(this.updateState);
   },
 
   componentWillUnmount: function() {
@@ -22,7 +23,7 @@ var Login = React.createClass({
 
   updateState: function() {
     this.setState({
-      user: SessionStore.fetchUser(),
+      user: UserStore.fetchUser(),
       // errors: SessionStore.fetchErrors()
     });
 

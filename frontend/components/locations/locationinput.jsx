@@ -1,9 +1,10 @@
 var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
-    LocationStore = require('../../stores/LocationStore');
+    LocationStore = require('../../stores/LocationStore'),
+    History = require('react-router').History;
 
 var LocationInput = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
     return { searchString: "", location: "", errors: "" }
@@ -25,7 +26,7 @@ var LocationInput = React.createClass({
   updateState: function() {
     var id = this.getLocationId(this.state.searchString);
     this.setState({location: LocationStore.find(id)})
-    debugger
+    // debugger
   },
 
   componentDidMount: function() {
@@ -38,6 +39,7 @@ var LocationInput = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+    // debugger
     var id = this.getLocationId(this.state.searchString);
     if (id === undefined) {
       alert("Invalid Location")

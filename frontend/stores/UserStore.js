@@ -30,13 +30,21 @@ UserStore.error = function(response) {
   UserStore.__emitChange();
 };
 
+UserStore.logoutUser = function(user) {
+  _users = [];
+  UserStore.__emitChange();
+};
+
 UserStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
-    case UserConstants.CREATE_USER:
-      UserStore.createUser(payload.user);
-      break;
     case UserConstants.ERROR:
       UserStore.error(payload.response)
+      break;
+    case UserConstants.RECEIVE_USER:
+      UserStore.createUser(payload.user)
+      break;
+    case UserConstants.LOGOUT_USER:
+      UserStore.logoutUser(payload.user)
       break;
   }
 };

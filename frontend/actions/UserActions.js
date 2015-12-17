@@ -2,16 +2,16 @@ var Dispatcher = require('../dispatcher/dispatcher'),
     UserConstants = require('../constants/UserConstants');
 
 var UserActions = {
-  createUser: function(user) {
+  receiveUser: function(user) {
     Dispatcher.dispatch({
-      actionType: UserConstants.CREATE_USER,
+      actionType: UserConstants.RECEIVE_USER,
       user: user
     })
   },
 
-  receiveUser: function(user) {
+  logoutUser: function(user) {
     Dispatcher.dispatch({
-      actionType: UserConstants.RECEIVE_USER,
+      actionType: UserConstants.LOGOUT_USER,
       user: user
     })
   },

@@ -5,9 +5,7 @@ var Index = React.createClass({
   render: function() {
     return(
       <div>
-        <Link to="/signup">Sign up</Link>
-        <br></br>
-        <Link to="/login">Log in</Link>
+        
         <br></br>
       </div>
     )
