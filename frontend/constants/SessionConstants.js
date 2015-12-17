@@ -1,7 +1,6 @@
 SessionConstants = {
   CREATE_SESSION: "CREATE_SESSION",
-  LOGOUT_SESSION: "LOGOUT_SESSION",
-  ERROR: "ERROR"
+  LOGOUT_SESSION: "LOGOUT_SESSION"
 };
 
   module.exports = SessionConstants;

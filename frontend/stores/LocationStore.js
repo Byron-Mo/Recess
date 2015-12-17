@@ -16,8 +16,13 @@ LocationStore.all = function() {
 };
 
 LocationStore.fetchLocation = function() {
-
-}
+  for (var key in _locations) {
+    if (_locations.hasOwnProperty(key)) {
+      return _locations[key];
+      break;
+    }
+  }
+};
 
 LocationStore.resetLocations = function(locations) {
   _locations = {};
@@ -47,17 +52,17 @@ LocationStore.find = function(locationId) {
   return _locations[locationId];
 };
 
-LocationStore.fetchErrors = function() {
-  return _errors.slice();
-};
-
-LocationStore.error = function(response) {
-  _errors = [];
-  response.responseJSON.forEach(function(msg) {
-    _errors.push(msg)
-  })
-  LocationStore.__emitChange();
-};
+// LocationStore.fetchErrors = function() {
+//   return _errors.slice();
+// };
+//
+// LocationStore.error = function(response) {
+//   _errors = [];
+//   response.responseJSON.forEach(function(msg) {
+//     _errors.push(msg)
+//   })
+//   LocationStore.__emitChange();
+// };
 
 LocationStore.__onDispatch = function(payload) {
   switch (payload.actionType) {

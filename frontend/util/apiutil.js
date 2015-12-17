@@ -14,7 +14,7 @@ ApiUtil = {
         UserActions.receiveUser(response)
       },
       error: function(response) {
-        UserActions.error(response)
+        ErrorActions.error(response)
       }
     })
   },
@@ -28,7 +28,7 @@ ApiUtil = {
         UserActions.receiveUser(response)
       },
       error: function(response) {
-        SessionActions.error(response)
+        ErrorActions.error(response)
       }
     })
   },
@@ -60,7 +60,7 @@ ApiUtil = {
         ReviewActions.receiveReview(response)
       },
       error: function(response) {
-        ReviewActions.error(response)
+        ErrorActions.error(response)
       }
     })
   },
@@ -74,7 +74,7 @@ ApiUtil = {
         ReviewActions.receiveReview(response)
       },
       error: function(response) {
-        ReviewActions.error(response)
+        ErrorActions.error(response)
       }
     })
   },
@@ -127,7 +127,7 @@ ApiUtil = {
         LocationActions.receiveLocation(response)
       },
       error: function(response) {
-        LocationActions.error(response)
+        ErrorActions.error(response)
       }
     })
   }

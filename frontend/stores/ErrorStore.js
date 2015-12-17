@@ -14,3 +14,13 @@ ErrorStore.error = function(response) {
 ErrorStore.fetchErrors = function() {
   return _errors.slice();
 };
+
+ErrorStore.__onDispatch = function(payload) {
+  switch (payload.actionType) {
+    case "ERROR":
+      ErrorStore.error(payload.response);
+      break;
+  }
+};
+
+module.exports = ErrorStore;

@@ -14,13 +14,6 @@ var UserActions = {
       actionType: UserConstants.LOGOUT_USER,
       user: user
     })
-  },
-
-  error: function(response) {
-    Dispatcher.dispatch({
-      actionType: UserConstants.ERROR,
-      response: response
-    })
   }
 };
 

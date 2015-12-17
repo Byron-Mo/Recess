@@ -1,33 +1,37 @@
 var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../util/apiutil'),
-    History = require('react-router').History,
     UserStore = require('../../stores/UserStore'),
+    ErrorStore = require('../../stores/ErrorStore'),
     Link = require('react-router').Link;
 
 var Signup = React.createClass({
-  mixins: [LinkedStateMixin, History],
+  mixins: [LinkedStateMixin],
 
   getInitialState: function() {
-    return { username: "", password: "", user: "", errors: "" };
+    return { username: "", password: "", user: "", errors: "", toggleError: 0 };
   },
 
   componentDidMount: function() {
-    this.listener = UserStore.addListener(this.updateState)
+    this.updateUser = UserStore.addListener(this.updateState);
+    this.updateErrors = ErrorStore.addListener(this.updateState);
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.updateUser.remove();
+    this.updateErrors.remove();
   },
 
   updateState: function() {
-    this.setState({ user: UserStore.fetchUser(), errors: UserStore.fetchErrors() })
+    this.setState({ user: UserStore.fetchUser(), errors: ErrorStore.fetchErrors() })
+
     if (this.state.user === undefined) {
-      alert(this.state.errors)
+      this.setState({toggleError: 1})
+      this.props.history.push("/signup")
     } else {
-      var url = '/user/' + this.state.user.username
-      var id = {id: this.state.user.username}
-      this.props.history.pushState(null, url, id)
+      var url = '/user/' + this.state.user.id
+      // var id = {id: this.state.user.username}
+      this.props.history.push(url)
     };
   },
 
@@ -42,10 +46,25 @@ var Signup = React.createClass({
   },
 
   render: function() {
+    var errorMsg;
+
+    if (this.state.toggleError) {
+      errorMsg = (
+        <ul className="error-msg">
+          {this.state.errors.map(function(msg) {
+            return <li>{msg}</li>
+          })}
+        </ul>
+      )
+    } else {
+      errorMsg = <div></div>
+    }
+
     return(
       <div className="signup-login-form">
 
         <form className="user" onSubmit={this.handleSubmit}>
+          {errorMsg}
           <label className="signuplogin">Username</label>
           <br></br>
           <input type="text" valueLink={this.linkState("username")} className="user-input"></input>

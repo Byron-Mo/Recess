@@ -16,12 +16,6 @@ var LocationActions = {
     })
   },
 
-  error: function(response) {
-    Dispatcher.dispatch({
-      actionType: LocationConstants.ERROR,
-      response: response
-    })
-  }
 };
 
 module.exports = LocationActions;

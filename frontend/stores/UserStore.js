@@ -18,18 +18,6 @@ UserStore.createUser = function(user) {
   UserStore.__emitChange();
 };
 
-UserStore.fetchErrors = function() {
-  return _errors.slice();
-};
-
-UserStore.error = function(response) {
-  _errors = [];
-  response.responseJSON.forEach(function(msg) {
-    _errors.push(msg)
-  })
-  UserStore.__emitChange();
-};
-
 UserStore.logoutUser = function(user) {
   _users = [];
   UserStore.__emitChange();
@@ -37,9 +25,6 @@ UserStore.logoutUser = function(user) {
 
 UserStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
-    case UserConstants.ERROR:
-      UserStore.error(payload.response)
-      break;
     case UserConstants.RECEIVE_USER:
       UserStore.createUser(payload.user)
       break;

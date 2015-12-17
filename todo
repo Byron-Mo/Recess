@@ -1,10 +1,142 @@
 -do autocomplete
--refactor errorstore
+-refactor errorstore DONE
 -make a ajax request to get current user name from window.CURRENT_USER_ID
 -location input has this.props.locations that it used to find the user input
 when he searches for a location
 -location input will pass the location object to the location index item page
 -location index item page will contain the review form
 -location index item page will contain reviews
--refactor app component to a nav component
+-refactor app component to a nav component DONE
 -require user to be logged in to visit pages
+
+
+var Store = require('flux/utils').Store,
+    AppDispatcher = require('../dispatcher/dispatcher'),
+    SessionConstants = require('../constants/SessionConstants'),
+    _sessions = [],
+    SessionStore = new Store(AppDispatcher);
+
+SessionStore.fetchUser = function() {
+  return _sessions[0];
+},
+
+SessionStore.createSession = function(session) {
+  _sessions.push(session);
+  SessionStore.__emitChange();
+};
+
+SessionStore.logoutSession = function(session) {
+  _sessions = [];
+  // SessionStore.__emitChange();
+};
+
+SessionStore.__onDispatch = function(payload) {
+  switch (payload.actionType) {
+    case SessionConstants.CREATE_SESSION:
+      SessionStore.createSession(payload.session)
+      break;
+    case SessionConstants.LOGOUT_SESSION:
+      SessionStore.logoutSession(payload.session)
+      break;
+    case SessionConstants.ERROR:
+      // SessionStore.error(payload.response)
+      SessionStore.__emitChange();
+      break;
+  }
+};
+
+module.exports = SessionStore
+e
+
+
+
+user homepages
+locations={this.state.locations} userid={this.props.location.query.id}
+
+locationinput
+getInitialState: function() {
+  console.log("in initial state")
+  return { searchString: "", location: "", locations: LocationStore.all(), toggleError: 0 }
+},
+
+getLocationId: function(locationName) {
+  var locations = this.props.locations;
+  var location = locationName.trim().toLowerCase();
+  for (var key in locations) {
+    if (locations.hasOwnProperty(key)) {
+      if (location === locations[key].name.trim().toLowerCase()) {
+        return locations[key].id;
+        break;
+      };
+    };
+  };
+},
+
+updateState: function() {
+  console.log("updating state")
+  var id = this.getLocationId(this.state.searchString);
+  this.setState({location: LocationStore.find(id)})
+  console.log(this.state.location)
+  // if (this.state.location) {
+  //   var url = "/location/" + this.state.location.id;
+  // };
+  // var location = this.state.location
+  // this.history.pushState(null, url, location)
+  // debugger
+  // this.history.push("/location/1")
+},
+
+componentDidMount: function() {
+  this.updateLocation = LocationStore.addListener(this.updateState);
+},
+
+componentWillUnmount: function() {
+  this.updateLocation.remove();
+},
+
+handleSubmit: function(e) {
+  e.preventDefault();
+  var id = this.getLocationId(this.state.searchString);
+
+  if (id === undefined) {
+    this.setState({toggleError: 1})
+    var url = "/user/" + this.props.userid
+    this.history.push(url)
+    // this.setState({searchString: ""})
+  } else {
+    ApiUtil.fetchLocation(id);
+    debugger
+    // this.setState({location: LocationStore.find(id)});
+  }
+},
+
+handleChange: function(e) {
+  // this.setState({searchString: e.target.value})
+},
+
+// autoComplete: function() {
+//   var locations = this.props.locations;
+//   var locationNames = [];
+//   for (var key in locations) {
+//     if (locations.hasOwnProperty(key)) {
+//       locationNames.push(locations[key].name)
+//     };
+//   };
+//   var that = this;
+//   $("#tags").autocomplete({
+//     source: locationNames,
+//     change: function(event, ui) {
+//       if (ui.item) {
+//         console.log("in here")
+//         that.setState({searchString: ui.item.value})
+//       } else {
+//         alert("nope")
+//       }
+//     }
+//   })
+// },
+
+review form
+      <Route path="/review/new" component={ReviewForm} />
+
+      <Link to="/review/new">Add Review</Link>

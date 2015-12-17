@@ -50,19 +50,6 @@ ReviewStore.destroyReview = function(id) {
   ReviewStore.__emitChange();
 };
 
-// errors
-ReviewStore.error = function(response) {
-  _errors = [];
-  response.responseJSON.forEach(function(msg) {
-    _errors.push(msg)
-  })
-  ReviewStore.__emitChange();
-};
-
-ReviewStore.fetchErrors = function() {
-  return _errors.slice();
-};
-
 ReviewStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
     case ReviewConstants.RESET_REVIEW:
@@ -70,9 +57,6 @@ ReviewStore.__onDispatch = function(payload) {
       break;
     case ReviewConstants.DESTROY_REVIEW:
       ReviewStore.destroyReview(payload.id)
-      break;
-    case ReviewConstants.ERROR:
-      ReviewStore.error(payload.response)
       break;
     case ReviewConstants.RECEIVE_REVIEWS:
       ReviewStore.resetReviews(payload.reviews)

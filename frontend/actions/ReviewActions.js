@@ -22,13 +22,6 @@ var ReviewActions = {
       id: id
     });
   },
-
-  error: function(response) {
-    Dispatcher.dispatch({
-      actionType: ReviewConstants.ERROR,
-      response: response
-    });
-  }
 };
 
 module.exports = ReviewActions;

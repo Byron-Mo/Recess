@@ -1,38 +1,41 @@
 var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../util/apiutil'),
-    History = require('react-router').History,
-    // SessionStore = require('../../stores/SessionStore'),
     UserStore = require('../../stores/UserStore'),
+    ErrorStore = require('../../stores/ErrorStore'),
     Link = require('react-router').Link;
 
 var Login = React.createClass({
-  mixins: [LinkedStateMixin, History],
+  mixins: [LinkedStateMixin],
 
   getInitialState: function() {
-    return { username: "", password: "", user: "", errors: "" };
+    return { username: "", password: "", user: "", errors: "", toggleError: 0 };
   },
 
   componentDidMount: function() {
-    this.listener = UserStore.addListener(this.updateState);
+    this.updateSession = UserStore.addListener(this.updateState);
+    this.updateErrors = ErrorStore.addListener(this.updateState);
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.updateSession.remove();
+    this.updateErrors.remove();
   },
 
   updateState: function() {
     this.setState({
       user: UserStore.fetchUser(),
-      // errors: SessionStore.fetchErrors()
+      errors: ErrorStore.fetchErrors()
     });
 
     if (this.state.user === undefined) {
-      alert("Invalid Credentials");
+      this.setState({toggleError: 1});
+      this.props.history.push("/login")
+      // alert(this.state.errors)
     } else {
-      var url = '/user/' + this.state.user.username;
-      var id = {id: this.state.user.username}
-      this.props.history.pushState(null, url, id);
+      var url = '/user/' + this.state.user.id;
+      // var id = {id: this.state.user.username}
+      this.props.history.push(url);
     }
   },
 
@@ -48,9 +51,18 @@ var Login = React.createClass({
   },
 
   render: function() {
+    var errorMsg;
+
+    if (this.state.toggleError) {
+      errorMsg = <div className="error-msg">{this.state.errors}</div>;
+    } else {
+      errorMsg = <div></div>;
+    }
+
     return(
       <div className="signup-login-form">
         <form className="user" onSubmit={this.handleSubmit}>
+          {errorMsg}
           <label className="signuplogin">Username</label>
           <br></br>
           <input type="text" valueLink={this.linkState("username")} className="user-input"></input>
