@@ -17,7 +17,6 @@ var Login = React.createClass({
   },
 
   componentWillUnmount: function() {
-    SessionStore.resetState();
     this.listener.remove();
   },
 

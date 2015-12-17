@@ -30,11 +30,6 @@ UserStore.error = function(response) {
   UserStore.__emitChange();
 };
 
-UserStore.resetState = function() {
-  _users = [];
-  _errors = [];
-};
-
 UserStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
     case UserConstants.CREATE_USER:

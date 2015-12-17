@@ -1,6 +1,7 @@
 var UserActions = require('../actions/UserActions'),
     SessionActions = require('../actions/SessionActions'),
-    ReviewActions = require('../actions/ReviewActions');
+    ReviewActions = require('../actions/ReviewActions'),
+    LocationActions = require('../actions/LocationActions');
 
 ApiUtil = {
   createUser: function(user) {
@@ -103,6 +104,29 @@ ApiUtil = {
       type: 'GET',
       success: function(review) {
         ReviewActions.receiveReview(review)
+      }
+    })
+  },
+
+  fetchLocations: function() {
+    $.ajax({
+      url: 'api/locations',
+      type: 'GET',
+      success: function(locations) {
+        LocationActions.receiveAllLocations(locations)
+      }
+    })
+  },
+
+  fetchLocation: function(id) {
+    $.ajax({
+      url: 'api/locations/' + id,
+      type: 'GET',
+      success: function(response) {
+        LocationActions.receiveLocation(response)
+      },
+      error: function(response) {
+        LocationActions.error(response)
       }
     })
   }

@@ -24,7 +24,6 @@ var ReviewActions = {
   },
 
   error: function(response) {
-    debugger
     Dispatcher.dispatch({
       actionType: ReviewConstants.ERROR,
       response: response

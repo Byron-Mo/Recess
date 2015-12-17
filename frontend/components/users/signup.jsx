@@ -17,8 +17,6 @@ var Signup = React.createClass({
   },
 
   componentWillUnmount: function() {
-    UserStore.resetState();
-    // this.listener.abort();
     this.listener.remove();
   },
 

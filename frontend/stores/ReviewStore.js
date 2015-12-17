@@ -30,7 +30,7 @@ ReviewStore.resetReviews = function(reviews) {
 
 // when we create or update
 ReviewStore.resetReview = function(review) {
-  _reviews = {};
+  // _reviews = {};
   _reviews[review.id] = review;
   ReviewStore.__emitChange();
 };
@@ -53,7 +53,6 @@ ReviewStore.destroyReview = function(id) {
 // errors
 ReviewStore.error = function(response) {
   _errors = [];
-  debugger
   response.responseJSON.forEach(function(msg) {
     _errors.push(msg)
   })

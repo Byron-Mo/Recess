@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require bundle
 //= require_tree .
+//= require jquery-ui/autocomplete

@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     end
     resource :session, only: [:create]
     resources :reviews, only: [:create, :update, :destroy, :show]
+    resources :locations, only: [:index, :show]
   end
   resource :session, only: [:destroy]
 end
