@@ -57,7 +57,7 @@ var LocationInput = React.createClass({
   },
 
   render: function() {
-    var errorMsg = this.state.toggleError ? <div className="error-msg">Invalid Location</div> : <div></div>;
+    var errorMsg = this.state.toggleError ? <div className="error-msg">Invalid City</div> : <div></div>;
 
     return(
       <form onSubmit={this.handleSubmit}>

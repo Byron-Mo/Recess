@@ -52,10 +52,12 @@ var LocationItem = React.createClass({
       // debugger
       var backgroundImage = (
         <div className="location-background" style={divStyle}>
-          <div className="location-name">{this.state.location.name}</div>
+          <div className="location-details">
+            <div className="location-name">{this.state.location.name}</div>
+            <div className="location-activity">{this.state.location.activity}</div>
+            <div className="location-rating">{avgReview}</div>
+          </div>
           <div className="location-region">{this.state.location.region}</div>
-          <div className="location-activity">{this.state.location.activity}</div>
-          <div className="location-rating">{avgReview}</div>
         </div>
       )
     }

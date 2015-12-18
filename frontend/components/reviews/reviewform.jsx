@@ -76,12 +76,14 @@ var ReviewForm = React.createClass({
         <br></br><br></br>
         <label>Rating</label>
         <br></br>
-        <input type="radio" name="rating" value="1" onChange={this.updateRating}></input>
-        <input type="radio" name="rating" value="2" onChange={this.updateRating}></input>
-        <input type="radio" name="rating" value="3" onChange={this.updateRating}></input>
-        <input type="radio" name="rating" value="4" onChange={this.updateRating}></input>
-        <input type="radio" name="rating" value="5" onChange={this.updateRating}></input>
-        <br></br><br></br>
+        <div className="star-rating">
+          <input type="radio" name="rating" value="1" onChange={this.updateRating}></input><i></i>
+          <input type="radio" name="rating" value="2" onChange={this.updateRating}></input><i></i>
+          <input type="radio" name="rating" value="3" onChange={this.updateRating}></input><i></i>
+          <input type="radio" name="rating" value="4" onChange={this.updateRating}></input><i></i>
+          <input type="radio" name="rating" value="5" onChange={this.updateRating}></input><i></i>
+        </div>
+        <br></br>
         <input type="submit" value="Create Review"></input>
       </form>
     )
