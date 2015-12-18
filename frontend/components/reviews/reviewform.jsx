@@ -70,21 +70,23 @@ var ReviewForm = React.createClass({
 
     return(
       <form className="review-form" onSubmit={this.handleSubmit}>
-        Your Review
-        {errorMsg}
-        <textarea valueLink={this.linkState("body")}></textarea>
-        <br></br><br></br>
-        <label>Rating</label>
-        <br></br>
-        <div className="star-rating">
-          <input type="radio" name="rating" value="1" onChange={this.updateRating}></input><i></i>
-          <input type="radio" name="rating" value="2" onChange={this.updateRating}></input><i></i>
-          <input type="radio" name="rating" value="3" onChange={this.updateRating}></input><i></i>
-          <input type="radio" name="rating" value="4" onChange={this.updateRating}></input><i></i>
-          <input type="radio" name="rating" value="5" onChange={this.updateRating}></input><i></i>
+        <div className="form-contents">
+          <div className="review-title">Been here? Leave a review!</div>
+          <br></br>
+          {errorMsg}
+          <br></br>
+          <div className="star-rating">
+            <input type="radio" name="rating" value="1" onChange={this.updateRating}></input><i></i>
+            <input type="radio" name="rating" value="2" onChange={this.updateRating}></input><i></i>
+            <input type="radio" name="rating" value="3" onChange={this.updateRating}></input><i></i>
+            <input type="radio" name="rating" value="4" onChange={this.updateRating}></input><i></i>
+            <input type="radio" name="rating" value="5" onChange={this.updateRating}></input><i></i>
+          </div>
+          <br></br>
+          <textarea className="review-text" valueLink={this.linkState("body")}></textarea>
+          <br></br>
+          <input type="submit" value="Create Review"></input>
         </div>
-        <br></br>
-        <input type="submit" value="Create Review"></input>
       </form>
     )
   }

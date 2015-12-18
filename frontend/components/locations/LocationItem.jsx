@@ -66,7 +66,7 @@ var LocationItem = React.createClass({
     return(
       <div>
         {backgroundImage}
-        <div>
+        <div className="location-body">
           {this.state.location.body}
         </div>
         <div>

@@ -91,11 +91,12 @@
 
 /* review form */
 .star-rating {
+
   font-size: 0;
   white-space: nowrap;
   display: inline-block;
-  width: 250px;
-  height: 50px;
+  width: 175px;
+  height: 35px;
   overflow: hidden;
   position: relative;
   background: url('1450440728_icon-23-star.svg');
@@ -182,4 +183,38 @@
 
 .location-activity {
   font-size: 30px;
+}
+
+.location-body {
+  /*text-align: center;*/
+  text-align: right;
+  margin: 40px;
+  font-size: 40px;
+}
+
+.review-form {
+  background-color: peachpuff;
+  height: 350px;
+}
+
+.form-contents {
+  float: left;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.review-title {
+  font-size: 20px
+}
+
+.review-text {
+  width: 600px;
+  height: 120px;
+  /*border: 3px solid #cccccc;*/
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 17px;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
 }
