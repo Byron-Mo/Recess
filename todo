@@ -140,3 +140,10 @@ review form
       <Route path="/review/new" component={ReviewForm} />
 
       <Link to="/review/new">Add Review</Link>
+
+
+
+      <label>Location</label>
+      <br></br>
+      <input type="text" valueLink={this.linkState("location")}></input>
+      <br></br><br></br>

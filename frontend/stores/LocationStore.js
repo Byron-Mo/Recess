@@ -72,9 +72,6 @@ LocationStore.__onDispatch = function(payload) {
     case LocationConstants.RESET_LOCATION:
       LocationStore.resetLocation(payload.location)
       break;
-    case LocationConstants.ERROR:
-      LocationStore.error(payload.response)
-      break;
   }
 };
 

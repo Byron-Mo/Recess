@@ -5,7 +5,7 @@ var React = require('react'),
 
 var LocationItem = React.createClass({
   getInitialState: function() {
-    return {location: LocationStore.fetchLocation()}
+    return {location: ""}
   },
 
   componentDidMount: function() {
@@ -22,24 +22,55 @@ var LocationItem = React.createClass({
   },
 
   render: function() {
-    // debugger
-    var location = this.state.location;
+    var reviews = this.state.location.reviews;
+    console.log(this.state.location)
+    var ratings = [];
 
+    if (reviews) {
+      for (var i = 0; i < reviews.length; i++) {
+        ratings.push(reviews[i].rating)
+
+        var reviewShow = (
+          <div>
+            <div className="review-user">{reviews[i].user.username}</div>
+            <div className="rating">{reviews[i].rating}</div>
+            <div className="review-body">{reviews[i].body}</div>
+          </div>
+        )
+      }
+      var avgReview = Math.round(ratings.reduce(function(x, y) {return x + y}) / ratings.length)
+      console.log(avgReview)
+    }
+
+    var img = this.state.location.image;
     var divStyle = {
       color: 'white',
-      backgroundImage: 'url(' + location.image + ')'
+      backgroundImage: 'url(' + img + ')'
     };
+
+    if (img) {
+      // debugger
+      var backgroundImage = (
+        <div className="location-background" style={divStyle}>
+          <div className="location-name">{this.state.location.name}</div>
+          <div className="location-region">{this.state.location.region}</div>
+          <div className="location-activity">{this.state.location.activity}</div>
+          <div className="location-rating">{avgReview}</div>
+        </div>
+      )
+    }
+
 
     return(
       <div>
-        <div className="test" style={divStyle}>
-          {location.name}
-          <br></br>
-          <br></br>
+        {backgroundImage}
+        <div>
+          {this.state.location.body}
         </div>
         <div>
-          <ReviewForm />
+          <ReviewForm locationid={this.state.location.id}/>
         </div>
+        {reviewShow}
       </div>
     )
   }

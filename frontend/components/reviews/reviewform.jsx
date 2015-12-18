@@ -2,13 +2,14 @@ var React = require('react'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
     ApiUtil = require('../../util/apiutil'),
     ReviewStore = require('../../stores/ReviewStore'),
-    ErrorStore = require('../../stores/ErrorStore');
+    ErrorStore = require('../../stores/ErrorStore'),
+    History = require('react-router').History;
 
 var ReviewForm = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
-    return { location: "", body: "", rating: "", errors: "", review: "", toggleError: 0 }
+    return { body: "", rating: "", errors: "", review: "", toggleError: 0 }
   },
 
   updateState: function() {
@@ -16,11 +17,11 @@ var ReviewForm = React.createClass({
 
     if (this.state.review === undefined) {
       this.setState({toggleError: 1});
-      this.props.history.push("/review/new")
       // alert(this.state.errors);
-    } else {
-      console.log('it worked')
+    // } else {
+    //   console.log('it worked')
     }
+      this.history.push("/location/" + this.props.locationid)
   },
 
   componentDidMount: function() {
@@ -39,13 +40,14 @@ var ReviewForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+
     ApiUtil.createReview({
-      location: this.state.location,
+      location_id: this.props.locationid,
       body: this.state.body,
       rating: this.state.rating
     });
 
-    this.setState({ location: "", body: "", rating: "" });
+    this.setState({ body: "", rating: "" });
   },
 
   render: function() {
@@ -53,11 +55,14 @@ var ReviewForm = React.createClass({
 
     if (this.state.toggleError) {
       errorMsg = (
-        <ul>
-          {this.state.errors.map(function(msg) {
-            return <li>{msg}</li>
-          })}
-        </ul>
+        <div>
+          <ul>
+            {this.state.errors.map(function(msg) {
+              return <li>{msg}</li>
+            })}
+          </ul>
+          <br></br>
+        </div>
       )
     } else {
       errorMsg = <div></div>
@@ -65,13 +70,9 @@ var ReviewForm = React.createClass({
 
     return(
       <form className="review-form" onSubmit={this.handleSubmit}>
-        <h1>Create Review</h1>
-        <br></br>
+        Your Review
         {errorMsg}
-        <br></br>
-        <label>Location</label>
-        <br></br>
-        <input type="text" valueLink={this.linkState("location")}></input>
+        <textarea valueLink={this.linkState("body")}></textarea>
         <br></br><br></br>
         <label>Rating</label>
         <br></br>
@@ -80,10 +81,6 @@ var ReviewForm = React.createClass({
         <input type="radio" name="rating" value="3" onChange={this.updateRating}></input>
         <input type="radio" name="rating" value="4" onChange={this.updateRating}></input>
         <input type="radio" name="rating" value="5" onChange={this.updateRating}></input>
-        <br></br><br></br>
-        <label>Review</label>
-        <br></br>
-        <textarea valueLink={this.linkState("body")}></textarea>
         <br></br><br></br>
         <input type="submit" value="Create Review"></input>
       </form>

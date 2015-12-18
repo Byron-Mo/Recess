@@ -17,6 +17,7 @@
 
  body {
    font-family: "Courier New";
+   margin: 0px;
  }
 
  .signup-login-form {
@@ -26,7 +27,7 @@
    left: 0;
    top: 0;
    z-index: 10;
-   background-image: url('signup-login2.jpg');
+   background-image: url('http://res.cloudinary.com/dptviwjop/image/upload/v1450397212/signup-login2_jrju7c.jpg');
    background-repeat: no-repeat;
    background-size:cover;
  }
@@ -87,6 +88,16 @@
   color: royalblue;
 }
 
-img {
-  
+.location-background {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background-repeat: no-repeat center center;
+  /*background-attachment: fixed;*/
+  background-size: cover;
 }

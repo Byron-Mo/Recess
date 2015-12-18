@@ -30,7 +30,6 @@ var UserHomepage = React.createClass({
         <br></br>
         <LocationInput userid={this.props.params.userid}/>
         <br></br>
-        <Link to="/review/new">Add Review</Link>
       </div>
     )
   }
