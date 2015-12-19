@@ -26,7 +26,6 @@ var LocationInput = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    console.log(location)
 
     var userInput = this.state.searchString.trim().toLowerCase();
 

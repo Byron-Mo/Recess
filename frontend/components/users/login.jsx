@@ -31,10 +31,8 @@ var Login = React.createClass({
     if (this.state.user === undefined) {
       this.setState({toggleError: 1});
       this.props.history.push("/login")
-      // alert(this.state.errors)
     } else {
       var url = '/user/' + this.state.user.id;
-      // var id = {id: this.state.user.username}
       this.props.history.push(url);
     }
   },

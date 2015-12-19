@@ -4,8 +4,20 @@ var React = require('react'),
 var Index = React.createClass({
   render: function() {
     return(
-      <div>  
-        <br></br>
+      <div>
+        <div className="index-background">
+          <div className="index-title">
+            Where will your next vacation take you?
+          </div>
+        </div>
+        <div className="index-intro">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
       </div>
     )
   }

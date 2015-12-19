@@ -57,7 +57,7 @@ ApiUtil = {
       type: 'POST',
       data: {review: review},
       success: function(response) {
-        ReviewActions.receiveReview(response)
+        LocationActions.receiveLocation(response)
       },
       error: function(response) {
         ErrorActions.error(response)
@@ -83,8 +83,9 @@ ApiUtil = {
     $.ajax({
       url: 'api/reviews/' + id,
       type: 'DELETE',
-      success: function() {
-        ReviewActions.destroyReview(id)
+      success: function(response) {
+        // ReviewActions.destroyReview(id)
+        UserActions.receiveUser(response)
       }
     })
   },

@@ -9,28 +9,22 @@ var ReviewForm = React.createClass({
   mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
-    return { body: "", rating: "", errors: "", review: "", toggleError: 0 }
+    return { body: "", rating: "", errors: "", toggleError: 0 }
   },
 
   updateState: function() {
-    this.setState({ errors: ErrorStore.fetchErrors(), review: ReviewStore.fetchReview() })
+    this.setState({ errors: ErrorStore.fetchErrors() })
 
-    if (this.state.review === undefined) {
+    if (this.state.errors) {
       this.setState({toggleError: 1});
-      // alert(this.state.errors);
-    // } else {
-    //   console.log('it worked')
     }
-      this.history.push("/location/" + this.props.locationid)
   },
 
   componentDidMount: function() {
-    this.updateReview = ReviewStore.addListener(this.updateState);
     this.updateErrors = ErrorStore.addListener(this.updateState);
   },
 
   componentWillUnmount: function() {
-    this.updateReview.remove();
     this.updateErrors.remove();
   },
 
@@ -55,10 +49,10 @@ var ReviewForm = React.createClass({
 
     if (this.state.toggleError) {
       errorMsg = (
-        <div>
+        <div className="review-errors">
           <ul>
             {this.state.errors.map(function(msg) {
-              return <li>{msg}</li>
+              return <li key={msg}>{msg}</li>
             })}
           </ul>
           <br></br>
@@ -69,11 +63,9 @@ var ReviewForm = React.createClass({
     };
 
     return(
-      <form className="review-form" onSubmit={this.handleSubmit}>
-        <div className="form-contents">
+      <div className="review-form">
+        <form className="form-contents" onSubmit={this.handleSubmit}>
           <div className="review-title">Been here? Leave a review!</div>
-          <br></br>
-          {errorMsg}
           <br></br>
           <div className="star-rating">
             <input type="radio" name="rating" value="1" onChange={this.updateRating}></input><i></i>
@@ -84,10 +76,11 @@ var ReviewForm = React.createClass({
           </div>
           <br></br>
           <textarea className="review-text" valueLink={this.linkState("body")}></textarea>
+          {errorMsg}
           <br></br>
-          <input type="submit" value="Create Review"></input>
-        </div>
-      </form>
+          <input type="submit" value="Create Review" className="review-btn"></input>
+        </form>
+      </div>
     )
   }
 });

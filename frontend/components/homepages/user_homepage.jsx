@@ -2,25 +2,32 @@ var React = require('react'),
     ApiUtil = require('../../util/apiutil'),
     Link = require('react-router').Link,
     LocationInput = require('../locations/locationinput'),
-    LocationStore = require('../../stores/LocationStore');
+    LocationStore = require('../../stores/LocationStore'),
+    UserStore = require('../../stores/UserStore');
 
 var UserHomepage = React.createClass({
   // getInitialState: function() {
-  //   return { locations: LocationStore.all() }
+  //   return { user: UserStore.fetchUser() }
   // },
   //
   // updateState: function() {
-  //   this.setState({ locations: LocationStore.all() })
+  //   this.setState({ user: UserStore.fetchUser() })
   // },
   //
   // componentDidMount: function() {
-  //   this.listener = LocationStore.addListener(this.updateState)
-  //   ApiUtil.fetchLocations();
+  //   this.listener = UserStore.addListener(this.updateState)
+  //   ApiUtil.fetchUser();
   // },
   //
   // componentWillUnmount: function() {
   //   this.listener.remove();
   // },
+
+  handleClick: function() {
+    // debugger
+    var url = "/user/" + this.props.params.userid + "/reviews";
+    this.props.history.push(url);
+  },
 
   render: function() {
     return(
@@ -30,6 +37,7 @@ var UserHomepage = React.createClass({
         <br></br>
         <LocationInput userid={this.props.params.userid}/>
         <br></br>
+        <div onClick={this.handleClick} className="user-review-link">Your Reviews</div>
       </div>
     )
   }

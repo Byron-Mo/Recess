@@ -13,7 +13,7 @@ var Nav = React.createClass({
 
   updateState: function() {
     this.setState({user: UserStore.fetchUser()})
-    console.log(this.state.user)
+    // console.log(this.state.user)
   },
 
   componentDidMount: function() {
@@ -37,21 +37,27 @@ var Nav = React.createClass({
         links;
 
     if (user) {
-      var url = "/user/" + user.username
+      var url = "/user/" + user.id
       links = [
-        <Link to={url}>Home</Link>,
-        <input type="button" value="Log out" onClick={this.handleSubmit}></input>
+        <li className="nav-item"><Link to={url}>Home</Link></li>,
+        <li className="nav-item log-out-text"><div onClick={this.handleSubmit}>Log out</div></li>
+
+
       ]
     } else {
       links = [
-        <Link to="/signup">Sign up</Link>,
-        <Link to="/login">Log in</Link>
+        <li className="nav-item"><Link to="/signup">Sign up</Link></li>,
+        <li className="nav-item"><Link to="/login">Log in</Link></li>
       ]
     }
 
     return(
       <div>
-        {links}
+        <div className="nav-bar">
+          <ul className="nav-bar-links">
+            {links}
+          </ul>
+        </div>
       </div>
     )
   }

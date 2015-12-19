@@ -67,6 +67,7 @@ Finish styling landing page and Create Home Page. Goal is to make a more modern 
 Phase 7 will be seed the database with vacation destinations and some user reviews.
 
 ### Bonus Features (TBD)
+- [ ] Click on other user reviews
 - [ ] Rate user reviews
 - [ ] Allow users to upload images in reviews
 - [ ] PM other users

@@ -1,7 +1,8 @@
 var React = require('react'),
     LocationStore = require('../../stores/LocationStore'),
     ApiUtil = require('../../util/apiutil'),
-    ReviewForm = require('../reviews/reviewform');
+    ReviewForm = require('../reviews/reviewform'),
+    ReviewStore = require('../../stores/ReviewStore');
 
 var LocationItem = React.createClass({
   getInitialState: function() {
@@ -9,12 +10,12 @@ var LocationItem = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listener = LocationStore.addListener(this.updateState);
+    this.updateLocation = LocationStore.addListener(this.updateState);
     ApiUtil.fetchLocation(parseInt(this.props.params.locationid));
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.updateLocation.remove();
   },
 
   updateState: function() {
@@ -25,21 +26,30 @@ var LocationItem = React.createClass({
     var reviews = this.state.location.reviews;
     console.log(this.state.location)
     var ratings = [];
+    var reviewShow = [];
 
     if (reviews) {
       for (var i = 0; i < reviews.length; i++) {
         ratings.push(reviews[i].rating)
-
-        var reviewShow = (
-          <div>
-            <div className="review-user">{reviews[i].user.username}</div>
-            <div className="rating">{reviews[i].rating}</div>
-            <div className="review-body">{reviews[i].body}</div>
-          </div>
-        )
       }
-      var avgReview = Math.round(ratings.reduce(function(x, y) {return x + y}) / ratings.length)
+      if (ratings.length === 0) {
+        var avgReview = 0;
+      } else {
+        var avgReview = Math.round(ratings.reduce(function(x, y) {return x + y}) / ratings.length)
+      }
       console.log(avgReview)
+    };
+
+    if (reviews) {
+      reviewShow = reviews.map(function(review) {
+        return (
+          <li key={review.id} className="location-review">
+            <div className="rating">{review.rating}</div>
+            <div className="review-body">{review.body}</div>
+            <div className="review-user">-{review.user.username}</div>
+          </li>
+        )
+      })
     }
 
     var img = this.state.location.image;
@@ -55,6 +65,7 @@ var LocationItem = React.createClass({
           <div className="location-details">
             <div className="location-name">{this.state.location.name}</div>
             <div className="location-activity">{this.state.location.activity}</div>
+            <br></br>
             <div className="location-rating">{avgReview}</div>
           </div>
           <div className="location-region">{this.state.location.region}</div>
@@ -66,13 +77,17 @@ var LocationItem = React.createClass({
     return(
       <div>
         {backgroundImage}
-        <div className="location-body">
-          {this.state.location.body}
+        <div className="location-body-container">
+          <div className="location-body">
+            {this.state.location.body}
+          </div>
         </div>
         <div>
           <ReviewForm locationid={this.state.location.id}/>
         </div>
-        {reviewShow}
+        <ul className="location-reviews">
+          {reviewShow}
+        </ul>
       </div>
     )
   }

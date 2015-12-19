@@ -11,12 +11,9 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
 
-    # unless @review.save
-    #   render json: @review.errors.full_messages, status 422
-    # end
-
     if @review.save
-      render :index
+      @location = @review.location
+      render "api/locations/show"
     else
       render json: @review.errors.full_messages, status: 422
     end
@@ -39,7 +36,8 @@ class Api::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    render :index
+    @user = @review.user
+    render "api/users/show"
   end
 
   private
