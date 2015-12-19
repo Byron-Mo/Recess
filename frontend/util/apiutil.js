@@ -65,16 +65,16 @@ ApiUtil = {
     })
   },
 
-  updateReview: function(id) {
+  updateReview: function(id, review) {
+    // debugger
     $.ajax({
       url: 'api/reviews/' + id,
       type: 'PATCH',
-      data: {id: id},
+      data: {review: review},
       success: function(response) {
-        ReviewActions.receiveReview(response)
-      },
-      error: function(response) {
-        ErrorActions.error(response)
+        // ReviewActions.receiveReview(response)
+        // LocationActions.receiveLocation(response)
+        UserActions.receiveUser(response)
       }
     })
   },

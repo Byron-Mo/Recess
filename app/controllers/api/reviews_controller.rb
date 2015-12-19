@@ -27,7 +27,11 @@ class Api::ReviewsController < ApplicationController
     # end
 
     if @review.update(review_params)
-      render :index
+      # render :index
+      # @location = @review.location
+      # render "api/locations/show"
+      @user = @review.user
+      render "api/users/show"
     else
       render json: @review.errors.full_messages, status: 422
     end

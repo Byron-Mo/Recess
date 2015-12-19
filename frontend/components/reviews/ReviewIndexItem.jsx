@@ -22,16 +22,25 @@ var ReviewIndexItem = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    debugger
-    if (this.state.rating === "" && this.state.body !== "") {
-      ApiUtil.updateReview({
-        body: this.state.body
-      })
-    } else if (this.state.body === "" && this.state.rating !== "") {
-      
-    } else if (this.state.body !== "" && this.state.rating !== "") {
+    // debugger
+    var id = this.props.review.id;
 
+    if (this.state.rating !== "" && this.state.body !== "") {
+      ApiUtil.updateReview(id, {
+        body: this.state.body,
+        rating: this.state.rating
+      })
+    } else if (this.state.rating !== "") {
+      ApiUtil.updateReview(id, {
+        rating: this.state.rating
+      })
+    } else if (this.state.body !== "") {
+      ApiUtil.updateReview(id, {
+        body: this.state.body,
+      })
     }
+
+    this.setState({toggle: !this.state.toggle})
   },
 
   updateRating: function(e) {
