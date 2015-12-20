@@ -38,7 +38,7 @@ var Nav = React.createClass({
     if (user) {
       var url = "/user/" + user.id
       links = [
-        <li className="nav-item"><Link to={url}>Home</Link></li>,
+        <li className="nav-item"><Link to={url}>{user.username}</Link></li>,
         <li className="nav-item log-out-text" onClick={this.handleSubmit}><Link to="/">Log out</Link></li>
       ]
     } else {
@@ -51,6 +51,7 @@ var Nav = React.createClass({
     return(
       <div>
         <div className="nav-bar">
+          <Link to="/">Recess</Link>
           <ul className="nav-bar-links">
             {links}
           </ul>

@@ -162,3 +162,29 @@ review form
         <label className="star-5" htmlFor="star-5">5</label>
         <span></span>
       </div>
+
+
+      var map = new jvm.Map({
+         container: $(this.refs.map),
+         map: 'continents_mill',
+         regionsSelectable: true,
+
+         regionStyle: {
+           initial: {
+             fill: '#B8E186'
+           },
+           selected: {
+             fill: '#F4A582'
+           }
+         },
+
+         onRegionSelected: function(){
+           if (window.localStorage) {
+             window.localStorage.setItem(
+               'jvectormap-selected-regions',
+               JSON.stringify(map.getSelectedRegions())
+             );
+           }
+         },
+
+       });

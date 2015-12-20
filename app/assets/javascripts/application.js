@@ -13,3 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bundle
+//= require jquery-jvectormap-2.0.3.min
+//= require jquery-jvectormap-continents-mill

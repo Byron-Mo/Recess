@@ -28,6 +28,35 @@ var UserPreference = React.createClass({
   },
 
   componentDidMount: function() {
+    var map = new jvm.Map({
+       container: $(this.refs.map),
+       map: 'continents_mill',
+       regionsSelectableOne: true,
+       regionsSelectable: true,
+
+       regionStyle: {
+         initial: {
+           fill: '#B8E186'
+         },
+         selected: {
+           fill: '#F4A582'
+         }
+       },
+
+       onRegionSelected: function(){
+         if (window.localStorage) {
+           window.localStorage.setItem(
+             'jvectormap-selected-regions',
+             JSON.stringify(map.getSelectedRegions())
+           );
+         }
+       },
+
+     });
+
+     map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
+
+
     this.listener = UserStore.addListener(this.updateState);
     this.updateErrors = ErrorStore.addListener(this.updateState)
     ApiUtil.fetchUser(this.props.params.userid);
@@ -100,11 +129,11 @@ var UserPreference = React.createClass({
           <input type="submit" value="Update your vacation preferences"></input>
         </form>
       )
-    }
+    };
 
     return(
       <div>
-        nothing here
+        <div ref="map" className="preference-map" >{}</div>
         <br></br>
         {preferenceForm}
       </div>
