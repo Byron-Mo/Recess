@@ -188,3 +188,5 @@ review form
          },
 
        });
+
+       map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );

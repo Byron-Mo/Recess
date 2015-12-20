@@ -43,7 +43,8 @@ var UserPreference = React.createClass({
          }
        },
 
-       onRegionSelected: function(){
+       onRegionSelected: function(e, el){
+         debugger
          if (window.localStorage) {
            window.localStorage.setItem(
              'jvectormap-selected-regions',
