@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :reviews
+  has_one :preference
 
   def password=(password)
     @password = password

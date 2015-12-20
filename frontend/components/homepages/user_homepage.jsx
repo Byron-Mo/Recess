@@ -30,6 +30,9 @@ var UserHomepage = React.createClass({
   },
 
   render: function() {
+    var prefUrl = "/user/" + this.props.params.userid + "/preferences"
+    var reviewUrl = "/user/" + this.props.params.userid + "/reviews"
+
     return(
       <div>
         <br></br>
@@ -37,7 +40,11 @@ var UserHomepage = React.createClass({
         <br></br>
         <LocationInput userid={this.props.params.userid}/>
         <br></br>
-        <div onClick={this.handleClick} className="user-review-link">Your Reviews</div>
+        <div clasName="user-selection">
+          <Link to={prefUrl} className="user-review-link">Update your preferences</Link>
+          <br></br>
+          <Link to={reviewUrl} className="user-review-link">Your reviews</Link>
+        </div>
       </div>
     )
   }

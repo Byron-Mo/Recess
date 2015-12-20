@@ -9,7 +9,8 @@ var React = require('react'),
     Login = require('./components/users/login'),
     UserHomepage = require('./components/homepages/user_homepage'),
     LocationItem = require('./components/locations/LocationItem'),
-    UserReview = require('./components/reviews/UserReview');
+    UserReview = require('./components/reviews/UserReview'),
+    UserPreference = require('./components/preferences/UserPreference');
 
 var RecessRouter = (
    <Router>
@@ -18,8 +19,9 @@ var RecessRouter = (
       <Route path="signup" component={Signup} />
       <Route path="login" component={Login} />
       <Route path="/user/:userid" component={UserHomepage} />
-      <Route path="/location/:locationid" component={LocationItem} />
       <Route path="/user/:userid/reviews" component={UserReview} />
+      <Route path="/location/:locationid" component={LocationItem} />
+      <Route path="/user/:userid/preferences" component={UserPreference} />
     </Route>
   </Router>
 );

@@ -7,3 +7,9 @@ if @user.reviews
     end
   end
 end
+
+if @user.preference
+  json.preference do
+    json.extract! @user.preference, :activity, :region, :id
+  end
+end

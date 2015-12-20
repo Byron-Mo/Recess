@@ -131,6 +131,34 @@ ApiUtil = {
         ErrorActions.error(response)
       }
     })
+  },
+
+  createPreference: function(preference) {
+    $.ajax({
+      url: 'api/preferences/',
+      type: 'POST',
+      data: {preference: preference},
+      success: function(response) {
+        UserActions.receiveUser(response)
+      },
+      error: function(response) {
+        ErrorActions.error(response)
+      }
+    })
+  },
+
+  updatePreference: function(id, preference) {
+    $.ajax({
+      url: 'api/preferences/' + id,
+      type: 'PATCH',
+      data: {preference: preference},
+      success: function(response) {
+        UserActions.receiveUser(response)
+      },
+      error: function(response) {
+        ErrorActions.error(response)
+      }
+    })
   }
 };
 

@@ -2,7 +2,8 @@ var React = require('react'),
     UserStore = require('../../stores/UserStore'),
     ApiUtil = require('../../util/apiutil'),
     ReviewStore = require('../../stores/ReviewStore'),
-    ReviewIndexItem = require('./ReviewIndexItem');
+    ReviewIndexItem = require('./ReviewIndexItem'),
+    Link = require('react-router').Link;
 
 var UserReview = React.createClass({
   getInitialState: function() {
@@ -26,9 +27,7 @@ var UserReview = React.createClass({
   // },
 
   updateState: function() {
-    console.log("emitted change")
     this.setState({user: UserStore.fetchUser()})
-    console.log(this.state.user)
   },
 
   render: function() {
@@ -42,9 +41,11 @@ var UserReview = React.createClass({
         var that = this;
         var displayReviews = (
           reviews.map(function(review) {
+            var url = "/location/" + review.location_id;
+
             return (
               <li className="user-reviews-li" key={review.id}>
-                <div className="user-review-location">{review.location.name}</div>
+                <Link to={url} className="user-review-location">{review.location.name}</Link>
                 <div className="user-review-rating">{review.rating}</div>
                 <div className="user-review-body">{review.body}</div>
                 <ReviewIndexItem review={review} />

@@ -29,7 +29,6 @@ var Nav = React.createClass({
 
   handleSubmit: function() {
     ApiUtil.logoutSession();
-    this.history.pushState(null, "/")
   },
 
   render: function() {
@@ -40,9 +39,7 @@ var Nav = React.createClass({
       var url = "/user/" + user.id
       links = [
         <li className="nav-item"><Link to={url}>Home</Link></li>,
-        <li className="nav-item log-out-text"><div onClick={this.handleSubmit}>Log out</div></li>
-
-
+        <li className="nav-item log-out-text" onClick={this.handleSubmit}><Link to="/">Log out</Link></li>
       ]
     } else {
       links = [
