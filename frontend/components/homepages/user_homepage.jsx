@@ -4,7 +4,8 @@ var React = require('react'),
     LocationInput = require('../locations/locationinput'),
     LocationStore = require('../../stores/LocationStore'),
     UserStore = require('../../stores/UserStore'),
-    LocationVisit = require('../locations/LocationVisit');
+    LocationVisit = require('../locations/LocationVisit'),
+    MapLocation = require('../locations/MapLocation');
 
 var UserHomepage = React.createClass({
   getInitialState: function() {
@@ -18,6 +19,7 @@ var UserHomepage = React.createClass({
   componentDidMount: function() {
     this.listener = LocationStore.addListener(this.updateState)
     this.listenerUser = UserStore.addListener(this.updateState)
+    // debugger
     ApiUtil.fetchLocations();
   },
 
@@ -37,17 +39,18 @@ var UserHomepage = React.createClass({
     var locations = this.state.locations;
 
     var user = this.state.user;
-    // debugger
 
     var recommendations = [];
     if (user) {
       for (var key in locations) {
         if (locations.hasOwnProperty(key)) {
-          if (
-            locations[key].region === user.preference.region &&
-            locations[key].activity === user.preference.activity
-          ) {
-            recommendations.push(locations[key])
+          if (user.preference) {
+            if (
+              locations[key].region === user.preference.region &&
+              locations[key].activity === user.preference.activity
+            ) {
+              recommendations.push(locations[key])
+            }
           }
         }
       };
@@ -94,13 +97,20 @@ var UserHomepage = React.createClass({
       )
     })
 
+    // if (user) {
+    //   var mapLocation = <MapLocation locationVisits={user.location_visits} />
+    // } else {
+    //   var mapLocation = <div></div>
+    // }
+
     return(
       <div>
         <br></br>
         user home page
-        <LocationVisit user={user} locations={this.state.locations}/>
+
+        <LocationVisit user={user} locations={this.state.locations} />
         <br></br>
-        <LocationInput userid={this.props.params.userid} locations={this.state.locations}/>
+        <LocationInput userid={this.props.params.userid} locations={this.state.locations} />
         <br></br>
         <div clasName="user-selection">
           <Link to={prefUrl} className="user-review-link">Update your preferences</Link>
