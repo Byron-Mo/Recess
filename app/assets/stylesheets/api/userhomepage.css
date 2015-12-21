@@ -1,0 +1,55 @@
+.recommendations-background {
+  background-color: whitesmoke;
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+.recommendations {
+  position: relative;
+  /*min-width: 100%;*/
+  width: 100%;
+  height: 1000px;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  text-align: center;
+}
+
+.recommendations-title {
+  padding-top: 50px;
+  font-weight: normal;
+  font-size: 40px;
+}
+
+.recommendation-box {
+  width: 375px;
+  height: 275px;
+  float: left;
+  padding: 25px;
+}
+
+/*.recommendation-box:hover {
+  cursor: pointer;
+}*/
+
+.recommendation-img {
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.recommendation-text {
+  top: 0;
+  background-color: white;
+}
+
+.recommendation-name {
+  /*margin-top: 15px;*/
+  padding-top: 15px;
+  padding-bottom: 8px;
+  font-size: 22px;
+}
+
+.recommendation-rating {
+  padding-bottom: 10px;
+}
