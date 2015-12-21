@@ -51,6 +51,7 @@ var LocationInput = React.createClass({
       this.setState({toggleError: 1})
       this.history.push("/user/" + this.props.userid)
     } else {
+      ApiUtil.fetchLocation(location.id);
       this.history.pushState(null, '/location/' + location.id)
     }
   },

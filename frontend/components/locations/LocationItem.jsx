@@ -19,10 +19,13 @@ var LocationItem = React.createClass({
   },
 
   updateState: function() {
-    this.setState({location: LocationStore.fetchLocation()})
+    this.setState({location: LocationStore.find(parseInt(this.props.params.locationid))})
   },
 
   render: function() {
+    // if (this.state.location) {
+    // }
+
     var reviews = this.state.location.reviews;
     console.log(this.state.location)
     var ratings = [];
@@ -52,11 +55,14 @@ var LocationItem = React.createClass({
       })
     }
 
-    var img = this.state.location.image;
-    var divStyle = {
-      color: 'white',
-      backgroundImage: 'url(' + img + ')'
-    };
+    // if (this.state.location) {
+    //
+    // }
+      var img = this.state.location.image;
+      var divStyle = {
+        color: 'white',
+        backgroundImage: 'url(' + img + ')'
+      };
 
     if (img) {
       // debugger
@@ -72,6 +78,26 @@ var LocationItem = React.createClass({
         </div>
       )
     }
+
+    // if (this.state.location) {
+    //   var locationBody = (
+    //     <div className="location-body">
+    //       {this.state.location.body}
+    //     </div>
+    //   )
+    // } else {
+    //   var locationBody = <div></div>
+    // }
+    //
+    // if (this.state.location) {
+    //   var reviewForm = (
+    //     <div>
+    //       <ReviewForm locationid={this.state.location.id}/>
+    //     </div>
+    //   )
+    // } else {
+    //   var reviewForm = <div></div>
+    // }
 
 
     return(

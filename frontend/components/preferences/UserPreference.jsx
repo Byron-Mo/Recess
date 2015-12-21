@@ -1,33 +1,34 @@
 var React = require('react'),
     ApiUtil = require('../../util/apiutil'),
     UserStore = require('../../stores/UserStore'),
-    ErrorStore = require('../../stores/ErrorStore');
+    ErrorStore = require('../../stores/ErrorStore'),
+    PreferenceConstants = require('../../constants/PreferenceConstants');
 
 var UserPreference = React.createClass({
   getInitialState: function() {
-    return { user: UserStore.fetchUser(), errors: "", activity: "", region: "", toggleError: "" }
+    return { user: UserStore.fetchUser(), errors: "", activity: "", region: "", toggleError: 0 }
   },
 
   updateState: function() {
     this.setState({
       user: UserStore.fetchUser(),
       errors: ErrorStore.fetchErrors()
-    })
-
+    });
+    // debugger
     if (this.state.user && this.state.user.preference) {
       this.setState({
+        toggleError: 0,
         activity: this.state.user.preference.activity,
         region: this.state.user.preference.region
       })
-    }
-
-    if (this.state.errors) {
-      console.log(this.state.errors)
+    } else if (this.state.errors.length > 0) {
       this.setState({toggleError: 1})
-    }
+    };
   },
 
   componentDidMount: function() {
+    var that = this;
+
     var map = new jvm.Map({
        container: $(this.refs.map),
        map: 'continents_mill',
@@ -44,7 +45,17 @@ var UserPreference = React.createClass({
        },
 
        onRegionSelected: function(e, el){
-         debugger
+         for (var key in PreferenceConstants) {
+           if (PreferenceConstants.hasOwnProperty(key)) {
+             if (key === el) {
+               console.log(el)
+               that.setState({region: PreferenceConstants[key]});
+               console.log(that.state.region)
+               break;
+             }
+           }
+         }
+
          if (window.localStorage) {
            window.localStorage.setItem(
              'jvectormap-selected-regions',
@@ -55,8 +66,7 @@ var UserPreference = React.createClass({
 
      });
 
-     map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
-
+    map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
 
     this.listener = UserStore.addListener(this.updateState);
     this.updateErrors = ErrorStore.addListener(this.updateState)
@@ -87,17 +97,17 @@ var UserPreference = React.createClass({
     this.setState({ activity: e.target.value })
   },
 
-  handleRegion: function(e) {
-    this.setState({ region: e.target.value })
-  },
+  // handleRegion: function(e) {
+  //   this.setState({ region: e.target.value })
+  // },
 
-  isSelected: function(value) {
-    if (this.state.region === value) {
-      return "selected";
-    } else {
-      return "";
-    }
-  },
+  // isSelected: function(value) {
+  //   if (this.state.region === value) {
+  //     return "selected";
+  //   } else {
+  //     return "";
+  //   }
+  // },
 
   isChecked: function(value) {
     if (this.state.activity === value) {
@@ -107,18 +117,8 @@ var UserPreference = React.createClass({
 
   render: function() {
     if (this.state.user) {
-
       var preferenceForm = (
         <form className="preference-form" onSubmit={this.handleSubmit}>
-          <select name="region" className="preference-region" onChange={this.handleRegion} value={this.state.region}>
-            <option>Choose your region</option>
-            <option value="Africa">Africa</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="North America">North America</option>
-            <option value="Oceania">Oceania</option>
-            <option value="South America">South America</option>
-          </select>
           <div className="preference-activity">
             <label htmlFor="Beachfront">Beachfront</label>
             <input type="radio" id="Beachfront" name="activity" value="Beachfront" onChange={this.handleActivity} checked={this.isChecked("Beachfront")}></input>
@@ -132,11 +132,25 @@ var UserPreference = React.createClass({
       )
     };
 
+    var errors = [];
+    if (this.state.toggleError) {
+      errors = (
+        this.state.errors.map(function(error) {
+          return <li>{error}</li>
+        })
+      );
+    } else {
+      errors = <div></div>
+    }
+
     return(
       <div>
         <div ref="map" className="preference-map" >{}</div>
         <br></br>
         {preferenceForm}
+        <ul>
+          {errors}
+        </ul>
       </div>
     )
   }
