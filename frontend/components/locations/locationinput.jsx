@@ -8,21 +8,21 @@ var LocationInput = React.createClass({
   mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
-    return { locations: LocationStore.all(), searchString: "", toggleError: 0, errors: "" }
+    return { searchString: "", toggleError: 0, errors: "" }
   },
 
-  componentDidMount: function() {
-    this.updateLocation = LocationStore.addListener(this.updateState);
-    ApiUtil.fetchLocations();
-  },
-
-  componentWillUnmount: function() {
-    this.updateLocation.remove();
-  },
-
-  updateState: function() {
-    this.setState({locations: LocationStore.all()})
-  },
+  // componentDidMount: function() {
+  //   this.updateLocation = LocationStore.addListener(this.updateState);
+  //   ApiUtil.fetchLocations();
+  // },
+  //
+  // componentWillUnmount: function() {
+  //   this.updateLocation.remove();
+  // },
+  //
+  // updateState: function() {
+  //   this.setState({locations: LocationStore.all()})
+  // },
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -34,9 +34,9 @@ var LocationInput = React.createClass({
       return this.history.push("/user/" + this.props.userid)
     }
 
-    var locations = this.state.locations,
+    var locations = this.props.locations,
         location;
-
+        
     for (var key in locations) {
       if (locations.hasOwnProperty(key)) {
         if (locations[key].name.toLowerCase().match("^" + userInput)) {
@@ -49,7 +49,7 @@ var LocationInput = React.createClass({
 
     if (location === undefined) {
       this.setState({toggleError: 1})
-      this.history.push("/user/" + this.props.userid)
+      // this.history.push("/user/" + this.props.userid)
     } else {
       ApiUtil.fetchLocation(location.id);
       this.history.pushState(null, '/location/' + location.id)

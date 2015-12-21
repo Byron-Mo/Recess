@@ -5,4 +5,6 @@ class Location < ActiveRecord::Base
   validates :region, inclusion: { in: ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"] }
 
   has_many :reviews
+  has_many :location_visits
+  has_many :users, through: :location_visits, source: :user
 end

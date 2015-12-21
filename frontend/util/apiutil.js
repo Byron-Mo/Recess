@@ -159,6 +159,17 @@ ApiUtil = {
         ErrorActions.error(response)
       }
     })
+  },
+
+  locationVisit: function(data) {
+    $.ajax({
+      url: 'api/location_visits',
+      type: 'POST',
+      data: {location_visit: data},
+      success: function(response) {
+        UserActions.receiveUser(response)
+      }
+    })
   }
 };
 

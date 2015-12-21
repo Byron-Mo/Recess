@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :update, :destroy, :show]
     resources :locations, only: [:index, :show]
     resources :preferences, only: [:create, :update, :show]
+    resources :location_visits, only: [:create, :destroy]
   end
   resource :session, only: [:destroy]
 end

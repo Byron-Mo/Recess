@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_many :reviews
-  has_one :preference
+  has_many  :reviews
+  has_one   :preference
+  has_many  :location_visits
+  has_many  :locations, through: :location_visits, source: :location
 
   def password=(password)
     @password = password

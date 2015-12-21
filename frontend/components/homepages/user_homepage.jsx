@@ -3,28 +3,30 @@ var React = require('react'),
     Link = require('react-router').Link,
     LocationInput = require('../locations/locationinput'),
     LocationStore = require('../../stores/LocationStore'),
-    UserStore = require('../../stores/UserStore');
+    UserStore = require('../../stores/UserStore'),
+    LocationVisit = require('../locations/LocationVisit');
 
 var UserHomepage = React.createClass({
   getInitialState: function() {
-    return { locations: "" }
+    return { locations: "", user: UserStore.fetchUser() }
   },
 
   updateState: function() {
-    this.setState({ locations: LocationStore.all() })
+    this.setState({ locations: LocationStore.all(), user: UserStore.fetchUser() })
   },
 
   componentDidMount: function() {
     this.listener = LocationStore.addListener(this.updateState)
+    this.listenerUser = UserStore.addListener(this.updateState)
     ApiUtil.fetchLocations();
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
+    this.listenerUser.remove();
   },
 
   handleClick: function() {
-    // debugger
     var url = "/user/" + this.props.params.userid + "/reviews";
     this.props.history.push(url);
   },
@@ -34,21 +36,22 @@ var UserHomepage = React.createClass({
     var reviewUrl = "/user/" + this.props.params.userid + "/reviews";
     var locations = this.state.locations;
 
-    var user = UserStore.fetchUser();
+    var user = this.state.user;
     // debugger
 
     var recommendations = [];
-
-    for (var key in locations) {
-      if (locations.hasOwnProperty(key)) {
-        if (
-          locations[key].region === user.preference.region &&
-          locations[key].activity === user.preference.activity
-        ) {
-          recommendations.push(locations[key])
+    if (user) {
+      for (var key in locations) {
+        if (locations.hasOwnProperty(key)) {
+          if (
+            locations[key].region === user.preference.region &&
+            locations[key].activity === user.preference.activity
+          ) {
+            recommendations.push(locations[key])
+          }
         }
-      }
-    };
+      };
+    }
 
     recommendations = recommendations.slice(0, 6);
 
@@ -95,8 +98,9 @@ var UserHomepage = React.createClass({
       <div>
         <br></br>
         user home page
+        <LocationVisit user={user} locations={this.state.locations}/>
         <br></br>
-        <LocationInput userid={this.props.params.userid}/>
+        <LocationInput userid={this.props.params.userid} locations={this.state.locations}/>
         <br></br>
         <div clasName="user-selection">
           <Link to={prefUrl} className="user-review-link">Update your preferences</Link>

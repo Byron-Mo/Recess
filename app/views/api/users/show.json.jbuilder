@@ -13,3 +13,11 @@ if @user.preference
     json.extract! @user.preference, :activity, :region, :id
   end
 end
+
+if @user.location_visits
+  json.location_visits do
+    json.array! @user.location_visits.includes(:location) do |location_visit|
+      json.partial! 'api/location_visits/location_visit', locals: { location_visit: location_visit }
+    end
+  end
+end
