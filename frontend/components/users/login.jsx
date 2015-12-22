@@ -48,6 +48,15 @@ var Login = React.createClass({
     this.setState({ user: "", password: "" })
   },
 
+  loginUser: function(e) {
+    e.preventDefault();
+
+    ApiUtil.createSession({
+      username: "bmo",
+      password: "password"
+    })
+  },
+
   render: function() {
     var errorMsg;
 
@@ -59,22 +68,26 @@ var Login = React.createClass({
 
     return(
       <div className="signup-login-form">
-
-        <form className="user" onSubmit={this.handleSubmit}>
-          <div>Log in with username: "bmo", password: "password"</div>
-          {errorMsg}
-          <label className="signuplogin">Username</label>
-          <br></br>
-          <input type="text" valueLink={this.linkState("username")} className="user-input"></input>
-          <br></br><br></br>
-          <label className="signuplogin">Password</label>
-          <br></br>
-          <input type="password" valueLink={this.linkState("password")} className="user-input"></input>
-          <br></br><br></br>
-          <input type="submit" value="Log in" className="signuplogin-btn"></input>
-          <br></br>
+        <div className="user">
+          <form onSubmit={this.handleSubmit}>
+            {errorMsg}
+            <label className="signuplogin">Username</label>
+            <br></br>
+            <input type="text" valueLink={this.linkState("username")} className="user-input"></input>
+            <br></br><br></br>
+            <label className="signuplogin">Password</label>
+            <br></br>
+            <input type="password" valueLink={this.linkState("password")} className="user-input"></input>
+            <br></br><br></br>
+            <input type="submit" value="Log in" className="signuplogin-btn"></input>
+            <br></br>
+          </form>
+          <form onSubmit={this.loginUser}>
+            <input type="submit" value="Guest log in" className="signuplogin-btn guest-login"></input>
+          </form>
           <Link to="/signup" className="signlog-redirect">Sign up</Link>
-        </form>
+        </div>
+
       </div>
     )
   }

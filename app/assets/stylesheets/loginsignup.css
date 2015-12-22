@@ -67,3 +67,7 @@
 .signlog-redirect:hover {
   color: royalblue;
 }
+
+.guest-login {
+  margin-top: 20px;
+}
