@@ -8,7 +8,7 @@
   height: 35px;
   overflow: hidden;
   position: relative;
-  background: url('1450440728_icon-23-star.svg');
+  background: url('http://res.cloudinary.com/dptviwjop/image/upload/v1450813518/1450440728_icon-23-star_pacgki.svg');
   background-size: contain;
 }
 .star-rating i {
@@ -19,7 +19,7 @@
   height: 100%;
   width: 20%;
   z-index: 1;
-  background: url('1450441048_icon-23-star.svg');
+  background: url('http://res.cloudinary.com/dptviwjop/image/upload/v1450813524/1450441048_icon-23-star_fios9t.svg');
   background-size: contain;
 }
 .star-rating input {
