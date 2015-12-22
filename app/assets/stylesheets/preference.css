@@ -2,3 +2,15 @@
   width: 100%;
   height: 500px;
 }
+
+.pref-title {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 50px;
+}
+
+.pref-steps {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
