@@ -37,35 +37,37 @@ var LocationInput = React.createClass({
     var locations = this.props.locations,
         location;
 
-    for (var key in locations) {
-      if (locations.hasOwnProperty(key)) {
-        if (locations[key].name.toLowerCase().match("^" + userInput)) {
-          location = locations[key]
-          (location)
-          break;
+      for (var key in locations) {
+        if (locations.hasOwnProperty(key)) {
+          if (locations[key].name.toLowerCase().match("^" + userInput)) {
+            location = locations[key]
+            break;
+          }
         }
       }
-    }
 
-    if (location === undefined) {
-      this.setState({toggleError: 1})
-      // this.history.push("/user/" + this.props.userid)
-    } else {
-      ApiUtil.fetchLocation(location.id);
-      this.history.pushState(null, '/location/' + location.id)
-    }
+      if (location === undefined) {
+        this.setState({toggleError: 1})
+        // this.history.push("/user/" + this.props.userid)
+      } else {
+        ApiUtil.fetchLocation(location.id);
+        this.history.pushState(null, '/location/' + location.id)
+      }
   },
 
   render: function() {
     var errorMsg = this.state.toggleError ? <div className="error-msg">Invalid City</div> : <div></div>;
 
     return(
-      <form onSubmit={this.handleSubmit}>
-        {errorMsg}
-        {/*<script>{this.autoComplete}</script>*/}
-        <input id="tags" type="text" valueLink={this.linkState("searchString")}></input>
-        <input type="submit" value="Search"></input>
-      </form>
+      <div className="location-input-div">
+        <form onSubmit={this.handleSubmit} className="location-input-form">
+          {errorMsg}
+          {/*<script>{this.autoComplete}</script>*/}
+          <input id="tags" type="text" valueLink={this.linkState("searchString")} className="user-input"></input>
+          <br></br>
+          <input type="submit" value="Search location" className="search-location-btn"></input>
+        </form>
+      </div>
     )
   }
 });

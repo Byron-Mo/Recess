@@ -86,6 +86,7 @@ var LocationVisit = React.createClass({
       <div>
         <form className="location-visit-wish-form" onSubmit={this.handleSubmit}>
           {mapLocation}
+          <br></br>
           {errorMsg}
 
           <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchString")}></input>

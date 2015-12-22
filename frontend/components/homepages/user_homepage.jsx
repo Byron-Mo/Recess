@@ -106,18 +106,16 @@ var UserHomepage = React.createClass({
 
     return(
       <div>
-        <br></br>
-        user home page
-
+        <div className="user-selection">
+          <ul className="user-ul">
+            <li className="user-li user-li-1"><Link to={prefUrl} className="user-review-link">Update your preferences</Link></li>
+            <li className="user-li user-li-2"><Link to={reviewUrl} className="user-review-link">Your reviews</Link></li>
+          </ul>
+        </div>
         <LocationVisit user={this.state.user} locations={this.state.locations} />
         <br></br>
         <LocationInput userid={this.props.params.userid} locations={this.state.locations} />
         <br></br>
-        <div clasName="user-selection">
-          <Link to={prefUrl} className="user-review-link">Update your preferences</Link>
-          <br></br>
-          <Link to={reviewUrl} className="user-review-link">Your reviews</Link>
-        </div>
         <div className="recommendations-background">
           <div className="recommendations">
             <div className="recommendations-title">Your Recommendations</div>
