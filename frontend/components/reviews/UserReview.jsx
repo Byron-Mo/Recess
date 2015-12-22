@@ -64,7 +64,7 @@ var UserReview = React.createClass({
 
     return(
       <div>
-        <div className="review-title">Reviews</div>
+        <div className="user-review-title">Reviews</div>
         <br></br>
         <ul className="user-reviews-ul">
           {displayReviews}

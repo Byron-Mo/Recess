@@ -103,7 +103,7 @@
   border: 2px solid cornflowerblue;
 }*/
 
-.review-btn {
+.review-btn-review-form {
   width: 55%;
   height: 40px;
   border-radius: 2px;
@@ -115,7 +115,7 @@
   transition: all 0.2s ease 0s;
 }
 
-.review-btn:hover {
+.review-btn-review-form:hover {
   background-color: steelblue;
 }
 
