@@ -7,7 +7,7 @@ var Index = React.createClass({
       <div>
         <div className="index-background">
           <div className="index-title">
-            Where will your next vacation take you?
+            The bell just rang. It's time for Recess.
           </div>
         </div>
         <div className="index-intro">
