@@ -9,6 +9,10 @@ when he searches for a location
 -refactor app component to a nav component DONE
 -require user to be logged in to visit pages
 
+-delete markers
+-add location wishes
+-
+
 
 var Store = require('flux/utils').Store,
     AppDispatcher = require('../dispatcher/dispatcher'),
