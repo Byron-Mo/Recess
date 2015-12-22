@@ -43,7 +43,7 @@ var LocationVisit = React.createClass({
 
     if (userInput.length <= 3) {
       this.setState({toggleError: 1})
-      return this.history.push("/user/" + this.props.user.id)
+      // return this.history.push("/user/" + this.props.user.id)
     }
 
     var locations = this.props.locations,
@@ -84,14 +84,21 @@ var LocationVisit = React.createClass({
 
     return(
       <div>
-        <form className="location-visit-wish-form" onSubmit={this.handleSubmit}>
-          {mapLocation}
-          <br></br>
-          {errorMsg}
-
-          <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchString")}></input>
-          <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
-        </form>
+        {mapLocation}
+        <br></br>
+        <div className="location-visit-wish-div">
+          <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmit}>
+            {errorMsg}
+            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchString")}></input>
+            <br></br>
+            <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
+          </form>
+          <form className="location-visit-wish-form location-input-2">
+            <input type="text" className="location-visit-wish-input"></input>
+            <br></br>
+            <input type="submit" value="I want to go here" className="location-visit-wish-submit"></input>
+          </form>
+        </div>
       </div>
     )
   }

@@ -33,6 +33,8 @@ var MapLocation = React.createClass({
       //  regionsSelectable: true,
        markersSelectable: true,
        markers: this.markers,
+       zoomButtons : false,
+       zoomOnScroll: false,
 
        regionStyle: {
           hover: {

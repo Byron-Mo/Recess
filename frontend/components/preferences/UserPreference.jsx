@@ -32,6 +32,7 @@ var UserPreference = React.createClass({
     var map = new jvm.Map({
        container: $(this.refs.map),
        map: 'continents_mill',
+       backgroundColor: 'whitesmoke',
        regionsSelectableOne: true,
        regionsSelectable: true,
        zoomButtons : false,
@@ -39,7 +40,7 @@ var UserPreference = React.createClass({
 
        regionStyle: {
          initial: {
-           fill: '#B8E186'
+           fill: 'steelblue'
          },
          selected: {
            fill: '#F4A582'
@@ -58,17 +59,17 @@ var UserPreference = React.createClass({
            }
          }
 
-         if (window.localStorage) {
-           window.localStorage.setItem(
-             'jvectormap-selected-regions',
-             JSON.stringify(map.getSelectedRegions())
-           );
-         }
+        //  if (window.localStorage) {
+        //    window.localStorage.setItem(
+        //      'jvectormap-selected-regions',
+        //      JSON.stringify(map.getSelectedRegions())
+        //    );
+        //  }
        },
 
      });
 
-    map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
+    // map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
 
     this.listener = UserStore.addListener(this.updateState);
     this.updateErrors = ErrorStore.addListener(this.updateState)
@@ -86,12 +87,15 @@ var UserPreference = React.createClass({
       ApiUtil.updatePreference(this.state.user.preference.id, {
         region: this.state.region,
         activity: this.state.activity
-      })
+      });
+      this.props.history.push("/user/" + this.state.user.id);
     } else {
+
       ApiUtil.createPreference({
         region: this.state.region,
         activity: this.state.activity
-      })
+      });
+      this.props.history.push("/user/" + this.state.user.id);
     }
   },
 
