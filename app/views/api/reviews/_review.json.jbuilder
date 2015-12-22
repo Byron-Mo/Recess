@@ -5,5 +5,5 @@ json.user do
 end
 
 json.location do
-  json.extract! review.location, :name
+  json.extract! review.location, :name, :image
 end

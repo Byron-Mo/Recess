@@ -88,13 +88,15 @@ var UserHomepage = React.createClass({
       };
 
       return (
-        <div className="recommendation-box" onClick={handleClickRec} key={recommendation.id}>
-          <div className="recommendation-img" style={divStyle}></div>
-          <div className="recommendation-text">
-            <div className="recommendation-name">{recommendation.name}</div>
-            <div className="recommendation-rating">{recommendation.avgReview}/5</div>
+        <li className="recommendations-li">
+          <div className="recommendation-box" onClick={handleClickRec} key={recommendation.id}>
+            <div className="recommendation-img" style={divStyle}></div>
+            <div className="recommendation-text">
+              <div className="recommendation-name">{recommendation.name}</div>
+              <div className="recommendation-rating">{recommendation.avgReview}/5</div>
+            </div>
           </div>
-        </div>
+        </li>
       )
     })
 
@@ -119,7 +121,9 @@ var UserHomepage = React.createClass({
         <div className="recommendations-background">
           <div className="recommendations">
             <div className="recommendations-title">Your Recommendations</div>
-            {recommendationsShow}
+            <ul className="recommendations-ul">
+              {recommendationsShow}
+            </ul>
           </div>
         </div>
       </div>

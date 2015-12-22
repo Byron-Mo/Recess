@@ -72,8 +72,9 @@ var LocationItem = React.createClass({
             <div className="location-activity">{this.state.location.activity}</div>
             <br></br>
             <div className="location-rating">{avgReview}/5</div>
+            <div className="location-region">{this.state.location.region}</div>
           </div>
-          <div className="location-region">{this.state.location.region}</div>
+          
         </div>
       )
     }

@@ -17,6 +17,7 @@
   float: left;
   margin-left: 20px;
   margin-top: 10px;
+  width: 95%;
 }
 
 .location-name {
@@ -27,8 +28,12 @@
 .location-region {
   /*display: inline-block;*/
   /*margin-right: 20px;*/
+  /*text-align: right;*/
   margin-top: 10px;
+  position: absolute;
   float: right;
+  bottom: 0;
+
   font-size: 50px;
   font-weight: bold;
 }

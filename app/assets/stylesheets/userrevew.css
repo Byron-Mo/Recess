@@ -1,0 +1,73 @@
+.review-title {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 50px;
+}
+
+.user-reviews-ul {
+  position: relative;
+  text-align: center;
+  width: auto;
+  height: 100%;
+}
+
+.user-reviews-li {
+  display: inline-block;
+  padding: 60px;
+  vertical-align: top;
+}
+
+.review-img {
+  /*background-position: 100%*/
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.review-img:hover {
+  cursor: pointer;
+}
+
+.user-review-location {
+  font-size: 25px;
+  color: steelblue;
+  text-decoration: none;
+}
+
+.user-review-rating {
+  padding-top: 5px;
+  font-size: 18px;
+}
+
+.user-review-body {
+  padding: 15px;
+  font-size: 23px;
+  word-wrap: break-word;
+}
+
+/* review index item */
+.review-btn {
+  /*padding-top: 20px;*/
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 140px;
+  height: 30px;
+  border-radius: 2px;
+  background-color: whitesmoke;
+  border: white;
+  color: black;
+  font-family: "Courier New";
+  font-size: 20px;
+  transition: all 0.2s ease 0s;
+}
+
+.review-btn-2 {
+  width:170px;
+}
+
+.review-btn:hover {
+  background-color: steelblue;
+}

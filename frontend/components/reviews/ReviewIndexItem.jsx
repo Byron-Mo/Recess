@@ -63,7 +63,7 @@ var ReviewIndexItem = React.createClass({
           <br></br>
           <textarea className="review-text" valueLink={this.linkState("body")}></textarea>
           <br></br>
-          <input type="submit" value="Create Review" className="review-btn"></input>
+          <input type="submit" value="Create Review" className="review-btn review-btn-2"></input>
         </form>
       )
     } else {
@@ -73,8 +73,8 @@ var ReviewIndexItem = React.createClass({
 
     return(
       <div>
-        <input type="button" value="Edit" className="edit-btn" onClick={this.handleEdit}></input>
-        <input type="button" value="Delete" className="delete-btn" onClick={this.handleDelete}></input>
+        <input type="button" value="Edit" className="review-btn" onClick={this.handleEdit}></input>
+        <input type="button" value="Delete" className="review-btn" onClick={this.handleDelete}></input>
         {editForm}
       </div>
     )

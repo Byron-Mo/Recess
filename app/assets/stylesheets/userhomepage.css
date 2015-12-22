@@ -79,7 +79,7 @@
 
 .recommendations-background {
   background-color: whitesmoke;
-  width: 100%;
+  width: auto;
   height: 100%;
   position: relative;
   text-align: center;
@@ -87,19 +87,25 @@
 
 .recommendations {
   display: inline-block;
-  position: relative;
-  /*min-width: 100%;*/
-  /*width: 100%;
-  height: 1000px;*/
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  /*margin-left: auto;
+  margin-right: auto;*/
 }
 
 .recommendations-title {
   padding-top: 50px;
   font-weight: normal;
   font-size: 40px;
+}
+
+.recommendations-ul {
+  position: relative;
+  text-align: center;
+  width: auto;
+  height: 100%;
+}
+
+.recommendations-li {
+  display: inline-block;
 }
 
 .recommendation-box {

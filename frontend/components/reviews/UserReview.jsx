@@ -42,9 +42,16 @@ var UserReview = React.createClass({
         var displayReviews = (
           reviews.map(function(review) {
             var url = "/location/" + review.location_id;
+            var divStyle = {backgroundImage: 'url(' + review.location.image + ')'}
+
+            var handleClickImg = function() {
+              that.props.history.push("/location/" + review.location_id)
+            };
 
             return (
               <li className="user-reviews-li" key={review.id}>
+                <div className="review-img" style={divStyle} onClick={handleClickImg}></div>
+                <br></br>
                 <Link to={url} className="user-review-location">{review.location.name}</Link>
                 <div className="user-review-rating">{review.rating}</div>
                 <div className="user-review-body">{review.body}</div>
@@ -57,7 +64,7 @@ var UserReview = React.createClass({
 
     return(
       <div>
-        Reviews
+        <div className="review-title">Reviews</div>
         <br></br>
         <ul className="user-reviews-ul">
           {displayReviews}
