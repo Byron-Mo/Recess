@@ -151,7 +151,7 @@ var UserPreference = React.createClass({
 
     return(
       <div>
-        <div className="pref-title">Your next vacation preferences</div>
+        <div className="pref-title">Your next vacation preference</div>
         <div className="pref-steps">Select a region and activity to begin!</div>
         <div ref="map" className="preference-map" >{}</div>
         <br></br>
