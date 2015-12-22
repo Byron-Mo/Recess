@@ -14,13 +14,14 @@ var UserHomepage = React.createClass({
 
   updateState: function() {
     this.setState({ locations: LocationStore.all(), user: UserStore.fetchUser() })
+    // debugger
   },
 
   componentDidMount: function() {
     this.listener = LocationStore.addListener(this.updateState)
     this.listenerUser = UserStore.addListener(this.updateState)
-    // debugger
     ApiUtil.fetchLocations();
+    ApiUtil.fetchUser(this.props.params.userid);
   },
 
   componentWillUnmount: function() {
@@ -108,7 +109,7 @@ var UserHomepage = React.createClass({
         <br></br>
         user home page
 
-        <LocationVisit user={user} locations={this.state.locations} />
+        <LocationVisit user={this.state.user} locations={this.state.locations} />
         <br></br>
         <LocationInput userid={this.props.params.userid} locations={this.state.locations} />
         <br></br>

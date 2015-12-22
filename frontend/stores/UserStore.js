@@ -9,9 +9,9 @@ UserStore.fetchUser = function() {
   return _users[0];
 },
 
-UserStore.find = function(id) {
-  return _users[id];
-};
+// UserStore.find = function(id) {
+//   return _users[id];
+// };
 
 UserStore.createUser = function(user) {
   _users = [user];
@@ -26,8 +26,6 @@ UserStore.logoutUser = function(user) {
 UserStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
     case UserConstants.RECEIVE_USER:
-      console.log("in userstore")
-      console.log(payload.user)
       UserStore.createUser(payload.user)
       break;
     case UserConstants.LOGOUT_USER:

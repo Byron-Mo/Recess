@@ -27,7 +27,6 @@ var LocationItem = React.createClass({
     // }
 
     var reviews = this.state.location.reviews;
-    console.log(this.state.location)
     var ratings = [];
     var reviewShow = [];
 

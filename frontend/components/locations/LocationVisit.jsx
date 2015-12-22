@@ -1,13 +1,31 @@
 var React = require('react'),
     ApiUtil = require('../../util/apiutil'),
     LinkedStateMixin = require('react-addons-linked-state-mixin'),
-    MapLocation = require('./MapLocation');
+    MapLocation = require('./MapLocation'),
+    UserStore = require('../../stores/UserStore');
 
 var LocationVisit = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function() {
-    return { searchString: "", toggleError: 0 }
+    return { searchString: "", toggleError: 0, user: ""}
+  },
+
+  // componentWillReceiveProps: function(newProps) {
+  //   ApiUtil.fetchUser(newProps.user.id)
+  // },
+  //
+  updateState: function() {
+    this.setState({user: UserStore.fetchUser()})
+    // debugger
+  },
+
+  componentDidMount: function() {
+    this.listener = UserStore.addListener(this.updateState)
+  },
+
+  componentWillUnmount: function() {
+    this.listener.remove();
   },
 
   includeLocation: function(location) {
@@ -25,7 +43,7 @@ var LocationVisit = React.createClass({
 
     if (userInput.length <= 3) {
       this.setState({toggleError: 1})
-      return this.history.push("/user/" + this.props.userid)
+      return this.history.push("/user/" + this.props.user.id)
     }
 
     var locations = this.props.locations,
@@ -49,7 +67,9 @@ var LocationVisit = React.createClass({
         location_id: parseInt(location.id),
         user_id: parseInt(this.props.user.id)
       });
+
       this.setState({toggleError: 0, searchString: ""})
+
     }
   },
 
@@ -57,7 +77,7 @@ var LocationVisit = React.createClass({
     var errorMsg = this.state.toggleError ? <div className="error-msg">Invalid City</div> : <div></div>;
 
     if (this.props.user) {
-      var mapLocation = <MapLocation locationVisits={this.props.user.location_visits} />
+      var mapLocation = <MapLocation locationVisits={this.state.user.location_visits} />
     } else {
       var mapLocation = <div></div>
     }
@@ -67,6 +87,7 @@ var LocationVisit = React.createClass({
         <form className="location-visit-wish-form" onSubmit={this.handleSubmit}>
           {mapLocation}
           {errorMsg}
+
           <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchString")}></input>
           <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
         </form>

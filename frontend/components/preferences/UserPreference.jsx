@@ -34,6 +34,8 @@ var UserPreference = React.createClass({
        map: 'continents_mill',
        regionsSelectableOne: true,
        regionsSelectable: true,
+       zoomButtons : false,
+       zoomOnScroll: false,
 
        regionStyle: {
          initial: {

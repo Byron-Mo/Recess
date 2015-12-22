@@ -1,27 +1,52 @@
-var React = require('react');
+var React = require('react'),
+    UserStore = require('../../stores/UserStore');
 
 var MapLocation = React.createClass({
-  componentDidMount: function() {
-    var locationVisits = this.props.locationVisits;
-    var markers = locationVisits.map(function(locationVisit) {
+  componentWillReceiveProps: function(newProps) {
+    this.markers = newProps.locationVisits.map(function(locationVisit) {
       return {
         latLng: [locationVisit.location.lat, locationVisit.location.lng],
         name: locationVisit.location.name
       }
     })
+    this.map.addMarkers(this.markers)
+  },
 
-    // debugger
-    var map = new jvm.Map({
+  componentDidMount: function() {
+    var locationVisits = this.props.locationVisits;
+
+    if (locationVisits) {
+
+      this.markers = locationVisits.map(function(locationVisit) {
+        return {
+          latLng: [locationVisit.location.lat, locationVisit.location.lng],
+          name: locationVisit.location.name
+        }
+      })
+    }
+
+    this.map = new jvm.Map({
        container: $(this.refs.map),
-       map: 'world_mill',
-       regionsSelectableOne: true,
-       regionsSelectable: true,
+       map: 'continents_mill',
+       backgroundColor: 'whitesmoke',
+      //  regionsSelectableOne: true,
+      //  regionsSelectable: true,
        markersSelectable: true,
-       markers: markers,
+       markers: this.markers,
+
+       regionStyle: {
+          hover: {
+              "fill-opacity": 1
+          }
+      },
+      onRegionLabelShow: function (e, el, code) {
+          e.preventDefault();
+      },
 
        markerStyle: {
          initial: {
-           fill: '#4DAC26'
+           fill: 'gold',
+           r: 10
          },
          selected: {
            fill: '#CA0020'
@@ -30,7 +55,7 @@ var MapLocation = React.createClass({
 
        regionStyle: {
          initial: {
-           fill: '#B8E186'
+           fill: 'steelblue'
          },
          selected: {
            fill: '#F4A582'
@@ -52,6 +77,7 @@ var MapLocation = React.createClass({
   },
 
   render: function() {
+    // debugger
     return(
       <div ref="map" className="preference-map"></div>
     )

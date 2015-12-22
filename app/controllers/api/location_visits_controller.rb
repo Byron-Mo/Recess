@@ -4,6 +4,7 @@ class Api::LocationVisitsController < ApplicationController
 
     if @location_visit.save
       @user = @location_visit.user
+      # byebug
       # @location = @location_visit.location
       render "api/users/show"
     else

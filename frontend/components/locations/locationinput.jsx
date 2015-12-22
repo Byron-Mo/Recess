@@ -36,12 +36,12 @@ var LocationInput = React.createClass({
 
     var locations = this.props.locations,
         location;
-        
+
     for (var key in locations) {
       if (locations.hasOwnProperty(key)) {
         if (locations[key].name.toLowerCase().match("^" + userInput)) {
           location = locations[key]
-          console.log(location)
+          (location)
           break;
         }
       }
