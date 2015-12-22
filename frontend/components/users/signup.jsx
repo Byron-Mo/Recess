@@ -62,6 +62,7 @@ var Signup = React.createClass({
       <div className="signup-login-form">
 
         <form className="user" onSubmit={this.handleSubmit}>
+          <div>Log in with username: "bmo", password: "password"</div>
           {errorMsg}
           <label className="signuplogin">Username</label>
           <br></br>

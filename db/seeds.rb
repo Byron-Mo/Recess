@@ -18,20 +18,20 @@
 # Branson, Missouri
 # Nassau, Bahamas                   X
 # Punta Cana, Dominican Republic
-# Barcelona, Spain
+# Barcelona, Spain                  X
 # Montego Bay, Jamaica
-# Rome, Italy
-# Toronto, Canada
+# Rome, Italy                       X
+# Toronto, Canada                   X
 # San Juan, Puerto Rico
 # Bora Bora
 # Sydney, Australia                 X
-# Maui, Hawaii
-# Rio de Janeiro, Brazil
-# Cape Town, South Africa
+# Maui, Hawaii                      X
+# Rio de Janeiro, Brazil            X
+# Cape Town, South Africa           X
 # Maldives
-# Prague,
+# Prague,                           X
 # Yellowstone, California
-# Vancouver, Canada
+# Vancouver, Canada                 X
 # Washington D.C.
 # U.S. Virgin Islands
 # Zurich
@@ -140,6 +140,60 @@ ActiveRecord::Base.transaction do
       image: "http://res.cloudinary.com/dptviwjop/image/upload/v1450457817/NnDHkyxLTFe7d5UZv9Bk_louvre_qqbm0n.jpg",
       lat: 48.856579,
       lng: 2.348929
+    },
+    "10" => {
+      name: "Toronto, Canada",
+      region: "North America",
+      activity: "Adventure",
+      body: "Toronto, the provincial capital of Ontario, Canada, is a large, ethnically diverse city sprawling along Lake Ontario’s northwestern shore.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2158/v1450822318/photo-1446853663655-381f4a1ce3fd_ktjtky.jpg",
+      lat: 43.652612,
+      lng: -79.384245
+    },
+    "11" => {
+      name: "Maui, Hawaii",
+      region: "North America",
+      activity: "Beachfront",
+      body: "Maui is an island in the mid-Pacific, part of the Hawaiian island chain and known for its beach resorts, diverse geography and outdoor activities ranging from hiking and biking to windsurfing and snorkeling.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2421/v1450822512/photo-1438798164535-f6a45922b74a_qdde6b.jpg",
+      lat: 20.815776,
+      lng: -156.331126
+    },
+    "12" => {
+      name: "Rio de Janeiro, Brazil",
+      region: "South America",
+      activity: "Beachfront",
+      body: "Rio de Janeiro is a huge seaside city in Brazil, famed for its Copacabana and Ipanema beaches, 38m Christ the Redeemer statue atop Mt. Corcovado and Sugarloaf, a granite monolith with cable cars to its summit.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2455/v1450822805/photo-1447878035468-f6464b327023_qa0duw.jpg",
+      lat: -22.908010,
+      lng: -43.174371
+    },
+    "13" => {
+      name: "Cape Town",
+      region: "Africa",
+      activity: "Adventure",
+      body: "Cape Town is a port city on South Africa’s southwest coast, on a peninsula beneath the imposing Table Mountain.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2090/v1450823007/photo-1414862625453-d87604a607e4_yqff8i.jpg",
+      lat: -33.922646,
+      lng: 18.415703
+    },
+    "14" => {
+      name: "Prague, Czech Republic",
+      region: "Europe",
+      activity: "Culture/History",
+      body: "Prague, capital of the Czech Republic, is bisected by the Vltava River. Nicknamed “the City of a Hundred Spires,” it's known for its Old Town Square with colorful baroque buildings, Gothic churches and the medieval Astronomical Clock.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_1995/v1450823250/photo-1446760233569-3e856eed8217_nqgkvz.jpg",
+      lat: 50.075012,
+      lng: 14.439525
+    },
+    "15" => {
+      name: "Vancouver, Canada",
+      region: "North America",
+      activity: "Adventure",
+      body: "Vancouver, a bustling west coast seaport in British Columbia, is among Canada’s densest, most ethnically diverse cities.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2482/v1450823433/316f8e75_pihmib.jpg",
+      lat: 49.283884,
+      lng: -123.117392
     }
   }
 
@@ -149,3 +203,16 @@ ActiveRecord::Base.transaction do
 
   Location.create!(locations)
 end
+
+User.create!(username: "bmo", password: "password")
+Preference.create!(region: "Europe", activity: "Culture/History", user_id: 1)
+LocationVisit.create!(location_id: 15, user_id: 1)
+LocationVisit.create!(location_id: 8, user_id: 1)
+LocationVisit.create!(location_id: 3, user_id: 1)
+LocationVisit.create!(location_id: 1, user_id: 1)
+LocationVisit.create!(location_id: 10, user_id: 1)
+LocationVisit.create!(location_id: 11, user_id: 1)
+Review.create!(rating: 4, body: "Amazing City", user_id: 1, location_id: 3)
+Review.create!(rating: 4, body: "Lovely City", user_id: 1, location_id: 8)
+Review.create!(rating: 4, body: "Beautiful City", user_id: 1, location_id: 15)
+Review.create!(rating: 4, body: "Stunning City", user_id: 1, location_id: 1)
