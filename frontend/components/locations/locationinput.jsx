@@ -65,7 +65,7 @@ var LocationInput = React.createClass({
           {/*<script>{this.autoComplete}</script>*/}
           <input id="tags" type="text" valueLink={this.linkState("searchString")} className="user-input"></input>
           <br></br>
-          <input type="submit" value="Search location" className="search-location-btn"></input>
+          <input type="submit" value="Search city" className="search-location-btn"></input>
         </form>
       </div>
     )
