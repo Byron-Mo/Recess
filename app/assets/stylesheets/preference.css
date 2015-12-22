@@ -14,3 +14,34 @@
   padding-bottom: 20px;
   font-size: 20px;
 }
+
+.preference-form {
+  position: relative;
+  text-align: center;
+}
+
+.preference-activity {
+  display: inline-block;
+}
+
+.preference-activity label {
+  font-size: 25px;
+  padding: 20px;
+}
+
+.preference-submit {
+  margin-top: 10px;
+  width: 400px;
+  height: 30px;
+  border-radius: 2px;
+  background-color: whitesmoke;
+  border: white;
+  /*color: white;*/
+  font-family: "Courier New";
+  font-size: 20px;
+  transition: all 0.2s ease 0s;
+}
+
+.preference-submit:hover {
+  background-color: steelblue;
+}
