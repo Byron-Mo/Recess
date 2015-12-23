@@ -13,7 +13,10 @@ class Api::LocationVisitsController < ApplicationController
   end
 
   def destroy
-
+    @location_visit = LocationVisit.find(params[:id])
+    @location_visit.destroy
+    @user = @location_visit.user
+    render "api/users/show"
   end
 
   private

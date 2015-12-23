@@ -126,12 +126,18 @@ var UserPreference = React.createClass({
       var preferenceForm = (
         <form className="preference-form" onSubmit={this.handleSubmit}>
           <div className="preference-activity">
-            <input type="radio" id="Beachfront" name="activity" value="Beachfront" onChange={this.handleActivity} checked={this.isChecked("Beachfront")}></input>
-            <label htmlFor="Beachfront">Beachfront</label>
-            <input type="radio" id="Adventure" name="activity" value="Adventure" onChange={this.handleActivity} checked={this.isChecked("Adventure")}></input>
-            <label htmlFor="Adventure">Adventure</label>
-            <input type="radio" id="Culture/History" name="activity" value="Culture/History" onChange={this.handleActivity} checked={this.isChecked("Culture/History")}></input>
-            <label htmlFor="Culture/History">Culture/History</label>
+            <div className="radio">
+              <input type="radio" id="Beachfront" name="activity" value="Beachfront" onChange={this.handleActivity} checked={this.isChecked("Beachfront")}></input>
+              <label htmlFor="Beachfront"><span></span>Beachfront</label>
+            </div>
+            <div className="radio">
+              <input type="radio" id="Adventure" name="activity" value="Adventure" onChange={this.handleActivity} checked={this.isChecked("Adventure")}></input>
+              <label htmlFor="Adventure"><span></span>Adventure</label>
+            </div>
+            <div className="radio">
+              <input type="radio" id="Culture/History" name="activity" value="Culture/History" onChange={this.handleActivity} checked={this.isChecked("Culture/History")}></input>
+              <label htmlFor="Culture/History"><span></span>Culture/History</label>
+            </div>
             <br></br>
             <input type="submit" value="Update your vacation preferences" className="preference-submit"></input>
           </div>

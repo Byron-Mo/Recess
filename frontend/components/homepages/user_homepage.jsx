@@ -14,7 +14,6 @@ var UserHomepage = React.createClass({
 
   updateState: function() {
     this.setState({ locations: LocationStore.all(), user: UserStore.fetchUser() })
-    // debugger
   },
 
   componentDidMount: function() {
@@ -88,7 +87,7 @@ var UserHomepage = React.createClass({
       };
 
       return (
-        <li className="recommendations-li">
+        <li className="recommendations-li" key={recommendation.id}>
           <div className="recommendation-box" onClick={handleClickRec} key={recommendation.id}>
             <div className="recommendation-img" style={divStyle}></div>
             <div className="recommendation-text">
@@ -99,12 +98,6 @@ var UserHomepage = React.createClass({
         </li>
       )
     })
-
-    // if (user) {
-    //   var mapLocation = <MapLocation locationVisits={user.location_visits} />
-    // } else {
-    //   var mapLocation = <div></div>
-    // }
 
     return(
       <div>

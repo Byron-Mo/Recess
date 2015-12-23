@@ -170,6 +170,16 @@ ApiUtil = {
         UserActions.receiveUser(response)
       }
     })
+  },
+
+  destroyLocationVisit: function(id) {
+    $.ajax({
+      url: 'api/location_visits/' + id,
+      type: 'DELETE',
+      success: function(response) {
+        UserActions.receiveUser(response)
+      }
+    })
   }
 };
 

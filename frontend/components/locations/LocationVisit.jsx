@@ -15,18 +15,18 @@ var LocationVisit = React.createClass({
   //   ApiUtil.fetchUser(newProps.user.id)
   // },
   //
-  updateState: function() {
-    this.setState({user: UserStore.fetchUser()})
-    // debugger
-  },
-
-  componentDidMount: function() {
-    this.listener = UserStore.addListener(this.updateState)
-  },
-
-  componentWillUnmount: function() {
-    this.listener.remove();
-  },
+  // updateState: function() {
+  //   this.setState({user: UserStore.fetchUser()})
+  //   // debugger
+  // },
+  //
+  // componentDidMount: function() {
+  //   this.listener = UserStore.addListener(this.updateState)
+  // },
+  //
+  // componentWillUnmount: function() {
+  //   this.listener.remove();
+  // },
 
   includeLocation: function(location) {
     var locationId = this.props.user.location_visits.map(function(location_visit) {
@@ -57,7 +57,7 @@ var LocationVisit = React.createClass({
         }
       }
     }
-    // debugger
+
     if (location === undefined) {
       this.setState({toggleError: 1})
     } else if (this.includeLocation(location) !== -1) {
@@ -69,7 +69,6 @@ var LocationVisit = React.createClass({
       });
 
       this.setState({toggleError: 0, searchString: ""})
-
     }
   },
 
@@ -77,7 +76,7 @@ var LocationVisit = React.createClass({
     var errorMsg = this.state.toggleError ? <div className="error-msg">Invalid City</div> : <div></div>;
 
     if (this.props.user) {
-      var mapLocation = <MapLocation locationVisits={this.state.user.location_visits} />
+      var mapLocation = <MapLocation locationVisits={this.props.user.location_visits} locations={this.props.locations} />
     } else {
       var mapLocation = <div></div>
     }
