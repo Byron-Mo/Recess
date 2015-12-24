@@ -19,23 +19,32 @@
 }
 
 .index-intro {
-  width: 100%;
-  height: 100%;
   background-color: whitesmoke;
+  width: auto;
+  height: 100%;
   position: relative;
   text-align: center;
 }
 
+.index-intro-div {
+  display: inline-block;
+}
+
 .intro-ul {
-  display:inline-block;
+  /*display:inline-block;*/
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+  width: auto;
+  height: 100%;
+  /*margin-left: auto;
+  margin-right: auto;*/
   padding-top: 30px;
 }
 
 .intro-li {
-  float: left;
+  vertical-align: top;
+  display: inline-block;
+  /*float: left;*/
   width: 300px;
   height: 150px;
   padding-left: 40px;
@@ -47,7 +56,6 @@
   font-size: 25px;
   padding-bottom: 15px;
   font-weight:600;
-
 }
 
 .intro-body {
