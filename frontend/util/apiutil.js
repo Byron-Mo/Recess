@@ -180,6 +180,27 @@ ApiUtil = {
         UserActions.receiveUser(response)
       }
     })
+  },
+
+  locationWish: function(data) {
+    $.ajax({
+      url: 'api/location_wishes/',
+      type: 'POST',
+      data: {location_wish: data},
+      success: function(response) {
+        UserActions.receiveUser(response)
+      }
+    })
+  },
+
+  destroyLocationWish: function(id) {
+    $.ajax({
+      url: 'api/location_wishes/' + id,
+      type: 'DELETE',
+      success: function(response) {
+        UserActions.receiveUser(response)
+      }
+    })
   }
 };
 

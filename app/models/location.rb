@@ -7,4 +7,6 @@ class Location < ActiveRecord::Base
   has_many :reviews
   has_many :location_visits
   has_many :users, through: :location_visits, source: :user
+  has_many :location_wishes
+  has_many :users, through: :location_wishes, source: :user
 end

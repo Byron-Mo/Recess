@@ -21,3 +21,11 @@ if @user.location_visits
     end
   end
 end
+
+if @user.location_wishes
+  json.location_wishes do
+    json.array! @user.location_wishes.includes(:location) do |location_wish|
+      json.partial! 'api/location_wishes/location_wish', locals: { location_wish: location_wish }
+    end
+  end
+end

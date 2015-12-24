@@ -8,7 +8,7 @@ var LocationVisit = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function() {
-    return { searchString: "", toggleError: 0, user: ""}
+    return { searchStringVisit: "", searchStringWish: "", toggleErrorVisit: 0, user: ""}
   },
 
   // componentWillReceiveProps: function(newProps) {
@@ -36,13 +36,13 @@ var LocationVisit = React.createClass({
     return locationId.indexOf(location.id)
   },
 
-  handleSubmit: function(e) {
+  handleSubmitVisit: function(e) {
     e.preventDefault();
 
-    var userInput = this.state.searchString.trim().toLowerCase();
+    var userInput = this.state.searchStringVisit.trim().toLowerCase();
 
     if (userInput.length <= 3) {
-      this.setState({toggleError: 1})
+      this.setState({toggleErrorVisit: 1})
       // return this.history.push("/user/" + this.props.user.id)
     }
 
@@ -59,24 +59,60 @@ var LocationVisit = React.createClass({
     }
 
     if (location === undefined) {
-      this.setState({toggleError: 1})
+      this.setState({toggleErrorVisit: 1})
     } else if (this.includeLocation(location) !== -1) {
-      this.setState({toggleError: 1})
+      this.setState({toggleErrorVisit: 1})
     } else {
       ApiUtil.locationVisit({
         location_id: parseInt(location.id),
         user_id: parseInt(this.props.user.id)
       });
 
-      this.setState({toggleError: 0, searchString: ""})
+      this.setState({toggleErrorVisit: 0, searchStringVisit: ""})
+    }
+  },
+
+  handleSubmitWish: function(e) {
+    e.preventDefault();
+
+    var userInput = this.state.searchStringWish.trim().toLowerCase();
+
+    if (userInput.length <= 3) {
+      this.setState({toggleErrorWish: 1})
+    }
+
+    var locations = this.props.locations,
+        location;
+
+    for (var key in locations) {
+      if (locations.hasOwnProperty(key)) {
+        if (locations[key].name.toLowerCase().match("^" + userInput)) {
+          location = locations[key];
+          break;
+        }
+      }
+    }
+
+    if (location === undefined) {
+      this.setState({toggleErrorWish: 1})
+    } else if (this.includeLocation(location) !== -1) {
+      this.setState({toggleErrorWish: 1})
+    } else {
+      ApiUtil.locationWish({
+        location_id: parseInt(location.id),
+        user_id: parseInt(this.props.user.id)
+      });
+
+      this.setState({toggleErrorWish: 0, searchStringWish: ""})
     }
   },
 
   render: function() {
-    var errorMsg = this.state.toggleError ? <div className="error-msg">Invalid City</div> : <div></div>;
+    var errorMsgVisit = this.state.toggleErrorVisit ? <div className="error-msg">Invalid City</div> : <div></div>;
+    var errorMsgWish = this.state.toggleErrorWish ? <div className="error-msg">Invalid City</div> : <div></div>;
 
     if (this.props.user) {
-      var mapLocation = <MapLocation locationVisits={this.props.user.location_visits} locations={this.props.locations} />
+      var mapLocation = <MapLocation locationVisits={this.props.user.location_visits} locations={this.props.locations} locationWishes={this.props.user.location_wishes}/>
     } else {
       var mapLocation = <div></div>
     }
@@ -86,14 +122,15 @@ var LocationVisit = React.createClass({
         {mapLocation}
         <br></br>
         <div className="location-visit-wish-div">
-          <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmit}>
-            {errorMsg}
-            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchString")}></input>
+          <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmitVisit}>
+            {errorMsgVisit}
+            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringVisit")}></input>
             <br></br>
             <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
           </form>
-          <form className="location-visit-wish-form location-input-2">
-            <input type="text" className="location-visit-wish-input"></input>
+          <form className="location-visit-wish-form location-input-2" onSubmit={this.handleSubmitWish}>
+            {errorMsgWish}
+            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringWish")}></input>
             <br></br>
             <input type="submit" value="I want to go here" className="location-visit-wish-submit"></input>
           </form>

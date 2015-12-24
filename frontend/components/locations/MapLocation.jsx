@@ -5,33 +5,58 @@ var React = require('react'),
 
 var MapLocation = React.createClass({
   getInitialState: function() {
-    return { toggleLocation: 0, location: "", locationVisits: "", locations: "" }
+    return { toggleLocationVisit: false, toggleLocationWish: false, locationVisit: "", locationWish: "" }
   },
 
   componentWillReceiveProps: function(newProps) {
-    // debugger
-    this.setState({ locationVisits: newProps.locationVisits, locations: newProps.locations })
-    this.markers = newProps.locationVisits.map(function(locationVisit) {
+    // this.setState({ locationVisits: newProps.locationVisits, locations: newProps.locations })
+    this.markersVisit = newProps.locationVisits.map(function(locationVisit) {
       return {
         latLng: [locationVisit.location.lat, locationVisit.location.lng],
-        name: locationVisit.location.name
+        name: locationVisit.location.name,
+        style: {fill: 'gold', r:10}
       }
     })
+    // console.log(this.markersVisit)
+
+    this.markersWish = newProps.locationWishes.map(function(locationWish) {
+      return {
+        latLng: [locationWish.location.lat, locationWish.location.lng],
+        name: locationWish.location.name,
+        style: {fill: 'green', r:10}
+      }
+    })
+    this.markers = this.markersVisit.concat(this.markersWish)
+    this.map.removeAllMarkers();
     this.map.addMarkers(this.markers)
   },
 
   componentDidMount: function() {
-    var locationVisits = this.props.locationVisits;
+    var locationVisits = this.props.locationVisits,
+        locationWishes = this.props.locationWishes;
 
     if (locationVisits) {
-      this.markers = locationVisits.map(function(locationVisit) {
+      this.markersVisit = locationVisits.map(function(locationVisit) {
         return {
           latLng: [locationVisit.location.lat, locationVisit.location.lng],
-          name: locationVisit.location.name
+          name: locationVisit.location.name,
+          style: {fill: 'gold', r:10}
         }
       })
     }
 
+    if (locationVisits) {
+      this.markersWish = locationWishes.map(function(locationWish) {
+        return {
+          latLng: [locationWish.location.lat, locationWish.location.lng],
+          name: locationWish.location.name,
+          style: {fill: 'green', r:10}
+        }
+      })
+    }
+
+    this.markers = this.markersVisit.concat(this.markersWish)
+    console.log(this.markers.map(function(h) { return {name: h.name, latLng: h.latLng} }))
     this.map = new jvm.Map({
        container: $(this.refs.map),
        map: 'continents_mill',
@@ -52,13 +77,13 @@ var MapLocation = React.createClass({
       // },
 
        markerStyle: {
-         initial: {
-           fill: 'gold',
-           r: 10
-         },
+        //  initial: {
+        //    fill: 'gold',
+        //    r: 10
+        //  },
          hover: {
-          // "fill-opacity": 0.8,
-          fill: '#333333'
+          "fill-opacity": 0.8,
+          // fill: 'blue'
          },
          selected: {
            fill: '#CA0020'
@@ -76,12 +101,25 @@ var MapLocation = React.createClass({
        },
 
        onMarkerClick: function(e, index) {
-         var locations = this.state.locations;
-         this.markerIndex = index
+         var locations = this.props.locations,
+             location,
+             locationVisits = this.props.locationVisits,
+             locationWishes = this.props.locationWishes;
+
          for (var key in locations) {
            if (locations.hasOwnProperty(key)) {
              if (locations[key].name === this.markers[index].name) {
-               this.setState({ toggleLocation: 1, location: locations[key] })
+               location = locations[key];
+               for (var i = 0; i < locationVisits.length; i++) {
+                 if (locationVisits[i].location_id === location.id) {
+                   this.setState({ toggleLocationVisit: !this.state.toggleLocationVisit, locationVisit: location });
+                 };
+               };
+               for (var i = 0; i < locationWishes.length; i++) {
+                 if (locationWishes[i].location_id === location.id) {
+                   this.setState({ toggleLocationWish: !this.state.toggleLocationWish, locationWish: location});
+                 };
+               };
              }
            }
          }
@@ -90,41 +128,70 @@ var MapLocation = React.createClass({
 
   },
 
-  deleteMarker: function() {
+  deleteVisitMarker: function() {
     // debugger
     var id;
     var that = this;
-    this.state.locationVisits.forEach(function(locationVisit) {
-      if (locationVisit.location_id === that.state.location.id) {
+    this.props.locationVisits.forEach(function(locationVisit) {
+      if (locationVisit.location_id === that.state.locationVisit.id) {
         id = locationVisit.id;
       }
     })
-    this.map.removeMarkers(this.markerIndex)
-    this.setState({toggleLocation: 0})
+    // console.log("the marker index is " + this.markerIndex)
+    // this.map.removeMarkers(this.markerIndex)
+    this.setState({toggleLocationVisit: false})
     ApiUtil.destroyLocationVisit(id)
     console.log(id)
   },
 
+  deleteWishMarker: function() {
+    var id;
+    var that = this;
+    this.props.locationWishes.forEach(function(locationWish) {
+      if (locationWish.location_id === that.state.locationWish.id) {
+        id = locationWish.id
+      }
+    })
+
+    this.setState({toggleLocationWish: false})
+    ApiUtil.destroyLocationWish(id)
+  },
+
   render: function() {
-    var locationPopup;
+    var locationVisitPopup,
+        locationWishPopup;
 
-    if (this.state.toggleLocation) {
-      var url = "/location/" + this.state.location.id;
+    if (this.state.toggleLocationVisit) {
+      var url = "/location/" + this.state.locationVisit.id;
 
-      locationPopup = (
+      locationVisitPopup = (
         <div>
-          <Link to={url}>{this.state.location.name}</Link>
-          <div onClick={this.deleteMarker}>Delete marker</div>
+          <Link to={url}>{this.state.locationVisit.name}</Link>
+          <div onClick={this.deleteVisitMarker}>Delete marker</div>
         </div>
       )
     } else {
-      locationPopup = <div></div>
+      locationVisitPopup = <div></div>
+    }
+
+    if (this.state.toggleLocationWish) {
+      var url = "/location/" + this.state.locationWish.id;
+
+      locationWishPopup = (
+        <div>
+          <Link to={url}>{this.state.locationWish.name}</Link>
+          <div onClick={this.deleteWishMarker}>Delete marker</div>
+        </div>
+      )
+    } else {
+      locationWishPopup = <div></div>
     }
 
     return(
       <div>
         <div ref="map" className="preference-map"></div>
-        {locationPopup}
+        {locationVisitPopup}
+        {locationWishPopup}
       </div>
 
     )

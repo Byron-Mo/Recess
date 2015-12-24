@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_one   :preference
   has_many  :location_visits
   has_many  :locations, through: :location_visits, source: :location
+  has_many  :location_wishes
+  has_many  :locations, through: :location_wishes, source: :location
 
   def password=(password)
     @password = password
