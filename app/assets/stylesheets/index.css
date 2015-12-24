@@ -58,6 +58,10 @@
   font-weight:600;
 }
 
+.intro-title-div {
+  height: 73px;
+}
+
 .intro-body {
   /*position: absolute;
   top: 50%;

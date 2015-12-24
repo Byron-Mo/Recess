@@ -132,8 +132,6 @@ width:14px;
   border-radius: 2px;
   background-color: whitesmoke;
   border: white;
-  /*color: white;*/
-  font-family: "Courier New";
   font-size: 20px;
   transition: all 0.2s ease 0s;
 }

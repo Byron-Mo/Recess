@@ -5,9 +5,13 @@ var React = require('react'),
     LocationStore = require('../../stores/LocationStore'),
     UserStore = require('../../stores/UserStore'),
     LocationVisit = require('../locations/LocationVisit'),
-    MapLocation = require('../locations/MapLocation');
+    MapLocation = require('../locations/MapLocation'),
+    ShepherdTour = require('../../shepherd/ShepherdHomepage');
+
+// window.onhashchange = ShepherdTour.hide();
 
 var UserHomepage = React.createClass({
+
   getInitialState: function() {
     return { locations: "", user: UserStore.fetchUser() }
   },
@@ -21,11 +25,19 @@ var UserHomepage = React.createClass({
     this.listenerUser = UserStore.addListener(this.updateState)
     ApiUtil.fetchLocations();
     ApiUtil.fetchUser(this.props.params.userid);
+
+    if (localStorage.getItem('visited') === 'false') {
+      ShepherdTour.start();
+      localStorage.setItem('visited', true)
+    }
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
     this.listenerUser.remove();
+    // window.onhashchange = ShepherdTour.hide();
+    // localStorage.setItem('visited', true)
+    // ShepherdTour.cancel()
   },
 
   handleClick: function() {
@@ -87,7 +99,7 @@ var UserHomepage = React.createClass({
       };
 
       return (
-        <li className="recommendations-li" key={recommendation.id}>
+        <li className="recommendations-li hvr-grow" key={recommendation.id}>
           <div className="recommendation-box" onClick={handleClickRec} key={recommendation.id}>
             <div className="recommendation-img" style={divStyle}></div>
             <div className="recommendation-text">
@@ -103,8 +115,8 @@ var UserHomepage = React.createClass({
       <div>
         <div className="user-selection">
           <ul className="user-ul">
-            <li className="user-li user-li-1"><Link to={prefUrl} className="user-review-link">Update your preferences</Link></li>
-            <li className="user-li user-li-2"><Link to={reviewUrl} className="user-review-link">Your reviews</Link></li>
+            <li className="user-li user-li-1"><Link to={prefUrl} className="user-review-link pref-1">Update your preferences</Link></li>
+            <li className="user-li user-li-2"><Link to={reviewUrl} className="user-review-link review-1">Your reviews</Link></li>
           </ul>
         </div>
         <LocationVisit user={this.state.user} locations={this.state.locations} />

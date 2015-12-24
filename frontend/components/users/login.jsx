@@ -39,6 +39,7 @@ var Login = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+    localStorage.setItem('visited', false)
 
     ApiUtil.createSession({
       username: this.state.username,
@@ -50,7 +51,7 @@ var Login = React.createClass({
 
   loginUser: function(e) {
     e.preventDefault();
-
+    localStorage.setItem('visited', false)
     ApiUtil.createSession({
       username: "bmo",
       password: "password"

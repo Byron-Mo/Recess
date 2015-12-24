@@ -1,7 +1,8 @@
 .user-review-title {
   text-align: center;
   padding-top: 20px;
-  font-size: 50px;
+  font-size: 45px;
+  padding-left: 35px;
 }
 
 .user-reviews-ul {
@@ -9,6 +10,8 @@
   text-align: center;
   width: auto;
   height: 100%;
+  /*padding-left: 150px;
+  padding-right: 150px;*/
 }
 
 .user-reviews-li {
@@ -45,7 +48,7 @@
   padding: 15px;
   font-size: 23px;
   word-wrap: break-word;
-  width: 450px;
+  width: 300px;
 }
 
 /* review index item */
@@ -60,7 +63,6 @@
   background-color: whitesmoke;
   border: white;
   color: black;
-  font-family: "Courier New";
   font-size: 20px;
   transition: all 0.2s ease 0s;
 }

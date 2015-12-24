@@ -87,7 +87,6 @@
   border-radius: 5px;
   padding: 5px;
   font-size: 18px;
-  font-family: "Courier New";
 	background-position: bottom right;
 	background-repeat: no-repeat;
   resize: none;
@@ -110,7 +109,6 @@
   background-color: cornflowerblue;
   border: white;
   color: white;
-  font-family: "Courier New";
   font-size: 20px;
   transition: all 0.2s ease 0s;
 }

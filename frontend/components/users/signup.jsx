@@ -35,6 +35,7 @@ var Signup = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+    localStorage.setItem('visited', false)
     ApiUtil.createUser({
       username: this.state.username,
       password: this.state.password
@@ -45,7 +46,7 @@ var Signup = React.createClass({
 
   loginUser: function(e) {
     e.preventDefault();
-
+    localStorage.setItem('visited', false)
     ApiUtil.createSession({
       username: "bmo",
       password: "password"
