@@ -106,7 +106,7 @@ ShepherdTour.addStep('location-search', {
 ShepherdTour.addStep('recommendations', {
   title: 'Your next vacation',
   text: [
-    "Here are your vacation recommendations based off of your preferences"
+    "Here are your vacation recommendations based off of your preferences."
   ],
   showCancelLink: true,
   attachTo: '.recommendations-title top',

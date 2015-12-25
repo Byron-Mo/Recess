@@ -127,7 +127,8 @@
 
 .recommendation-text {
   top: 0;
-  background-color: white;
+  background-color: steelblue;
+  color: white;
 }
 
 .recommendation-name {

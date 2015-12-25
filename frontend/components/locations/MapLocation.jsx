@@ -14,7 +14,7 @@ var MapLocation = React.createClass({
       return {
         latLng: [locationVisit.location.lat, locationVisit.location.lng],
         name: locationVisit.location.name,
-        style: {fill: 'gold', r:10}
+        style: {fill: 'darkorange', r:10}
       }
     })
     // console.log(this.markersVisit)
@@ -23,7 +23,7 @@ var MapLocation = React.createClass({
       return {
         latLng: [locationWish.location.lat, locationWish.location.lng],
         name: locationWish.location.name,
-        style: {fill: 'green', r:10}
+        style: {fill: 'lightgreen', r:10}
       }
     })
     this.markers = this.markersVisit.concat(this.markersWish)
@@ -40,7 +40,7 @@ var MapLocation = React.createClass({
         return {
           latLng: [locationVisit.location.lat, locationVisit.location.lng],
           name: locationVisit.location.name,
-          style: {fill: 'gold', r:10}
+          style: {fill: 'darkorange', r:10}
         }
       })
     }
@@ -50,7 +50,7 @@ var MapLocation = React.createClass({
         return {
           latLng: [locationWish.location.lat, locationWish.location.lng],
           name: locationWish.location.name,
-          style: {fill: 'green', r:10}
+          style: {fill: 'lightgreen', r:10}
         }
       })
     }
@@ -82,11 +82,12 @@ var MapLocation = React.createClass({
         //    r: 10
         //  },
          hover: {
-          "fill-opacity": 0.8,
+          "fill-opacity": 1,
           // fill: 'blue'
          },
          selected: {
-           fill: '#CA0020'
+           fill: 'firebrick',
+           r: 12
          }
        },
 
@@ -166,7 +167,7 @@ var MapLocation = React.createClass({
 
       locationVisitPopup = (
         <div>
-          <Link to={url}>{this.state.locationVisit.name}</Link>
+          <Link to={url}>You've visited {this.state.locationVisit.name}</Link>
           <div onClick={this.deleteVisitMarker}>Delete marker</div>
         </div>
       )
@@ -179,7 +180,7 @@ var MapLocation = React.createClass({
 
       locationWishPopup = (
         <div>
-          <Link to={url}>{this.state.locationWish.name}</Link>
+          <Link to={url}>On your wishlist: {this.state.locationWish.name}</Link>
           <div onClick={this.deleteWishMarker}>Delete marker</div>
         </div>
       )
