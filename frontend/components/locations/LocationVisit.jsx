@@ -124,13 +124,13 @@ var LocationVisit = React.createClass({
         <div className="location-visit-wish-div">
           <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmitVisit}>
             {errorMsgVisit}
-            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringVisit")}></input>
+            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringVisit")} placeholder="Enter a city"></input>
             <br></br>
             <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
           </form>
           <form className="location-visit-wish-form location-input-2" onSubmit={this.handleSubmitWish}>
             {errorMsgWish}
-            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringWish")}></input>
+            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringWish")} placeholder="Enter a city"></input>
             <br></br>
             <input type="submit" value="I want to go here" className="location-visit-wish-submit"></input>
           </form>

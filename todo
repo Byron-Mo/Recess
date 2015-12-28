@@ -1,4 +1,4 @@
--do autocomplete
+-do autocomplete      DONE
 -refactor errorstore DONE
 -make a ajax request to get current user name from window.CURRENT_USER_ID
 -location input has this.props.locations that it used to find the user input
@@ -8,9 +8,17 @@ when he searches for a location
 -location index item page will contain reviews
 -refactor app component to a nav component DONE
 -require user to be logged in to visit pages
+-add dyno
+-add icon
+-seed locations
+-seed reviews
+-style delete location and markers
+-add average reviews
+-star rating instead of 4/5
+-legend
 
--delete markers
--add location wishes
+-delete markers        DONE
+-add location wishes   DONE
 -
 
 
@@ -205,3 +213,25 @@ review form
          <option value="Oceania">Oceania</option>
          <option value="South America">South America</option>
        </select>
+
+
+
+       var locations = this.props.locations,
+           location;
+
+         for (var key in locations) {
+           if (locations.hasOwnProperty(key)) {
+             if (locations[key].name.toLowerCase().match(userInput)) {
+               location = locations[key]
+               break;
+             }
+           }
+         }
+
+         if (location === undefined) {
+           this.setState({toggleError: 1})
+           // this.history.push("/user/" + this.props.userid)
+         } else {
+           ApiUtil.fetchLocation(location.id);
+           this.history.pushState(null, '/location/' + location.id)
+         }

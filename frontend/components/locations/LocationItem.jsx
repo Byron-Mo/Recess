@@ -35,7 +35,7 @@ var LocationItem = React.createClass({
         ratings.push(reviews[i].rating)
       }
       if (ratings.length === 0) {
-        var avgReview = 0;
+        var avgReview = '-';
       } else {
         var avgReview = Math.round(ratings.reduce(function(x, y) {return x + y}) / ratings.length)
       }
@@ -74,7 +74,7 @@ var LocationItem = React.createClass({
             <div className="location-rating">{avgReview}/5</div>
             <div className="location-region">{this.state.location.region}</div>
           </div>
-          
+
         </div>
       )
     }

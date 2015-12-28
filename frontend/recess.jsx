@@ -10,7 +10,8 @@ var React = require('react'),
     UserHomepage = require('./components/homepages/user_homepage'),
     LocationItem = require('./components/locations/LocationItem'),
     UserReview = require('./components/reviews/UserReview'),
-    UserPreference = require('./components/preferences/UserPreference');
+    UserPreference = require('./components/preferences/UserPreference'),
+    SearchedLocations = require('./components/locations/searchedlocations');
 
 var RecessRouter = (
    <Router>
@@ -22,6 +23,7 @@ var RecessRouter = (
       <Route path="/user/:userid/reviews" component={UserReview} />
       <Route path="/location/:locationid" component={LocationItem} />
       <Route path="/user/:userid/preferences" component={UserPreference} />
+      <Route path="/searchedlocations/" component={SearchedLocations} />
     </Route>
   </Router>
 );

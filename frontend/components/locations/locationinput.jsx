@@ -29,29 +29,34 @@ var LocationInput = React.createClass({
 
     var userInput = this.state.searchString.trim().toLowerCase();
 
-    if (userInput.length <= 3) {
+    if (userInput.length < 3) {
       this.setState({toggleError: 1})
       return this.history.push("/user/" + this.props.userid)
     }
 
     var locations = this.props.locations,
-        location;
+        searchedLocations  = [];
 
       for (var key in locations) {
         if (locations.hasOwnProperty(key)) {
-          if (locations[key].name.toLowerCase().match("^" + userInput)) {
-            location = locations[key]
-            break;
+          if (locations[key].name.toLowerCase().match(userInput)) {
+            searchedLocations.push(locations[key]);
           }
         }
       }
 
-      if (location === undefined) {
+      if (searchedLocations.length === 0) {
         this.setState({toggleError: 1})
-        // this.history.push("/user/" + this.props.userid)
+      } else if (searchedLocations.length > 1) {
+        // var locationIds = searchedLocations.map(function(location) {
+        //   return location.id
+        // })
+        // console.log(locationIds)
+        this.history.pushState(null, '/searchedlocations/', [userInput])
       } else {
-        ApiUtil.fetchLocation(location.id);
-        this.history.pushState(null, '/location/' + location.id)
+        var locationId = searchedLocations[0].id
+        ApiUtil.fetchLocation(locationId);
+        this.history.pushState(null, '/location/' + locationId)
       }
   },
 
@@ -65,7 +70,7 @@ var LocationInput = React.createClass({
           {/*<script>{this.autoComplete}</script>*/}
           <input id="tags" type="text" valueLink={this.linkState("searchString")} className="user-input"></input>
           <br></br>
-          <input type="submit" value="Search city" className="search-location-btn"></input>
+          <input type="submit" value="Search destination" className="search-location-btn"></input>
         </form>
       </div>
     )

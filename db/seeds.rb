@@ -61,7 +61,7 @@
 ActiveRecord::Base.transaction do
   locations = {
     "1" => {
-      name: "New York City, New York",
+      name: "New York City, New York, United States",
       region: "North America",
       activity: "Adventure",
       body: "Home to the Empire State Building, Times Square, Statue of Liberty and other iconic sites, New York City is a fast-paced, globally influential center of art, culture, fashion and finance.",
@@ -88,7 +88,7 @@ ActiveRecord::Base.transaction do
       lng: -0.127697
     },
     "4" => {
-      name: "San Francisco, California",
+      name: "San Francisco, California, United States",
       region: "North America",
       activity: "Adventure",
       body: "San Francisco, in northern California, is a city on the tip of a peninsula surrounded by the Pacific Ocean and San Francisco Bay. It's known for its hilly landscape, year-round fog, iconic Golden Gate Bridge, cable cars and colorful Victorian houses.",
