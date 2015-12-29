@@ -238,3 +238,11 @@ review form
            ApiUtil.fetchLocation(location.id);
            this.history.pushState(null, '/location/' + location.id)
          }
+
+
+         <
+           img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451366832/Recess-logo_awfcms.png"
+           onClick={this.handleClick}
+           className="recess"
+           height="40"
+         />

@@ -70,3 +70,7 @@
 .guest-login {
   margin-top: 20px;
 }
+
+.error-msg {
+  -webkit-padding-start: 0px;
+}

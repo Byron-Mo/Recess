@@ -55,13 +55,10 @@ var Nav = React.createClass({
     return(
       <div>
         <div className="nav-bar">
-          <
-            img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451366832/Recess-logo_awfcms.png"
-            onClick={this.handleClick}
-            className="recess"
-            height="40"
-          />
-
+          <div className="logo-recess">
+            <img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451367615/logo_4_ezrw5o.png" height="40" className="logo" onClick={this.handleClick}></img>
+            <Link to="/" className="recess">Recess</Link>
+          </div>
           <ul className="nav-bar-links">
             {links}
           </ul>

@@ -13,10 +13,24 @@
   margin-right: auto;*/
 }
 
+.logo-recess {
+  margin-left: 20px;
+  /*margin: 0px;*/
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.logo {
+  padding-right: 5px;
+  cursor: pointer;
+}
+
 .recess {
   /*float: left;*/
-  padding-left: 40px;
-  padding-right: 20px;
+  /*padding-left: 40px;*/
+  /*padding-right: 20px;*/
   margin: 0px;
   position: absolute;
   top: 50%;
@@ -24,7 +38,6 @@
   text-decoration: none;
   color: white;
   font-size: 25px;
-  cursor: pointer;
 }
 
 ul.nav-bar-links {
