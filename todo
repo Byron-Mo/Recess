@@ -13,9 +13,11 @@ when he searches for a location
 -seed locations
 -seed reviews
 -style delete location and markers
--add average reviews
+-add average reviews                      DONE
 -star rating instead of 4/5
--legend
+-legend                                   DONE
+-the world is your playground above map   DONE
+-fade background picture
 
 -delete markers        DONE
 -add location wishes   DONE

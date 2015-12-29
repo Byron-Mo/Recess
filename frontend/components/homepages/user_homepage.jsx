@@ -78,7 +78,7 @@ var UserHomepage = React.createClass({
           ratings.push(reviews[i].rating)
         }
         if (ratings.length === 0) {
-          var avgReview = '-';
+          var avgReview = 0;
         } else {
           var avgReview = Math.round(ratings.reduce(function(x, y) {return x + y}) / ratings.length)
         }
@@ -113,6 +113,7 @@ var UserHomepage = React.createClass({
 
     return(
       <div>
+        <div className="user-review-title">The world is your playground</div>
         <div className="user-selection">
           <ul className="user-ul">
             <li className="user-li user-li-1"><Link to={prefUrl} className="user-review-link pref-1">Update your preferences</Link></li>

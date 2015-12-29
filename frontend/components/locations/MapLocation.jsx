@@ -17,7 +17,6 @@ var MapLocation = React.createClass({
         style: {fill: 'darkorange', r:10}
       }
     })
-    // console.log(this.markersVisit)
 
     this.markersWish = newProps.locationWishes.map(function(locationWish) {
       return {
@@ -76,11 +75,20 @@ var MapLocation = React.createClass({
       //     e.preventDefault();
       // },
 
+      series: {
+        markers: [{
+          scale: {
+            Visted: 'darkorange',
+            Wishlist: 'lightgreen'
+          },
+          legend: {
+            // cssClass: "jvectormap-legendzzz",
+            horizontal: true
+          }
+        }]
+      },
+
        markerStyle: {
-        //  initial: {
-        //    fill: 'gold',
-        //    r: 10
-        //  },
          hover: {
           "fill-opacity": 1,
           // fill: 'blue'
@@ -113,12 +121,30 @@ var MapLocation = React.createClass({
                location = locations[key];
                for (var i = 0; i < locationVisits.length; i++) {
                  if (locationVisits[i].location_id === location.id) {
-                   this.setState({ toggleLocationVisit: !this.state.toggleLocationVisit, locationVisit: location });
+                   if (this.state.locationVisit === location) {
+                     this.setState({toggleLocationVisit: !this.state.toggleLocationVisit})
+                   } else {
+                     this.setState({toggleLocationVisit: true})
+                   }
+                   this.setState({
+                    //  toggleLocationVisit: !this.state.toggleLocationVisit,
+                     toggleLocationWish: false,
+                     locationVisit: location
+                   });
                  };
                };
                for (var i = 0; i < locationWishes.length; i++) {
                  if (locationWishes[i].location_id === location.id) {
-                   this.setState({ toggleLocationWish: !this.state.toggleLocationWish, locationWish: location});
+                   if (this.state.locationWish === location) {
+                     this.setState({toggleLocationWish: !this.state.toggleLocationWish})
+                   } else {
+                     this.setState({toggleLocationWish: true})
+                   }
+                   this.setState({
+                    //  toggleLocationWish: !this.state.toggleLocationWish,
+                     toggleLocationVisit: false,
+                     locationWish: location
+                   });
                  };
                };
              }
@@ -166,9 +192,11 @@ var MapLocation = React.createClass({
       var url = "/location/" + this.state.locationVisit.id;
 
       locationVisitPopup = (
-        <div>
-          <Link to={url}>You've visited {this.state.locationVisit.name}</Link>
-          <div onClick={this.deleteVisitMarker}>Delete marker</div>
+        <div className="location-popup">
+          <div className="location-visit-title">You've visited:</div>
+          <Link to={url} className="location-visit-link">{this.state.locationVisit.name}</Link>
+          <br></br>
+          <input type="submit" onClick={this.deleteVisitMarker} className="location-visit-delete" value="Delete marker"></input>
         </div>
       )
     } else {
@@ -179,9 +207,11 @@ var MapLocation = React.createClass({
       var url = "/location/" + this.state.locationWish.id;
 
       locationWishPopup = (
-        <div>
-          <Link to={url}>On your wishlist: {this.state.locationWish.name}</Link>
-          <div onClick={this.deleteWishMarker}>Delete marker</div>
+        <div className="location-popup">
+          <div className="location-visit-title">On your wishlist:</div>
+          <Link to={url} className="location-visit-link">{this.state.locationWish.name}</Link>
+          <br></br>
+          <input type="submit" onClick={this.deleteWishMarker} className="location-visit-delete" value="Delete marker"></input>
         </div>
       )
     } else {
@@ -191,8 +221,10 @@ var MapLocation = React.createClass({
     return(
       <div>
         <div ref="map" className="preference-map"></div>
-        {locationVisitPopup}
-        {locationWishPopup}
+        <div className="location-visit-div">
+          {locationVisitPopup}
+          {locationWishPopup}
+        </div>
       </div>
 
     )
