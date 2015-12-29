@@ -22,7 +22,7 @@ var MapLocation = React.createClass({
       return {
         latLng: [locationWish.location.lat, locationWish.location.lng],
         name: locationWish.location.name,
-        style: {fill: 'lightgreen', r:10}
+        style: {fill: 'yellow', r:10}
       }
     })
     this.markers = this.markersVisit.concat(this.markersWish)
@@ -49,7 +49,7 @@ var MapLocation = React.createClass({
         return {
           latLng: [locationWish.location.lat, locationWish.location.lng],
           name: locationWish.location.name,
-          style: {fill: 'lightgreen', r:10}
+          style: {fill: 'yellow', r:10}
         }
       })
     }
@@ -78,11 +78,10 @@ var MapLocation = React.createClass({
       series: {
         markers: [{
           scale: {
-            Visted: 'darkorange',
-            Wishlist: 'lightgreen'
+            Visited: 'darkorange',
+            Wishlist: 'yellow'
           },
           legend: {
-            // cssClass: "jvectormap-legendzzz",
             horizontal: true
           }
         }]
@@ -94,7 +93,7 @@ var MapLocation = React.createClass({
           // fill: 'blue'
          },
          selected: {
-           fill: 'firebrick',
+           fill: 'goldenrod',
            r: 12
          }
        },
@@ -109,11 +108,34 @@ var MapLocation = React.createClass({
          }
        },
 
+       onMarkerSelected: function(e, index, boo, selected) {
+        // if (this.map) {
+          //   if (this.map.getSelectedMarkers()[0] === index) {
+          //     console.log('in here')
+          // this.map.clearSelectedMarkers();
+          //   }
+        //
+        // }
+        // debugger
+        if (boo === true) {
+          console.log(boo)
+        }
+
+      }.bind(this),
+
        onMarkerClick: function(e, index) {
+        //  debugger
          var locations = this.props.locations,
              location,
              locationVisits = this.props.locationVisits,
              locationWishes = this.props.locationWishes;
+            //  locationVisit = this.state.locationVisit,
+            //  locationWish = this.state.locationWish;
+
+
+        //  if (locationVisit.name === this.markers[index].name || locationWish.name === this.markers[index].name) {
+        //  }
+
 
          for (var key in locations) {
            if (locations.hasOwnProperty(key)) {
@@ -150,7 +172,14 @@ var MapLocation = React.createClass({
              }
            }
          }
+
+          // if (this.map.getSelectedMarkers()[0] === index) {
+          //   debugger
+          //   this.map.clearSelectedMarkers();
+          // }
        }.bind(this)
+
+
     });
 
   },

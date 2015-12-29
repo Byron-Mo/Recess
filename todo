@@ -10,6 +10,7 @@ when he searches for a location
 -require user to be logged in to visit pages
 -add dyno
 -add icon
+-domain name
 -seed locations
 -seed reviews
 -style delete location and markers

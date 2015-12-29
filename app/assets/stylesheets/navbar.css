@@ -24,6 +24,7 @@
   text-decoration: none;
   color: white;
   font-size: 25px;
+  cursor: pointer;
 }
 
 ul.nav-bar-links {

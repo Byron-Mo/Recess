@@ -31,6 +31,10 @@ var Nav = React.createClass({
     ApiUtil.logoutSession();
   },
 
+  handleClick: function() {
+    this.history.push("/")
+  },
+
   render: function() {
     var user = this.state.user,
         links;
@@ -51,7 +55,13 @@ var Nav = React.createClass({
     return(
       <div>
         <div className="nav-bar">
-          <Link to="/" className="recess">Recess</Link>
+          <
+            img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451366832/Recess-logo_awfcms.png"
+            onClick={this.handleClick}
+            className="recess"
+            height="40"
+          />
+
           <ul className="nav-bar-links">
             {links}
           </ul>
