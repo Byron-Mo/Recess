@@ -10,6 +10,7 @@ var Index = React.createClass({
             The bell just rang. It's time for Recess!
           </div>
         </div>
+      
         <div className="index-intro">
           <div className="index-intro-div">
             <ul className="intro-ul">

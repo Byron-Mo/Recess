@@ -8,9 +8,9 @@ when he searches for a location
 -location index item page will contain reviews
 -refactor app component to a nav component DONE
 -require user to be logged in to visit pages
--add dyno
--add icon
--domain name
+-add dyno                                 DONE
+-add icon                                 DONE
+-domain name                              DONE
 -seed locations
 -seed reviews
 -style delete location and markers
@@ -246,3 +246,13 @@ review form
            className="recess"
            height="40"
          />
+
+
+         <ul className="cb-slideshow">
+           <li><span>Image 01</span><div><h3>re·lax·a·tion</h3></div></li>
+           <li><span>Image 02</span><div><h3>qui·e·tude</h3></div></li>
+           <li><span>Image 03</span><div><h3>bal·ance</h3></div></li>
+           <li><span>Image 04</span><div><h3>e·qua·nim·i·ty</h3></div></li>
+           <li><span>Image 05</span><div><h3>com·po·sure</h3></div></li>
+           <li><span>Image 06</span><div><h3>se·ren·i·ty</h3></div></li>
+         </ul>

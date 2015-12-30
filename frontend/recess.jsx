@@ -11,7 +11,12 @@ var React = require('react'),
     LocationItem = require('./components/locations/LocationItem'),
     UserReview = require('./components/reviews/UserReview'),
     UserPreference = require('./components/preferences/UserPreference'),
-    SearchedLocations = require('./components/locations/searchedlocations');
+    SearchedLocations = require('./components/locations/searchedlocations'),
+    http = require('http');
+
+setInterval(function() {
+  http.get("http://recess.herokuapp.com");
+}, 300000)
 
 var RecessRouter = (
    <Router>
