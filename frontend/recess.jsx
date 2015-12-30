@@ -16,7 +16,7 @@ var React = require('react'),
 
 setInterval(function() {
   http.get("http://recess.herokuapp.com");
-}, 300000)
+}, 150000)
 
 var RecessRouter = (
    <Router>
