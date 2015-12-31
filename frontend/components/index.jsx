@@ -5,12 +5,14 @@ var Index = React.createClass({
   render: function() {
     return(
       <div>
-        <div className="index-background">
-          <div className="index-title">
-            The bell just rang. It's time for Recess!
-          </div>
-        </div>
-      
+        <ul className="cb-slideshow">
+          <li><span>Image 01</span><div><h3>The bell just rang. It's time for Recess!</h3></div></li>
+          <li><span>Image 02</span><div><h3>The bell just rang. It's time for Recess!</h3></div></li>
+          <li><span>Image 03</span><div><h3>The bell just rang. It's time for Recess!</h3></div></li>
+          <li><span>Image 04</span><div><h3>The bell just rang. It's time for Recess!</h3></div></li>
+          <li><span>Image 05</span><div><h3>The bell just rang. It's time for Recess!</h3></div></li>
+          <li><span>Image 06</span><div><h3>The bell just rang. It's time for Recess!</h3></div></li>
+        </ul>
         <div className="index-intro">
           <div className="index-intro-div">
             <ul className="intro-ul">

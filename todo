@@ -18,7 +18,7 @@ when he searches for a location
 -star rating instead of 4/5
 -legend                                   DONE
 -the world is your playground above map   DONE
--fade background picture
+-fade background picture                  DONE
 
 -delete markers        DONE
 -add location wishes   DONE
@@ -256,3 +256,9 @@ review form
            <li><span>Image 05</span><div><h3>com·po·sure</h3></div></li>
            <li><span>Image 06</span><div><h3>se·ren·i·ty</h3></div></li>
          </ul>
+
+         <div className="index-background">
+           <div className="index-title">
+             The bell just rang. It's time for Recess!
+           </div>
+         </div>
