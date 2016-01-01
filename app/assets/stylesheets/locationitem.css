@@ -139,6 +139,7 @@
   width: 40%;
   background-color: whitesmoke;
   /*position: relative;*/
+  vertical-align: top;
 }
 
 .rating {

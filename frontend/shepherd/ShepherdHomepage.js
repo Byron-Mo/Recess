@@ -11,7 +11,7 @@ ShepherdTour.addStep('home-page', {
   title: "Hello, Welcome to Recess!",
   text: [
     "This tour is designed to show you around the features of the app.",
-    "Feel free to click the 'x' in the corner at any time to exit and explore on your own."
+    'Feel free to click the "x" in the corner at any time to exit and explore on your own.'
   ],
   showCancelLink: true,
   buttons: [

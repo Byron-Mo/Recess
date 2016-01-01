@@ -5,47 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-# Paris, France                     X
-# New York, New York                X
-# Rome, Italy                       X
-# Cancun, Mexico                    X
-# London, England                   X
-# Miami, Florida                    X
-# Orlando, Florida
-# San Francisco, California         X
-# Myrtle Beach, South Carolina
-# Branson, Missouri
-# Nassau, Bahamas                   X
-# Punta Cana, Dominican Republic
-# Barcelona, Spain                  X
-# Montego Bay, Jamaica              X
-# Rome, Italy                       X
-# Toronto, Canada                   X
-# San Juan, Puerto Rico
-# Bora Bora                         X
-# Sydney, Australia                 X
-# Maui, Hawaii                      X
-# Rio de Janeiro, Brazil            X
-# Cape Town, South Africa           X
-# Maldives                          X
-# Prague,                           X
-# Yellowstone, California
-# Vancouver, Canada                 X
-# Washington D.C.                   X
-# U.S. Virgin Islands
-# Zurich                            X
-# Budapest                          X
-# Las Vegas                         X
-# Hong Kong, Hong Kong              X
-# Create
-# Puerto Rico
-# Jerusalem
-
-
-
-
-
 ActiveRecord::Base.transaction do
   locations = {
     "1" => {
@@ -451,7 +410,12 @@ User.create!(username: "Johnny", password: "password")
 User.create!(username: "Tommy", password: "password")
 User.create!(username: "Tracy", password: "password")
 User.create!(username: "Bmo", password: "password")
+User.create!(username: "Linda", password: "password")
+User.create!(username: "Huy", password: "password")
+User.create!(username: "Kathy", password: "password")
+
 Preference.create!(region: "Europe", activity: "Culture/History", user_id: 1)
+
 LocationVisit.create!(location_id: 15, user_id: 1)
 LocationVisit.create!(location_id: 8, user_id: 1)
 LocationVisit.create!(location_id: 3, user_id: 1)
@@ -462,41 +426,31 @@ LocationVisit.create!(location_id: 40, user_id: 1)
 LocationVisit.create!(location_id: 32, user_id: 1)
 LocationVisit.create!(location_id: 33, user_id: 1)
 LocationVisit.create!(location_id: 37, user_id: 1)
-Review.create!(rating: 4, body: "Amazing City", user_id: 1, location_id: 3)
-Review.create!(rating: 4, body: "Lovely City", user_id: 1, location_id: 8)
-Review.create!(rating: 4, body: "Beautiful City", user_id: 1, location_id: 15)
-Review.create!(rating: 4, body: "Stunning City", user_id: 1, location_id: 1)
-
-Review.create!(rating: 5, body: "Stunning City", user_id: 1, location_id: 2)
-Review.create!(rating: 3, body: "Stunning City", user_id: 2, location_id: 3)
-Review.create!(rating: 3, body: "Stunning City", user_id: 3, location_id: 4)
-Review.create!(rating: 4, body: "Stunning City", user_id: 4, location_id: 5)
-Review.create!(rating: 5, body: "Stunning City", user_id: 5, location_id: 6)
-Review.create!(rating: 5, body: "Stunning City", user_id: 6, location_id: 7)
-Review.create!(rating: 2, body: "Stunning City", user_id: 7, location_id: 8)
-Review.create!(rating: 5, body: "Stunning City", user_id: 1, location_id: 9)
-Review.create!(rating: 5, body: "Stunning City", user_id: 2, location_id: 10)
-Review.create!(rating: 4, body: "Stunning City", user_id: 3, location_id: 11)
-Review.create!(rating: 4, body: "Stunning City", user_id: 4, location_id: 12)
-Review.create!(rating: 3, body: "Stunning City", user_id: 5, location_id: 13)
-Review.create!(rating: 5, body: "Stunning City", user_id: 6, location_id: 14)
-Review.create!(rating: 5, body: "Stunning City", user_id: 7, location_id: 15)
-Review.create!(rating: 3, body: "Stunning City", user_id: 1, location_id: 16)
-Review.create!(rating: 4, body: "Stunning City", user_id: 2, location_id: 17)
-Review.create!(rating: 4, body: "Stunning City", user_id: 3, location_id: 18)
-Review.create!(rating: 5, body: "Stunning City", user_id: 4, location_id: 19)
-Review.create!(rating: 5, body: "Stunning City", user_id: 5, location_id: 20)
-Review.create!(rating: 3, body: "Stunning City", user_id: 6, location_id: 21)
-Review.create!(rating: 4, body: "Stunning City", user_id: 7, location_id: 22)
-Review.create!(rating: 5, body: "Stunning City", user_id: 1, location_id: 23)
-Review.create!(rating: 5, body: "Stunning City", user_id: 2, location_id: 24)
-Review.create!(rating: 3, body: "Stunning City", user_id: 3, location_id: 25)
-Review.create!(rating: 4, body: "Stunning City", user_id: 4, location_id: 26)
-Review.create!(rating: 4, body: "Stunning City", user_id: 5, location_id: 27)
-
 
 LocationWish.create!(location_id: 14, user_id: 1)
 LocationWish.create!(location_id: 2, user_id: 1)
 LocationWish.create!(location_id: 4, user_id: 1)
 LocationWish.create!(location_id: 5, user_id: 1)
 LocationWish.create!(location_id: 13, user_id: 1)
+
+reviews = [
+  "Such an amazing place! Would love to visit again!",
+  "The people are really nice. I particularly love the food and culture.",
+  "I really like the food here. It's something I would have not had a chance to try in my home country.",
+  "The sites are spectacular. It's a good mixture between history and modern architecture",
+  "It's really easy to get around here. I would definitely come back in my next Recess!",
+  "The culture is very eye opening. It was a culture shock, but in a very good way. I feel like my exposure in the town here has made me more wordly. I would highly recommend!",
+  "I like how there's wifi everywhere!",
+  "I really enjoy the weather here. It's very family friendly but also provides a good night life for adults",
+  "I enjoyed hearing different accents in this area. It has encouraged me to learn another language.",
+  "I really liked my shopping experience here. I was able to find a lot of local relics as well as high end items for a much cheaper price."
+]
+
+50.times do
+  Review.create!(
+    rating: rand(3..5),
+    body: reviews[rand(reviews.length)],
+    user_id: rand(1..10),
+    location_id: rand(1..43),
+  )
+end

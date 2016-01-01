@@ -20,23 +20,12 @@ var UserReview = React.createClass({
     this.listener.remove();
   },
 
-  // componentWillReceiveProps: function(newProps) {
-  //   console.log("in receive props")
-  //   console.log(newProps)
-  //   ApiUtil.fetchUser(newProps.params.userid)
-  // },
-
   updateState: function() {
     this.setState({user: UserStore.fetchUser()})
   },
 
   render: function() {
-    // debugger
     if (this.state.user) {
-      // var reviews = this.state.user.reviews;
-      // if (this.state.user.reviews) {
-      // }
-      // console.log(this.state.user)
         var reviews = this.state.user.reviews
         var that = this;
         var displayReviews = (

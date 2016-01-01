@@ -14,15 +14,11 @@ var ReviewIndexItem = React.createClass({
   },
 
   handleDelete: function(id) {
-    console.log("in handledelete")
-    console.log(this.props.review.id)
-    // this.listener = UserStore.addListener(this.updateState);
     ApiUtil.destroyReview(this.props.review.id);
   },
 
   handleSubmit: function(e) {
     e.preventDefault();
-    // debugger
     var id = this.props.review.id;
 
     if (this.state.rating !== "" && this.state.body !== "") {

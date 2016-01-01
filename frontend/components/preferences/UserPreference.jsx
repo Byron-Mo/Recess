@@ -51,9 +51,7 @@ var UserPreference = React.createClass({
          for (var key in PreferenceConstants) {
            if (PreferenceConstants.hasOwnProperty(key)) {
              if (key === el) {
-               console.log(el)
                that.setState({region: PreferenceConstants[key]});
-               console.log(that.state.region)
                break;
              }
            }

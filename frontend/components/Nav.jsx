@@ -13,7 +13,6 @@ var Nav = React.createClass({
 
   updateState: function() {
     this.setState({user: UserStore.fetchUser()})
-    // console.log(this.state.user)
   },
 
   componentDidMount: function() {

@@ -11,19 +11,6 @@ var LocationInput = React.createClass({
     return { searchString: "", toggleError: 0, errors: "" }
   },
 
-  // componentDidMount: function() {
-  //   this.updateLocation = LocationStore.addListener(this.updateState);
-  //   ApiUtil.fetchLocations();
-  // },
-  //
-  // componentWillUnmount: function() {
-  //   this.updateLocation.remove();
-  // },
-  //
-  // updateState: function() {
-  //   this.setState({locations: LocationStore.all()})
-  // },
-
   handleSubmit: function(e) {
     e.preventDefault();
 
@@ -48,10 +35,6 @@ var LocationInput = React.createClass({
       if (searchedLocations.length === 0) {
         this.setState({toggleError: 1})
       } else if (searchedLocations.length > 1) {
-        // var locationIds = searchedLocations.map(function(location) {
-        //   return location.id
-        // })
-        // console.log(locationIds)
         this.history.pushState(null, '/searchedlocations/', [userInput])
       } else {
         var locationId = searchedLocations[0].id
@@ -67,7 +50,6 @@ var LocationInput = React.createClass({
       <div className="location-input-div">
         <form onSubmit={this.handleSubmit} className="location-input-form">
           {errorMsg}
-          {/*<script>{this.autoComplete}</script>*/}
           <input id="tags" type="text" valueLink={this.linkState("searchString")} className="user-input"></input>
           <br></br>
           <input type="submit" value="Search destination" className="search-location-btn"></input>

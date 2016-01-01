@@ -6,9 +6,8 @@ var React = require('react'),
     UserStore = require('../../stores/UserStore'),
     LocationVisit = require('../locations/LocationVisit'),
     MapLocation = require('../locations/MapLocation'),
-    ShepherdTour = require('../../shepherd/ShepherdHomepage');
-
-// window.onhashchange = ShepherdTour.hide();
+    ShepherdTour = require('../../shepherd/ShepherdHomepage'),
+    Tail = require('../Tail');
 
 var UserHomepage = React.createClass({
 
@@ -35,9 +34,6 @@ var UserHomepage = React.createClass({
   componentWillUnmount: function() {
     this.listener.remove();
     this.listenerUser.remove();
-    // window.onhashchange = ShepherdTour.hide();
-    // localStorage.setItem('visited', true)
-    // ShepherdTour.cancel()
   },
 
   handleClick: function() {
@@ -132,6 +128,7 @@ var UserHomepage = React.createClass({
             </ul>
           </div>
         </div>
+        <Tail />
       </div>
     )
   }

@@ -9,7 +9,6 @@ var MapLocation = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    // this.setState({ locationVisits: newProps.locationVisits, locations: newProps.locations })
     this.markersVisit = newProps.locationVisits.map(function(locationVisit) {
       return {
         latLng: [locationVisit.location.lat, locationVisit.location.lng],
@@ -55,7 +54,6 @@ var MapLocation = React.createClass({
     }
 
     this.markers = this.markersVisit.concat(this.markersWish)
-    console.log(this.markers.map(function(h) { return {name: h.name, latLng: h.latLng} }))
     this.map = new jvm.Map({
        container: $(this.refs.map),
        map: 'continents_mill',
@@ -71,9 +69,6 @@ var MapLocation = React.createClass({
               "fill-opacity": 1
           }
        },
-      // onRegionLabelShow: function (e, el, code) {
-      //     e.preventDefault();
-      // },
 
       series: {
         markers: [{
@@ -108,34 +103,11 @@ var MapLocation = React.createClass({
          }
        },
 
-       onMarkerSelected: function(e, index, boo, selected) {
-        // if (this.map) {
-          //   if (this.map.getSelectedMarkers()[0] === index) {
-          //     console.log('in here')
-          // this.map.clearSelectedMarkers();
-          //   }
-        //
-        // }
-        // debugger
-        if (boo === true) {
-          console.log(boo)
-        }
-
-      }.bind(this),
-
        onMarkerClick: function(e, index) {
-        //  debugger
          var locations = this.props.locations,
              location,
              locationVisits = this.props.locationVisits,
              locationWishes = this.props.locationWishes;
-            //  locationVisit = this.state.locationVisit,
-            //  locationWish = this.state.locationWish;
-
-
-        //  if (locationVisit.name === this.markers[index].name || locationWish.name === this.markers[index].name) {
-        //  }
-
 
          for (var key in locations) {
            if (locations.hasOwnProperty(key)) {
@@ -149,7 +121,6 @@ var MapLocation = React.createClass({
                      this.setState({toggleLocationVisit: true})
                    }
                    this.setState({
-                    //  toggleLocationVisit: !this.state.toggleLocationVisit,
                      toggleLocationWish: false,
                      locationVisit: location
                    });
@@ -163,7 +134,6 @@ var MapLocation = React.createClass({
                      this.setState({toggleLocationWish: true})
                    }
                    this.setState({
-                    //  toggleLocationWish: !this.state.toggleLocationWish,
                      toggleLocationVisit: false,
                      locationWish: location
                    });
@@ -172,20 +142,11 @@ var MapLocation = React.createClass({
              }
            }
          }
-
-          // if (this.map.getSelectedMarkers()[0] === index) {
-          //   debugger
-          //   this.map.clearSelectedMarkers();
-          // }
        }.bind(this)
-
-
     });
-
   },
 
   deleteVisitMarker: function() {
-    // debugger
     var id;
     var that = this;
     this.props.locationVisits.forEach(function(locationVisit) {
@@ -193,11 +154,8 @@ var MapLocation = React.createClass({
         id = locationVisit.id;
       }
     })
-    // console.log("the marker index is " + this.markerIndex)
-    // this.map.removeMarkers(this.markerIndex)
     this.setState({toggleLocationVisit: false})
     ApiUtil.destroyLocationVisit(id)
-    console.log(id)
   },
 
   deleteWishMarker: function() {

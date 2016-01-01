@@ -2,7 +2,8 @@ var React = require('react'),
     LocationStore = require('../../stores/LocationStore'),
     ApiUtil = require('../../util/apiutil'),
     ReviewForm = require('../reviews/reviewform'),
-    ReviewStore = require('../../stores/ReviewStore');
+    ReviewStore = require('../../stores/ReviewStore'),
+    Tail = require('../Tail');
 
 var LocationItem = React.createClass({
   getInitialState: function() {
@@ -23,9 +24,6 @@ var LocationItem = React.createClass({
   },
 
   render: function() {
-    // if (this.state.location) {
-    // }
-
     var reviews = this.state.location.reviews;
     var ratings = [];
     var reviewShow = [];
@@ -39,7 +37,6 @@ var LocationItem = React.createClass({
       } else {
         var avgReview = Math.round(ratings.reduce(function(x, y) {return x + y}) / ratings.length)
       }
-      console.log(avgReview)
     };
 
     if (reviews) {
@@ -54,9 +51,6 @@ var LocationItem = React.createClass({
       })
     }
 
-    // if (this.state.location) {
-    //
-    // }
       var img = this.state.location.image;
       var divStyle = {
         color: 'white',
@@ -64,7 +58,6 @@ var LocationItem = React.createClass({
       };
 
     if (img) {
-      // debugger
       var backgroundImage = (
         <div className="location-background" style={divStyle}>
           <div className="location-details">
@@ -78,27 +71,6 @@ var LocationItem = React.createClass({
         </div>
       )
     }
-
-    // if (this.state.location) {
-    //   var locationBody = (
-    //     <div className="location-body">
-    //       {this.state.location.body}
-    //     </div>
-    //   )
-    // } else {
-    //   var locationBody = <div></div>
-    // }
-    //
-    // if (this.state.location) {
-    //   var reviewForm = (
-    //     <div>
-    //       <ReviewForm locationid={this.state.location.id}/>
-    //     </div>
-    //   )
-    // } else {
-    //   var reviewForm = <div></div>
-    // }
-
 
     return(
       <div>
@@ -114,6 +86,7 @@ var LocationItem = React.createClass({
         <ul className="location-reviews">
           {reviewShow}
         </ul>
+        <Tail />
       </div>
     )
   }

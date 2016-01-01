@@ -24,7 +24,7 @@
     left: 0px;
     color: transparent;
     background-size: cover;
-    /*background-position: 50% 50%;*/
+    background-position: 50% 50%;
     background-repeat: none;
     opacity: 0;
     z-index: 0;
@@ -58,7 +58,7 @@
     animation-delay: 6s;
 }
 .cb-slideshow li:nth-child(3) span {
-    background-image: url(http://res.cloudinary.com/dptviwjop/image/upload/v1451523621/photo-1451372116829-ba19e28465fc_ceaxtw.jpg);
+    background-image: url(http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_1985/v1451620551/photo-1429041966141-44d228a42775_xhnrcz.jpg);
     animation-delay: 12s;
 }
 .cb-slideshow li:nth-child(4) span {
