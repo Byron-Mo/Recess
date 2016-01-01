@@ -19,24 +19,24 @@
 # Nassau, Bahamas                   X
 # Punta Cana, Dominican Republic
 # Barcelona, Spain                  X
-# Montego Bay, Jamaica
+# Montego Bay, Jamaica              X
 # Rome, Italy                       X
 # Toronto, Canada                   X
 # San Juan, Puerto Rico
-# Bora Bora
+# Bora Bora                         X
 # Sydney, Australia                 X
 # Maui, Hawaii                      X
 # Rio de Janeiro, Brazil            X
 # Cape Town, South Africa           X
-# Maldives
+# Maldives                          X
 # Prague,                           X
 # Yellowstone, California
 # Vancouver, Canada                 X
-# Washington D.C.
+# Washington D.C.                   X
 # U.S. Virgin Islands
-# Zurich
-# Budapest
-# Las Vegas
+# Zurich                            X
+# Budapest                          X
+# Las Vegas                         X
 # Hong Kong, Hong Kong              X
 # Create
 # Puerto Rico
@@ -283,126 +283,157 @@ ActiveRecord::Base.transaction do
       lng: 103.861430
     },
     "27" => {
-      name: "Saigon, Vietname",
+      name: "Saigon, Vietnam",
       region: "Asia",
       activity: "Culture/History",
       body: "Saigon is a city in southern Vietnam famous for the pivotal role it played in the Vietnam War. It's also known for its French colonial architecture, including Notre-Dame Basilica, made entirely of materials imported from France, and the neoclassical Saigon Central Post Office.",
-      image: "",
-      lat: ,
-      lng:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451611322/499324_elg8ie.jpg",
+      lat: 10.808795,
+      lng: 106.632530
     },
     "28" => {
       name: "Saint Petersburg, Russia",
       region: "Europe",
       activity: "Culture/History",
       body: "St. Petersburg is a Russian port city on the Baltic Sea. Founded in 1703 by Peter the Great, it was the imperial capital for 2 centuries, and it remains the country’s cultural center, with venues like the hypermodern Mariinsky Theatre hosting opera and ballet.",
-      image: "",
-      lat: ,
-      lng:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451611564/Russia-Wallpapers-3_gzd242.jpg",
+      lat: 59.941919,
+      lng: 30.333278
     },
     "29" => {
       name: "Moscow, Russia",
       region: "Europe",
       activity: "Culture/History",
       body: "Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a fortified complex that’s home to the president and tsarist treasures in the Armoury.",
-      image: "",
-      lat: ,
-      lng:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_1952/v1451612456/Red-square-moscow-russia-tours-wallpaper-2014-07-03-40_kxmtsh.jpg",
+      lat: 55.758746,
+      lng: 37.620114
     },
     "30" => {
       name: "Berlin, Germany",
       region: "Europe",
       activity: "Culture/History",
       body: "Berlin, Germany’s capital and cultural center, dates to the 13th century. Divided during the Cold War, today it's known for its art scene, nightlife and modern architecture, such as Mies van der Rohe’s landmark Neue Nationalgalerie.",
-      image: "",
-      lat: ,
-      lng:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451612837/dancing_lights_in_berlin_ivea9d.jpg",
+      lat: 52.519159,
+      lng: 13.405904
     },
     "31" => {
       name: "Frankfurt, Germany",
       region: "Europe",
       activity: "Culture/History",
       body: "Frankfurt, a central German city on the Main River, is a major financial hub.",
-      image: "",
-      lat: ,
-      lng:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2149/v1451613027/frankfurt_am_main_germany_building_river_hdr_28660_3840x2160_ym6uxj.jpg",
+      lat: 50.108799,
+      lng: 8.685309
     },
     "32" => {
       name: "Male, Maldives",
       region: "Asia",
       activity: "Beachfront",
       body: "The Maldives is a tropical nation in the Indian Ocean composed of 26 coral atolls, which are made up of hundreds of islands. It’s known for its beaches, blue lagoons and extensive reefs.",
-      image: "",
-      lat: ,
-      lng:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451613152/maldives_tropical_bungalows_sky_90627_1920x1080_ellzue.jpg",
+      lat: 4.175035,
+      lng: 73.510120
     },
     "33" => {
-      name: "",
-      region: "",
-      activity: "",
-      body: "",
-      image: "",
-      lat: ,
-      lng:
+      name: "Johannesburg, South Africa",
+      region: "Africa",
+      activity: "Adventure",
+      body: "Johannesburg, South Africa's biggest city and capital of its inland Gauteng province, began as a 19th-century gold-mining settlement. It's known for Soweto township, a sprawling jumble of African workers’ houses that was once home to Nelson Mandela and Desmond Tutu.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451613343/johannesburg_city-1920x1080_bgmu39.jpg",
+      lat: -26.202615,
+      lng: 27.991592
     },
     "34" => {
-      name: "",
-      region: "",
-      activity: "",
-      body: "",
-      image: "",
-      lat: ,
-      lng:
+      name: "Windhoek, Namibia",
+      region: "Africa",
+      activity: "Adventure",
+      body: "Namibia, a country in southwest Africa, is distinguished by the Namib desert along the Atlantic Ocean coast. The country is home to diverse wildlife, including a significant cheetah population.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451613523/Namibia-Mountains-1200x1920_fbu1rb.jpg",
+      lat: -22.585008,
+      lng: 17.080531
     },
     "35" => {
-      name: "",
-      region: "",
-      activity: "",
-      body: "",
-      image: "",
-      lat: ,
-      lng:
+      name: "Cairo, Egypt",
+      region: "Africa",
+      activity: "Culture/History",
+      body: "Egypt, a country linking northeast Africa with the Middle East, dates to the time of the pharaohs. Millennia-old monuments still sit along the fertile Nile River Valley, including the colossal Pyramids and Sphinx at Giza and the hieroglyph-lined Karnak Temple and Valley of the Kings tombs in Luxor.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451613599/1367365_y5tlez.jpg",
+      lat: 30.046408,
+      lng: 31.235805
     },
     "36" => {
-      name: "",
-      region: "",
-      activity: "",
-      body: "",
-      image: "",
-      lat: ,
-      lng:
+      name: "Montego Bay, Jamaica",
+      region: "North America",
+      activity: "Beachfront",
+      body: "Jamaica, a Caribbean island nation, has a lush topography of mountains, rainforests and reef-lined beaches. Many of its all-inclusive resorts are clustered in vibrant Montego Bay, with its British colonial architecture, and Negril, renowned for diving and snorkelling.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451613713/834382-jamaica_rmrpaw.jpg",
+      lat: 18.475530,
+      lng: -77.897058
     },
     "37" => {
-      name: "",
-      region: "",
-      activity: "",
-      body: "",
-      image: "",
-      lat: ,
-      lng:
+      name: "Yellowstone, Wyoming, United States",
+      region: "North America",
+      activity: "Adventure",
+      body: "Yellowstone National Park is a nearly 3,500-sq.-mile wilderness recreation area atop a volcanic hot spot. Yellowstone features dramatic canyons, alpine rivers, lush forests, hot springs and gushing geysers, including its most famous, Old Faithful.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2234/v1451613850/photo-1447110247212-4b3cd4e0881a_mkzyev.jpg",
+      lat: 44.427948,
+      lng: -110.588412
     },
     "38" => {
-      name: "",
-      region: "",
-      activity: "",
-      body: "",
-      image: "",
-      lat: ,
-      lng:
+      name: "Zurich, Switzerland",
+      region: "Europe",
+      activity: "Adventure",
+      body: "The city of Zurich lies at the north end of Lake Zurich in northern Switzerland, a global center for banking and finance. ",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451613966/web_zurich_seebecken_megateaser1600x900_tzm2po.jpg",
+      lat: 47.376969,
+      lng: 8.538773
     },
-    "39": {
-      name: "Miami, Florida",
+    "39" => {
+      name: "Miami, Florida, United States",
       region: "North America",
       activity: "Beachfront",
       body: "Miami, at Florida's southeastern tip, is a vibrant city whose Cuban influence is reflected in the cafes and cigar shops that line Calle Ocho in Little Havana.",
-      image:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451614016/1464502_ghztcq.jpg",
+      lat: 25.763139,
+      lng: -80.195033
     },
-    "40": {
+    "40" => {
       name: "Cancun, Mexico",
       region: "North America",
       activity: "Beachfront",
       body: "Cancún, a Mexican city on the Yucatán Peninsula bordering the Caribbean Sea, is known for its beaches, numerous resorts and energetic nightlife.",
-      image:
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2182/v1451614438/Tulum1MEX-2560x1024_ni0gwn.jpg",
+      lat: 21.161778,
+      lng: -86.852189
+    },
+    "41" => {
+      name: "Budapest, Hungary",
+      region: "Europe",
+      activity: "Adventure",
+      body: "Budapest, Hungary’s capital, is bisected by the River Danube, and the 19th-century Chain Bridge connects its hilly Buda district with flat Pest. A funicular runs up Castle Hill to Buda’s Old Town, where the Budapest History Museum traces life from Roman times onwards.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451614767/backstretch_xday2l.jpg",
+      lat: 47.497667,
+      lng: 19.042406
+    },
+    "42" => {
+      name: "Jerusalem, Isreal",
+      region: "Europe",
+      activity: "Culture/History",
+      body: "Jerusalem, a Middle Eastern city west of the Dead Sea, has been a place of pilgrimage and worship for Jews, Christians and Muslims since the biblical era.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/v1451614861/jerusalem-top-view-night_acu0cp.jpg",
+      lat: 31.767407,
+      lng: 35.209003
+    },
+    "43" => {
+      name: "Amsterdam, Netherlands",
+      region: "Europe",
+      activity: "Culture/History",
+      body: "Amsterdam is the Netherlands’ capital, known for its artistic heritage, elaborate canal system and narrow houses with gabled facades, legacies of the city’s 17th-century Golden Age.",
+      image: "http://res.cloudinary.com/dptviwjop/image/upload/c_scale,w_2094/v1451614943/433590_oh1q8h.jpg",
+      lat: 52.371028,
+      lng: 4.894836
     }
   }
 
@@ -413,7 +444,13 @@ ActiveRecord::Base.transaction do
   Location.create!(locations)
 end
 
-User.create!(username: "bmo", password: "password")
+User.create!(username: "Guest", password: "password")
+User.create!(username: "David", password: "password")
+User.create!(username: "Alyssa", password: "password")
+User.create!(username: "Johnny", password: "password")
+User.create!(username: "Tommy", password: "password")
+User.create!(username: "Tracy", password: "password")
+User.create!(username: "Bmo", password: "password")
 Preference.create!(region: "Europe", activity: "Culture/History", user_id: 1)
 LocationVisit.create!(location_id: 15, user_id: 1)
 LocationVisit.create!(location_id: 8, user_id: 1)
@@ -421,10 +458,43 @@ LocationVisit.create!(location_id: 3, user_id: 1)
 LocationVisit.create!(location_id: 1, user_id: 1)
 LocationVisit.create!(location_id: 10, user_id: 1)
 LocationVisit.create!(location_id: 11, user_id: 1)
+LocationVisit.create!(location_id: 40, user_id: 1)
+LocationVisit.create!(location_id: 32, user_id: 1)
+LocationVisit.create!(location_id: 33, user_id: 1)
+LocationVisit.create!(location_id: 37, user_id: 1)
 Review.create!(rating: 4, body: "Amazing City", user_id: 1, location_id: 3)
 Review.create!(rating: 4, body: "Lovely City", user_id: 1, location_id: 8)
 Review.create!(rating: 4, body: "Beautiful City", user_id: 1, location_id: 15)
 Review.create!(rating: 4, body: "Stunning City", user_id: 1, location_id: 1)
+
+Review.create!(rating: 5, body: "Stunning City", user_id: 1, location_id: 2)
+Review.create!(rating: 3, body: "Stunning City", user_id: 2, location_id: 3)
+Review.create!(rating: 3, body: "Stunning City", user_id: 3, location_id: 4)
+Review.create!(rating: 4, body: "Stunning City", user_id: 4, location_id: 5)
+Review.create!(rating: 5, body: "Stunning City", user_id: 5, location_id: 6)
+Review.create!(rating: 5, body: "Stunning City", user_id: 6, location_id: 7)
+Review.create!(rating: 2, body: "Stunning City", user_id: 7, location_id: 8)
+Review.create!(rating: 5, body: "Stunning City", user_id: 1, location_id: 9)
+Review.create!(rating: 5, body: "Stunning City", user_id: 2, location_id: 10)
+Review.create!(rating: 4, body: "Stunning City", user_id: 3, location_id: 11)
+Review.create!(rating: 4, body: "Stunning City", user_id: 4, location_id: 12)
+Review.create!(rating: 3, body: "Stunning City", user_id: 5, location_id: 13)
+Review.create!(rating: 5, body: "Stunning City", user_id: 6, location_id: 14)
+Review.create!(rating: 5, body: "Stunning City", user_id: 7, location_id: 15)
+Review.create!(rating: 3, body: "Stunning City", user_id: 1, location_id: 16)
+Review.create!(rating: 4, body: "Stunning City", user_id: 2, location_id: 17)
+Review.create!(rating: 4, body: "Stunning City", user_id: 3, location_id: 18)
+Review.create!(rating: 5, body: "Stunning City", user_id: 4, location_id: 19)
+Review.create!(rating: 5, body: "Stunning City", user_id: 5, location_id: 20)
+Review.create!(rating: 3, body: "Stunning City", user_id: 6, location_id: 21)
+Review.create!(rating: 4, body: "Stunning City", user_id: 7, location_id: 22)
+Review.create!(rating: 5, body: "Stunning City", user_id: 1, location_id: 23)
+Review.create!(rating: 5, body: "Stunning City", user_id: 2, location_id: 24)
+Review.create!(rating: 3, body: "Stunning City", user_id: 3, location_id: 25)
+Review.create!(rating: 4, body: "Stunning City", user_id: 4, location_id: 26)
+Review.create!(rating: 4, body: "Stunning City", user_id: 5, location_id: 27)
+
+
 LocationWish.create!(location_id: 14, user_id: 1)
 LocationWish.create!(location_id: 2, user_id: 1)
 LocationWish.create!(location_id: 4, user_id: 1)

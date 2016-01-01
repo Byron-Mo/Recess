@@ -53,7 +53,7 @@ var Login = React.createClass({
     e.preventDefault();
     localStorage.setItem('visited', false)
     ApiUtil.createSession({
-      username: "bmo",
+      username: "Guest",
       password: "password"
     })
   },

@@ -11,9 +11,11 @@ when he searches for a location
 -add dyno                                 DONE
 -add icon                                 DONE
 -domain name                              DONE
--seed locations
+-seed locations                           DONE
 -seed reviews
 -style delete location and markers
+-refactor
+-radio buttons
 -add average reviews                      DONE
 -star rating instead of 4/5
 -legend                                   DONE
@@ -22,7 +24,6 @@ when he searches for a location
 
 -delete markers        DONE
 -add location wishes   DONE
--
 
 
 var Store = require('flux/utils').Store,
