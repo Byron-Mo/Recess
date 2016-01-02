@@ -26,6 +26,19 @@ var SearchedLocations = React.createClass({
         userInput = this.props.location.query[0],
         that = this;
 
+    var convertRating = function(rating, filledStar, blankStar) {
+        var reviewRating = [];
+        for (var i = 0; i < rating; i++) {
+          reviewRating.push(filledStar);
+        }
+
+        while (reviewRating.length < 5) {
+          reviewRating.push(blankStar);
+        }
+
+        return reviewRating;
+    };
+
     for (var key in locations) {
       if (locations.hasOwnProperty(key)) {
         if (locations[key].name.toLowerCase().match(userInput)) {
@@ -58,13 +71,19 @@ var SearchedLocations = React.createClass({
         that.props.history.push("/location/" + location.id)
       };
 
+      var starRating = convertRating(
+        location.avgReview,
+        <img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451773973/whitestar_dyoxwy.svg" height="5%" width="5%"></img>,
+        <img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451774109/greystar_xfxiaa.svg" height="5%" width="5%"></img>
+      );
+
       return (
         <li className="recommendations-li" key={location.id}>
           <div className="recommendation-box hvr-grow" onClick={handleClickLocation} key={location.id}>
             <div className="recommendation-img" style={divStyle}></div>
             <div className="recommendation-text">
               <div className="recommendation-name">{location.name}</div>
-              <div className="recommendation-rating">{location.avgReview}/5</div>
+              <div className="recommendation-rating-div">{starRating}</div>
             </div>
           </div>
         </li>

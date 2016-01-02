@@ -136,7 +136,6 @@
   width: 375px;
   height: 275px;
   float: left;
-  /*margin: 25px;*/
 }
 
 .recommendation-box:hover {
@@ -156,12 +155,11 @@
 }
 
 .recommendation-name {
-  /*margin-top: 15px;*/
   padding-top: 15px;
   padding-bottom: 8px;
   font-size: 22px;
 }
 
-.recommendation-rating {
+.recommendation-rating-div {
   padding-bottom: 10px;
 }

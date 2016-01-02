@@ -10,8 +10,6 @@
   text-align: center;
   width: auto;
   height: 100%;
-  /*padding-left: 150px;
-  padding-right: 150px;*/
 }
 
 .user-reviews-li {
@@ -21,7 +19,6 @@
 }
 
 .review-img {
-  /*background-position: 100%*/
   margin: 0 auto;
   height: 200px;
   width: 200px;
@@ -40,7 +37,7 @@
 }
 
 .user-review-rating {
-  padding-top: 5px;
+  padding-top: 10px;
   font-size: 18px;
 }
 
@@ -53,7 +50,6 @@
 
 /* review index item */
 .review-btn {
-  /*padding-top: 20px;*/
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 10px;

@@ -42,11 +42,23 @@ var UserHomepage = React.createClass({
   },
 
   render: function() {
-    var prefUrl = "/user/" + this.props.params.userid + "/preferences";
-    var reviewUrl = "/user/" + this.props.params.userid + "/reviews";
-    var locations = this.state.locations;
+    var prefUrl = "/user/" + this.props.params.userid + "/preferences",
+        reviewUrl = "/user/" + this.props.params.userid + "/reviews",
+        locations = this.state.locations,
+        user = this.state.user;
 
-    var user = this.state.user;
+    var convertRating = function(rating, filledStar, blankStar) {
+        var reviewRating = [];
+        for (var i = 0; i < rating; i++) {
+          reviewRating.push(filledStar);
+        }
+
+        while (reviewRating.length < 5) {
+          reviewRating.push(blankStar);
+        }
+
+        return reviewRating;
+    };
 
     var recommendations = [];
     if (user) {
@@ -94,13 +106,19 @@ var UserHomepage = React.createClass({
         that.props.history.push("/location/" + recommendation.id)
       };
 
+      var starRating = convertRating(
+        recommendation.avgReview,
+        <img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451773973/whitestar_dyoxwy.svg" height="5%" width="5%"></img>,
+        <img src="http://res.cloudinary.com/dptviwjop/image/upload/v1451774109/greystar_xfxiaa.svg" height="5%" width="5%"></img>
+      );
+
       return (
         <li className="recommendations-li" key={recommendation.id}>
           <div className="recommendation-box hvr-grow" onClick={handleClickRec} key={recommendation.id}>
             <div className="recommendation-img" style={divStyle}></div>
             <div className="recommendation-text">
               <div className="recommendation-name">{recommendation.name}</div>
-              <div className="recommendation-rating">{recommendation.avgReview}/5</div>
+              <div className="recommendation-rating-div">{starRating}</div>
             </div>
           </div>
         </li>
