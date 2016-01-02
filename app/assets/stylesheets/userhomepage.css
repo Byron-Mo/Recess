@@ -104,6 +104,8 @@
   height: 100%;
   position: relative;
   text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .recommendations {
@@ -122,17 +124,18 @@
   width: auto;
   height: 100%;
   padding-bottom: 45px;
+  -webkit-padding-start: 0px;
 }
 
 .recommendations-li {
   display: inline-block;
+  padding: 25px;
 }
 
 .recommendation-box {
   width: 375px;
   height: 275px;
   float: left;
-  padding: 25px;
   /*margin: 25px;*/
 }
 

@@ -59,8 +59,8 @@ var SearchedLocations = React.createClass({
       };
 
       return (
-        <li className="recommendations-li hvr-grow" key={location.id}>
-          <div className="recommendation-box" onClick={handleClickLocation} key={location.id}>
+        <li className="recommendations-li" key={location.id}>
+          <div className="recommendation-box hvr-grow" onClick={handleClickLocation} key={location.id}>
             <div className="recommendation-img" style={divStyle}></div>
             <div className="recommendation-text">
               <div className="recommendation-name">{location.name}</div>

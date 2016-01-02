@@ -64,8 +64,6 @@ var UserHomepage = React.createClass({
       };
     }
 
-    recommendations = recommendations.slice(0, 6);
-
     recommendations.forEach(function(location) {
       var reviews = location.reviews;
       var ratings = [];
@@ -86,6 +84,8 @@ var UserHomepage = React.createClass({
       return b.avgReview - a.avgReview
     })
 
+    recommendations = recommendations.slice(0, 6);
+
     var that = this;
     var recommendationsShow = recommendations.map(function(recommendation) {
       var divStyle = {backgroundImage: 'url(' + recommendation.image + ')'};
@@ -95,8 +95,8 @@ var UserHomepage = React.createClass({
       };
 
       return (
-        <li className="recommendations-li hvr-grow" key={recommendation.id}>
-          <div className="recommendation-box" onClick={handleClickRec} key={recommendation.id}>
+        <li className="recommendations-li" key={recommendation.id}>
+          <div className="recommendation-box hvr-grow" onClick={handleClickRec} key={recommendation.id}>
             <div className="recommendation-img" style={divStyle}></div>
             <div className="recommendation-text">
               <div className="recommendation-name">{recommendation.name}</div>
