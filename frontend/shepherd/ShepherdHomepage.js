@@ -3,7 +3,6 @@ var Shepherd = require('tether-shepherd');
 var ShepherdTour = new Shepherd.Tour({
   defaults: {
     classes: 'shepherd-theme-arrows',
-    // scrollTo: true
   }
 });
 

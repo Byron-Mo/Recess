@@ -443,7 +443,9 @@ reviews = [
   "I like how there's wifi everywhere!",
   "I really enjoy the weather here. It's very family friendly but also provides a good night life for adults",
   "I enjoyed hearing different accents in this area. It has encouraged me to learn another language.",
-  "I really liked my shopping experience here. I was able to find a lot of local relics as well as high end items for a much cheaper price."
+  "I really liked my shopping experience here. I was able to find a lot of local relics as well as high end items for a much cheaper price.",
+  "The nightlife is spectacular. I also love how tourist friendly this city is. All streets and directions are labeled in English.",
+  "There's so much to do in the city! The food is amazing and the culture is none other. We'll definitely come back next time!"
 ]
 
 50.times do

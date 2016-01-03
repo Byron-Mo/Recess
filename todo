@@ -12,12 +12,12 @@ when he searches for a location
 -add icon                                 DONE
 -domain name                              DONE
 -seed locations                           DONE
--seed reviews
--style delete location and markers
+-seed reviews                             DONE
+-style delete location and markers        DONE
 -refactor
 -radio buttons
 -add average reviews                      DONE
--star rating instead of 4/5
+-star rating instead of 4/5               WORKING
 -legend                                   DONE
 -the world is your playground above map   DONE
 -fade background picture                  DONE

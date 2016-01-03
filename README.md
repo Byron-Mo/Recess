@@ -9,13 +9,13 @@ Recess is a web application inspired by Goodreads, providing recommendations to 
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create an account
+- [x] Create an account
 - [ ] Log in / Log out
-- [ ] Mark places they've been to or like to go on a map
+- [ ] Using jVectorMap, mark places they've been to or like to go on a map
 - [ ] Create, read, edit, and delete reviews of destinations they've been to
 - [ ] Interactively select preferences for their next vacation
-- [ ] Search and view locations and reviews (auto suggest as user types)
-- [ ] Receive vacation recommendations
+- [ ] Search and view locations by city or country
+- [ ] Receive vacation recommendations based off of user preference
 
 ## Design Docs
 * [View Wireframes][view]
