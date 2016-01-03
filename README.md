@@ -1,7 +1,7 @@
 # Recess
 
 [Recess][link]
-[link]: www.recess.online
+[link]: http://www.recess.online/
 
 ## Minimum Viable Product
 
