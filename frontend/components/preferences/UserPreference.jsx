@@ -14,7 +14,6 @@ var UserPreference = React.createClass({
       user: UserStore.fetchUser(),
       errors: ErrorStore.fetchErrors()
     });
-    // debugger
     if (this.state.user && this.state.user.preference) {
       this.setState({
         toggleError: 0,
@@ -56,18 +55,9 @@ var UserPreference = React.createClass({
              }
            }
          }
-
-        //  if (window.localStorage) {
-        //    window.localStorage.setItem(
-        //      'jvectormap-selected-regions',
-        //      JSON.stringify(map.getSelectedRegions())
-        //    );
-        //  }
        },
 
      });
-
-    // map.setSelectedRegions( JSON.parse( window.localStorage.getItem('jvectormap-selected-regions') || '[]' ) );
 
     this.listener = UserStore.addListener(this.updateState);
     this.updateErrors = ErrorStore.addListener(this.updateState)
@@ -100,18 +90,6 @@ var UserPreference = React.createClass({
   handleActivity: function(e) {
     this.setState({ activity: e.target.value })
   },
-
-  // handleRegion: function(e) {
-  //   this.setState({ region: e.target.value })
-  // },
-
-  // isSelected: function(value) {
-  //   if (this.state.region === value) {
-  //     return "selected";
-  //   } else {
-  //     return "";
-  //   }
-  // },
 
   isChecked: function(value) {
     if (this.state.activity === value) {

@@ -412,9 +412,14 @@ User.create!(username: "Tracy", password: "password")
 User.create!(username: "Bmo", password: "password")
 User.create!(username: "Linda", password: "password")
 User.create!(username: "Huy", password: "password")
-User.create!(username: "Kathy", password: "password")
+User.create!(username: "Michael", password: "password")
+User.create!(username: "Kyle", password: "password")
+User.create!(username: "Andrew", password: "password")
+User.create!(username: "Marcus", password: "password")
+User.create!(username: "Helen", password: "password")
+User.create!(username: "Chen", password: "password")
 
-Preference.create!(region: "Europe", activity: "Culture/History", user_id: 1)
+Preference.create!(region: "Asia", activity: "Culture/History", user_id: 1)
 
 LocationVisit.create!(location_id: 15, user_id: 1)
 LocationVisit.create!(location_id: 8, user_id: 1)
@@ -445,10 +450,13 @@ reviews = [
   "I enjoyed hearing different accents in this area. It has encouraged me to learn another language.",
   "I really liked my shopping experience here. I was able to find a lot of local relics as well as high end items for a much cheaper price.",
   "The nightlife is spectacular. I also love how tourist friendly this city is. All streets and directions are labeled in English.",
-  "There's so much to do in the city! The food is amazing and the culture is none other. We'll definitely come back next time!"
+  "There's so much to do in the city! The food is amazing and the culture is none other. We'll definitely come back next time!",
+  "The culture here is like no other! Everyone is extremely friendly and welcoming. We had absolutely no problems getting around.",
+  "The cuisine is fantastic! The blend of spices and sauce make such tasty dishes!",
+  "My family and I had such a blast here! There was so much to see and even more to eat! We are looking forward to coming back on our next vacation."
 ]
 
-50.times do
+70.times do
   Review.create!(
     rating: rand(3..5),
     body: reviews[rand(reviews.length)],

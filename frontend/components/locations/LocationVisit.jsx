@@ -11,23 +11,6 @@ var LocationVisit = React.createClass({
     return { searchStringVisit: "", searchStringWish: "", toggleErrorVisit: 0, user: ""}
   },
 
-  // componentWillReceiveProps: function(newProps) {
-  //   ApiUtil.fetchUser(newProps.user.id)
-  // },
-  //
-  // updateState: function() {
-  //   this.setState({user: UserStore.fetchUser()})
-  //   // debugger
-  // },
-  //
-  // componentDidMount: function() {
-  //   this.listener = UserStore.addListener(this.updateState)
-  // },
-  //
-  // componentWillUnmount: function() {
-  //   this.listener.remove();
-  // },
-
   includeLocation: function(location) {
     var locationId = this.props.user.location_visits.map(function(location_visit) {
       return location_visit.location_id;
@@ -43,7 +26,6 @@ var LocationVisit = React.createClass({
 
     if (userInput.length <= 3) {
       this.setState({toggleErrorVisit: 1})
-      // return this.history.push("/user/" + this.props.user.id)
     }
 
     var locations = this.props.locations,

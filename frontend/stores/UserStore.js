@@ -9,10 +9,6 @@ UserStore.fetchUser = function() {
   return _users[0];
 },
 
-// UserStore.find = function(id) {
-//   return _users[id];
-// };
-
 UserStore.createUser = function(user) {
   _users = [user];
   UserStore.__emitChange();
