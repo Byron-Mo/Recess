@@ -10,12 +10,12 @@ Recess is a web application inspired by Goodreads, providing recommendations to 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [x] Create an account
-- [ ] Log in / Log out
-- [ ] Using jVectorMap, mark places they've been to or like to go on a map
-- [ ] Create, read, edit, and delete reviews of destinations they've been to
-- [ ] Interactively select preferences for their next vacation
-- [ ] Search and view locations by city or country
-- [ ] Receive vacation recommendations based off of user preference
+- [x] Log in / Log out
+- [x] Using jVectorMap, mark places they've been to or like to go on a map
+- [x] Create, read, edit, and delete reviews of destinations they've been to
+- [x] Interactively select preferences for their next vacation
+- [x] Search and view locations by city or country
+- [x] Receive vacation recommendations based off of user preference
 
 ## Design Docs
 * [View Wireframes][view]
@@ -44,7 +44,7 @@ Each location's show page will contain user reviews associated with that locatio
 
 [Details][phase-three]
 
-### Phase 4: Next Vacation Preference Form (1.5 days)
+### Phase 4: Next Vacation Preference Form with jVectorMap (1.5 days)
 
 Phase 4 will be focused on creating an interactive form allowing the user to select preferences for his/her next vacation. Using Google's Map API, React, and Flux, render a map that allows user to select a region of the world. Add options for user to select type of activity and price
 

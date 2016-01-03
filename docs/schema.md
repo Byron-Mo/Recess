@@ -15,10 +15,11 @@ column name | data type | details
 id          | integer   | not null, primary key
 name        | string    | not null
 region      | string    | not null
-price       | integer   | not null, inclusion: { in: (1..5).to_a } (this is a maybe)
 activity    | string    | not null, inclusion: { in: %w(Culture/History, Beachfront, Adventure) }
 body        | text      | not null
 image       | string    | not null, picture used in background
+lat         | float     | not null
+lng         | float     | not null
 
 ## users
 column name     | data type | details
@@ -33,18 +34,17 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 region      | string    | not null
-price       | integer   | not null, inclusion: { in: (1..5).to_a } (this is a maybe)
 activity    | string    | not null, inclusion: { in: %w(Culture/History, Beachfront, Adventure) }
 user_id     | integer   | not null, foreign key (references users), indexed
 
-## UserBeenToLocation
+## location_visits
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign_key (references users), indexed
 location_id | integer   | not null, foreign_key (references locations), indexed
 
-## UserWantToLocation
+## location_wishes
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
