@@ -1,5 +1,4 @@
 var UserActions = require('../actions/UserActions'),
-    SessionActions = require('../actions/SessionActions'),
     ReviewActions = require('../actions/ReviewActions'),
     LocationActions = require('../actions/LocationActions'),
     ErrorActions = require('../actions/ErrorActions');
