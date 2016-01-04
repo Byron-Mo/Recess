@@ -68,3 +68,12 @@
   vertical-align: middle;*/
   /*transform: translateY(-50%);*/
 }
+
+h3 {
+  -webkit-margin-after: 0;
+}
+
+h4 {
+  font-size: 20px;
+  -webkit-margin-before: 10px;
+}
