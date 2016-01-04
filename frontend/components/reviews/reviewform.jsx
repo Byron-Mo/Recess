@@ -9,7 +9,7 @@ var ReviewForm = React.createClass({
   mixins: [LinkedStateMixin, History],
 
   getInitialState: function() {
-    return { body: "", rating: "", errors: "", toggleError: 0 }
+    return { body: "", rating: "", errors: "", toggleError: 0, toggleSuccess: 0 }
   },
 
   updateState: function() {
@@ -34,6 +34,7 @@ var ReviewForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+    this.setState({toggleSuccess: 0, toggleError: 0})
 
     ApiUtil.createReview({
       location_id: this.props.locationid,
@@ -41,14 +42,14 @@ var ReviewForm = React.createClass({
       rating: this.state.rating
     });
 
-    this.setState({ body: "", rating: "" });
+    this.setState({ body: "", rating: "", toggleSuccess: 1});
   },
 
   render: function() {
-    var errorMsg;
+    var msgResponse;
 
     if (this.state.toggleError) {
-      errorMsg = (
+      msgResponse = (
         <div className="review-errors">
           <ul>
             {this.state.errors.map(function(msg) {
@@ -58,8 +59,8 @@ var ReviewForm = React.createClass({
           <br></br>
         </div>
       )
-    } else {
-      errorMsg = <div></div>
+    } else if (this.state.toggleError === 0 && this.state.toggleSuccess === 1){
+      msgResponse = <div className="review-errors"><ul><li>Review created!</li></ul></div>
     };
 
     return(
@@ -76,7 +77,7 @@ var ReviewForm = React.createClass({
           </div>
           <br></br>
           <textarea className="review-text" valueLink={this.linkState("body")}></textarea>
-          {errorMsg}
+          {msgResponse}
           <br></br>
           <input type="submit" value="Create Review" className="review-btn-review-form"></input>
         </form>

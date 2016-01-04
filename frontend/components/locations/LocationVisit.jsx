@@ -21,6 +21,7 @@ var LocationVisit = React.createClass({
 
   handleSubmitVisit: function(e) {
     e.preventDefault();
+    this.setState({toggleLocationVisit: 0})
 
     var userInput = this.state.searchStringVisit.trim().toLowerCase();
 
@@ -50,12 +51,13 @@ var LocationVisit = React.createClass({
         user_id: parseInt(this.props.user.id)
       });
 
-      this.setState({toggleErrorVisit: 0, searchStringVisit: ""})
+      this.setState({toggleErrorVisit: 0, searchStringVisit: "", toggleLocationVisit: 1})
     }
   },
 
   handleSubmitWish: function(e) {
     e.preventDefault();
+    this.setState({toggleLocationWish: 0})
 
     var userInput = this.state.searchStringWish.trim().toLowerCase();
 
@@ -85,13 +87,16 @@ var LocationVisit = React.createClass({
         user_id: parseInt(this.props.user.id)
       });
 
-      this.setState({toggleErrorWish: 0, searchStringWish: ""})
+      this.setState({toggleErrorWish: 0, searchStringWish: "", toggleLocationWish: 1})
     }
   },
 
   render: function() {
     var errorMsgVisit = this.state.toggleErrorVisit ? <div className="error-msg">Invalid City</div> : <div></div>;
     var errorMsgWish = this.state.toggleErrorWish ? <div className="error-msg">Invalid City</div> : <div></div>;
+
+    var locationVisitResp = this.state.toggleLocationVisit ? <div className="error-msg">Location Added!</div> : <div></div>;
+    var locationWishResp = this.state.toggleLocationWish ? <div className="error-msg">Location Added!</div> : <div></div>
 
     if (this.props.user) {
       var mapLocation = <MapLocation locationVisits={this.props.user.location_visits} locations={this.props.locations} locationWishes={this.props.user.location_wishes}/>
@@ -106,12 +111,14 @@ var LocationVisit = React.createClass({
         <div className="location-visit-wish-div">
           <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmitVisit}>
             {errorMsgVisit}
+            {locationVisitResp}
             <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringVisit")} placeholder="Enter a city"></input>
             <br></br>
             <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
           </form>
           <form className="location-visit-wish-form location-input-2" onSubmit={this.handleSubmitWish}>
             {errorMsgWish}
+            {locationWishResp}
             <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringWish")} placeholder="Enter a city"></input>
             <br></br>
             <input type="submit" value="I want to go here" className="location-visit-wish-submit"></input>
