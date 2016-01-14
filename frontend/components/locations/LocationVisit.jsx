@@ -150,7 +150,8 @@ var LocationVisit = React.createClass({
 
   printCity: function(e) {
     var optionStr = document.getElementById('city');
-    var cities = this.findCities(e.target.value)
+    var cities = this.findCities(e.target.value),
+        allCities;
 
     if (optionStr) {
       optionStr.length = 0;
@@ -200,6 +201,28 @@ var LocationVisit = React.createClass({
     this.submitValue = e.target.name
   },
 
+  addCities: function() {
+    var locations = this.props.locations,
+        allCities = [],
+        selectedOption = [];
+
+    if (locations) {
+      for (var key in locations) {
+        if (locations.hasOwnProperty(key)) {
+          var locationName = locations[key].name.split(', ')[0]
+          allCities.push(locationName)
+        }
+      }
+    }
+
+    if (allCities) {
+      allCities.sort().forEach(function(city) {
+        selectedOption.push(<option value={city} key={city}>{city}</option>)
+      })
+    }
+    return selectedOption
+  },
+
   render: function() {
     var errorMsgVisit = this.state.toggleErrorVisit ? <div className="error-msg">Invalid City</div> : <div></div>;
     var errorMsgWish = this.state.toggleErrorWish ? <div className="error-msg">Invalid City</div> : <div></div>;
@@ -218,10 +241,13 @@ var LocationVisit = React.createClass({
         <script language="javascript">{this.printCountry("country")};</script>
         {mapLocation}
         <br></br>
-        Narrow down by Country <select onChange={this.printCity} id="country" name="country"></select><br></br>
+        Narrow down by Country <select onChange={this.printCity} id="country" name="country" className=""></select><br></br>
         Select City
         <form onSubmit={this.handleSubmit}>
-          <select name="city" id="city"></select><br></br>
+          <select name="city" id="city" className="dropdown">
+            <option>City</option>
+            {this.addCities()}
+          </select><br></br>
           <input type="submit" value="I've been here" name="visit" onClick={this.handleClick} className="location-visit-wish-submit"></input>
           <input type="submit" value="I want to go here" name="wish" onClick={this.handleClick} className="location-visit-wish-submit"></input>
         </form>
