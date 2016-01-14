@@ -3,6 +3,8 @@
 [Recess][link]
 [link]: http://www.recess.online/
 
+![Alt text](/app/assets/images/recess.png?raw=true)
+
 Recess is a web application inspired by Goodreads, providing recommendations for your next vacation. Recess is built using Ruby on Rails, PostgreSQL, React.js, jQuery, Shepherd, and jvectorMap.
 
 ## Main Functionality
