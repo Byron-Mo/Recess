@@ -8,87 +8,7 @@ var LocationVisit = React.createClass({
   mixins: [LinkedStateMixin],
 
   getInitialState: function() {
-    return { searchStringVisit: "", searchStringWish: "", toggleErrorVisit: 0, user: ""}
-  },
-
-  includeLocation: function(location) {
-    var locationId = this.props.user.location_visits.map(function(location_visit) {
-      return location_visit.location_id;
-    })
-
-    return locationId.indexOf(location.id)
-  },
-
-  handleSubmitVisit: function(e) {
-    e.preventDefault();
-    this.setState({toggleLocationVisit: 0})
-
-    var userInput = this.state.searchStringVisit.trim().toLowerCase();
-
-    if (userInput.length <= 3) {
-      this.setState({toggleErrorVisit: 1})
-    }
-
-    var locations = this.props.locations,
-        location;
-
-    for (var key in locations) {
-      if (locations.hasOwnProperty(key)) {
-        if (locations[key].name.toLowerCase().match("^" + userInput)) {
-          location = locations[key]
-          break;
-        }
-      }
-    }
-
-    if (location === undefined) {
-      this.setState({toggleErrorVisit: 1})
-    } else if (this.includeLocation(location) !== -1) {
-      this.setState({toggleErrorVisit: 1})
-    } else {
-      ApiUtil.locationVisit({
-        location_id: parseInt(location.id),
-        user_id: parseInt(this.props.user.id)
-      });
-
-      this.setState({toggleErrorVisit: 0, searchStringVisit: "", toggleLocationVisit: 1})
-    }
-  },
-
-  handleSubmitWish: function(e) {
-    e.preventDefault();
-    this.setState({toggleLocationWish: 0})
-
-    var userInput = this.state.searchStringWish.trim().toLowerCase();
-
-    if (userInput.length <= 3) {
-      this.setState({toggleErrorWish: 1})
-    }
-
-    var locations = this.props.locations,
-        location;
-
-    for (var key in locations) {
-      if (locations.hasOwnProperty(key)) {
-        if (locations[key].name.toLowerCase().match("^" + userInput)) {
-          location = locations[key];
-          break;
-        }
-      }
-    }
-
-    if (location === undefined) {
-      this.setState({toggleErrorWish: 1})
-    } else if (this.includeLocation(location) !== -1) {
-      this.setState({toggleErrorWish: 1})
-    } else {
-      ApiUtil.locationWish({
-        location_id: parseInt(location.id),
-        user_id: parseInt(this.props.user.id)
-      });
-
-      this.setState({toggleErrorWish: 0, searchStringWish: "", toggleLocationWish: 1})
-    }
+    return { searchStringVisit: "", searchStringWish: "", user: "", toggleError: 0}
   },
 
   sortUniq: function(countries) {
@@ -140,7 +60,7 @@ var LocationVisit = React.createClass({
     var countries = this.findCountries();
     if (optionStr) {
       optionStr.length = 0;
-      optionStr.options[0] = new Option('Select Country', '');
+      optionStr.options[0] = new Option('Narrow by country', '');
       optionStr.selectedIndex = 0;
       for (var i = 0; i < countries.length; i++) {
         optionStr.options[optionStr.length] = new Option(countries[i], countries[i])
@@ -155,7 +75,7 @@ var LocationVisit = React.createClass({
 
     if (optionStr) {
       optionStr.length = 0;
-      optionStr.options[0] = new Option('Select City', '');
+      optionStr.options[0] = new Option('Choose your city!', '');
       optionStr.selectedIndex = 0;
       for (var i = 0; i < cities.length; i++) {
         optionStr.options[optionStr.length] = new Option(cities[i], cities[i])
@@ -180,20 +100,20 @@ var LocationVisit = React.createClass({
       }
     }
 
-    // debugger
-
-    if (this.submitValue === 'visit') {
+    if (city === "" || location === undefined) {
+      this.setState({toggleError: 1})
+    } else if (this.submitValue === 'visit') {
+      this.setState({toggleSubmit: 1, toggleError: 0})
       ApiUtil.locationVisit({
         location_id: parseInt(location.id),
         user_id: parseInt(this.props.user.id)
       });
     } else if (this.submitValue === 'wish') {
+      this.setState({toggleSubmit: 1, toggleErorr: 0})
       ApiUtil.locationWish({
         location_id: parseInt(location.id),
         user_id: parseInt(this.props.user.id)
       });
-    } else {
-      console.log("in here")
     }
   },
 
@@ -224,11 +144,8 @@ var LocationVisit = React.createClass({
   },
 
   render: function() {
-    var errorMsgVisit = this.state.toggleErrorVisit ? <div className="error-msg">Invalid City</div> : <div></div>;
-    var errorMsgWish = this.state.toggleErrorWish ? <div className="error-msg">Invalid City</div> : <div></div>;
-
-    var locationVisitResp = this.state.toggleLocationVisit ? <div className="error-msg">Location Added!</div> : <div></div>;
-    var locationWishResp = this.state.toggleLocationWish ? <div className="error-msg">Location Added!</div> : <div></div>
+    var errorMsg = this.state.toggleError ? <div className="error-msg">Please select a city</div> : <div></div>;
+    var locationSubmit = this.state.toggleSubmit ? <div className="error-msg">Location Added!</div> : <div></div>;
 
     if (this.props.user) {
       var mapLocation = <MapLocation locationVisits={this.props.user.location_visits} locations={this.props.locations} locationWishes={this.props.user.location_wishes}/>
@@ -237,38 +154,26 @@ var LocationVisit = React.createClass({
     }
 
     return(
-      <div>
+      <div className="location-map-select">
         <script language="javascript">{this.printCountry("country")};</script>
         {mapLocation}
         <br></br>
-        Narrow down by Country <select onChange={this.printCity} id="country" name="country" className=""></select><br></br>
-        Select City
-        <form onSubmit={this.handleSubmit}>
-          <select name="city" id="city" className="dropdown">
-            <option>City</option>
-            {this.addCities()}
-          </select><br></br>
-          <input type="submit" value="I've been here" name="visit" onClick={this.handleClick} className="location-visit-wish-submit"></input>
-          <input type="submit" value="I want to go here" name="wish" onClick={this.handleClick} className="location-visit-wish-submit"></input>
-        </form>
-        <br></br>
-        <br></br>
-        <div className="location-visit-wish-div">
-          <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmitVisit}>
-            {errorMsgVisit}
-            {locationVisitResp}
-            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringVisit")} placeholder="Enter a city"></input>
-            <br></br>
-            <input type="submit" value="I've been here" className="location-visit-wish-submit"></input>
-          </form>
-          <form className="location-visit-wish-form location-input-2" onSubmit={this.handleSubmitWish}>
-            {errorMsgWish}
-            {locationWishResp}
-            <input type="text" className="location-visit-wish-input" valueLink={this.linkState("searchStringWish")} placeholder="Enter a city"></input>
-            <br></br>
-            <input type="submit" value="I want to go here" className="location-visit-wish-submit"></input>
+        <div className="dropdown-menu">
+          <p className="tag-description">Update places you've been or would like to go!</p>
+          {errorMsg}
+          {locationSubmit}
+          <form onSubmit={this.handleSubmit}>
+          <select onChange={this.printCity} id="country" name="country" className="soflow"></select>
+            <select name="city" id="city" className="soflow">
+              <option>Choose your city!</option>
+              {this.addCities()}
+            </select><br></br>
+              <input type="submit" value="I've been here" name="visit" onClick={this.handleClick} className="location-visit-wish-submit button-input-1"></input>
+              <input type="submit" value="I want to go here" name="wish" onClick={this.handleClick} className="location-visit-wish-submit button-input-2"></input>
           </form>
         </div>
+        <br></br>
+        <br></br>
       </div>
     )
   }

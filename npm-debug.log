@@ -1,0 +1,98 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/byron/.linuxbrew/Cellar/node/4.2.1/bin/node',
+1 verbose cli   '/home/byron/.linuxbrew/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'jquery.selectboxit' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose install initial load of /home/byron/Documents/capstone-project/Recess/package.json
+5 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/babel-core/package.json
+6 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/babel-loader/package.json
+7 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/babel-preset-react/package.json
+8 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/flux/package.json
+9 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/history/package.json
+10 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/react/package.json
+11 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/react-addons-linked-state-mixin/package.json
+12 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/react-dom/package.json
+13 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/react-router/package.json
+14 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/tether-shepherd/package.json
+15 verbose installManyTop reading scoped package data from /home/byron/Documents/capstone-project/Recess/node_modules/webpack/package.json
+16 info package.json tether-shepherd@1.2.0 No repository field.
+17 verbose readDependencies loading dependencies from /home/byron/Documents/capstone-project/Recess/package.json
+18 silly cache add args [ 'jquery.selectboxit', null ]
+19 verbose cache add spec jquery.selectboxit
+20 silly cache add parsed spec Result {
+20 silly cache add   raw: 'jquery.selectboxit',
+20 silly cache add   scope: null,
+20 silly cache add   name: 'jquery.selectboxit',
+20 silly cache add   rawSpec: '',
+20 silly cache add   spec: '*',
+20 silly cache add   type: 'range' }
+21 silly addNamed jquery.selectboxit@*
+22 verbose addNamed "*" is a valid semver range for jquery.selectboxit
+23 silly addNameRange { name: 'jquery.selectboxit', range: '*', hasData: false }
+24 silly mapToRegistry name jquery.selectboxit
+25 silly mapToRegistry using default registry
+26 silly mapToRegistry registry https://registry.npmjs.org/
+27 silly mapToRegistry uri https://registry.npmjs.org/jquery.selectboxit
+28 verbose addNameRange registry:https://registry.npmjs.org/jquery.selectboxit not in flight; fetching
+29 verbose request uri https://registry.npmjs.org/jquery.selectboxit
+30 verbose request no auth needed
+31 info attempt registry request try #1 at 1:46:20 PM
+32 verbose request id 5520a4e4dbd7008e
+33 http request GET https://registry.npmjs.org/jquery.selectboxit
+34 http 404 https://registry.npmjs.org/jquery.selectboxit
+35 verbose headers { 'content-type': 'application/json',
+35 verbose headers   'cache-control': 'max-age=0',
+35 verbose headers   'content-length': '2',
+35 verbose headers   'accept-ranges': 'bytes',
+35 verbose headers   date: 'Thu, 14 Jan 2016 21:46:20 GMT',
+35 verbose headers   via: '1.1 varnish',
+35 verbose headers   age: '0',
+35 verbose headers   connection: 'keep-alive',
+35 verbose headers   'x-served-by': 'cache-lax1425-LAX',
+35 verbose headers   'x-cache': 'MISS',
+35 verbose headers   'x-cache-hits': '0',
+35 verbose headers   'x-timer': 'S1452807980.770758,VS0,VE85' }
+36 silly get cb [ 404,
+36 silly get   { 'content-type': 'application/json',
+36 silly get     'cache-control': 'max-age=0',
+36 silly get     'content-length': '2',
+36 silly get     'accept-ranges': 'bytes',
+36 silly get     date: 'Thu, 14 Jan 2016 21:46:20 GMT',
+36 silly get     via: '1.1 varnish',
+36 silly get     age: '0',
+36 silly get     connection: 'keep-alive',
+36 silly get     'x-served-by': 'cache-lax1425-LAX',
+36 silly get     'x-cache': 'MISS',
+36 silly get     'x-cache-hits': '0',
+36 silly get     'x-timer': 'S1452807980.770758,VS0,VE85' } ]
+37 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/jquery.selectboxit
+37 verbose stack     at makeError (/home/byron/.linuxbrew/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+37 verbose stack     at CachingRegistryClient.<anonymous> (/home/byron/.linuxbrew/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+37 verbose stack     at Request._callback (/home/byron/.linuxbrew/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+37 verbose stack     at Request.self.callback (/home/byron/.linuxbrew/lib/node_modules/npm/node_modules/request/request.js:198:22)
+37 verbose stack     at emitTwo (events.js:87:13)
+37 verbose stack     at Request.emit (events.js:172:7)
+37 verbose stack     at Request.<anonymous> (/home/byron/.linuxbrew/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+37 verbose stack     at emitOne (events.js:82:20)
+37 verbose stack     at Request.emit (events.js:169:7)
+37 verbose stack     at IncomingMessage.<anonymous> (/home/byron/.linuxbrew/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+38 verbose statusCode 404
+39 verbose pkgid jquery.selectboxit
+40 verbose cwd /home/byron/Documents/capstone-project/Recess
+41 error Linux 3.16.0-57-generic
+42 error argv "/home/byron/.linuxbrew/Cellar/node/4.2.1/bin/node" "/home/byron/.linuxbrew/bin/npm" "install" "--save" "jquery.selectboxit"
+43 error node v4.2.1
+44 error npm  v2.14.7
+45 error code E404
+46 error 404 Registry returned 404 for GET on https://registry.npmjs.org/jquery.selectboxit
+46 error 404
+46 error 404 'jquery.selectboxit' is not in the npm registry.
+46 error 404 You should bug the author to publish it (or use the name yourself!)
+46 error 404 It was specified as a dependency of 'Recess'
+46 error 404
+46 error 404 Note that you can also install from a
+46 error 404 tarball, folder, http url, or git url.
+47 verbose exit [ 1, true ]

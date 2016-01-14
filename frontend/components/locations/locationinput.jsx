@@ -48,9 +48,10 @@ var LocationInput = React.createClass({
 
     return(
       <div className="location-input-div">
+        <p className="tag-description-search">Search for your next vacation</p>
         <form onSubmit={this.handleSubmit} className="location-input-form">
           {errorMsg}
-          <input id="tags" type="text" valueLink={this.linkState("searchString")} className="user-input"></input>
+          <input id="tags" type="text" valueLink={this.linkState("searchString")} className="user-input" placeholder="Search for city or country"></input>
           <br></br>
           <input type="submit" value="Search destination" className="search-location-btn"></input>
         </form>

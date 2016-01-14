@@ -135,7 +135,7 @@ var UserHomepage = React.createClass({
           </ul>
         </div>
         <LocationVisit user={this.state.user} locations={this.state.locations} />
-        <br></br>
+        <hr width="65%"></hr>
         <LocationInput userid={this.props.params.userid} locations={this.state.locations} />
         <br></br>
         <div className="recommendations-background">
