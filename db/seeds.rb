@@ -98,7 +98,7 @@ ActiveRecord::Base.transaction do
       lng: -79.384245
     },
     "11" => {
-      name: "Maui, Hawaii",
+      name: "Maui, Hawaii, United States",
       region: "North America",
       activity: "Beachfront",
       body: "Maui is an island in the mid-Pacific, part of the Hawaiian island chain and known for its beach resorts, diverse geography and outdoor activities ranging from hiking and biking to windsurfing and snorkeling.",
@@ -116,7 +116,7 @@ ActiveRecord::Base.transaction do
       lng: -43.174371
     },
     "13" => {
-      name: "Cape Town",
+      name: "Cape Town, South Africa",
       region: "Africa",
       activity: "Adventure",
       body: "Cape Town is a port city on South Africa’s southwest coast, on a peninsula beneath the imposing Table Mountain.",

@@ -16,7 +16,7 @@ var LocationInput = React.createClass({
 
     var userInput = this.state.searchString.trim().toLowerCase();
 
-    if (userInput.length < 3) {
+    if (userInput.length < 1) {
       this.setState({toggleError: 1})
       return this.history.push("/user/" + this.props.userid)
     }

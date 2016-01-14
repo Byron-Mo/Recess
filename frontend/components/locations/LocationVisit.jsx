@@ -91,6 +91,115 @@ var LocationVisit = React.createClass({
     }
   },
 
+  sortUniq: function(countries) {
+    var sortedCountries = [];
+    var countries = countries.sort();
+    for (var i = 0; i < countries.length; i++) {
+      if (countries[i] !== countries[i - 1]) {
+        sortedCountries.push(countries[i])
+      }
+    }
+    return sortedCountries;
+  },
+
+  findCountries: function() {
+    var locations = this.props.locations;
+    var countries = [];
+
+    if (locations) {
+      for (var key in locations) {
+        if (locations.hasOwnProperty(key)) {
+          var locationName = locations[key].name.split(', ');
+          countries.push(locationName[locationName.length - 1]);
+        }
+      }
+      return this.sortUniq(countries);
+    }
+  },
+
+  findCities: function(country) {
+    var locations = this.props.locations;
+    var cities = []
+
+    if (locations) {
+      for (var key in locations) {
+        if (locations.hasOwnProperty(key)) {
+          var locationName = locations[key].name;
+          if (locationName.indexOf(country) !== -1) {
+            var locationName = locationName.split(', ')[0];
+            cities.push(locationName);
+          }
+        }
+      }
+    }
+    return cities;
+  },
+
+  printCountry: function(country) {
+    var optionStr = document.getElementById(country);
+    var countries = this.findCountries();
+    if (optionStr) {
+      optionStr.length = 0;
+      optionStr.options[0] = new Option('Select Country', '');
+      optionStr.selectedIndex = 0;
+      for (var i = 0; i < countries.length; i++) {
+        optionStr.options[optionStr.length] = new Option(countries[i], countries[i])
+      }
+    }
+  },
+
+  printCity: function(e) {
+    var optionStr = document.getElementById('city');
+    var cities = this.findCities(e.target.value)
+
+    if (optionStr) {
+      optionStr.length = 0;
+      optionStr.options[0] = new Option('Select City', '');
+      optionStr.selectedIndex = 0;
+      for (var i = 0; i < cities.length; i++) {
+        optionStr.options[optionStr.length] = new Option(cities[i], cities[i])
+      }
+    }
+  },
+
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+
+    var city = e.target.city.value.trim().toLowerCase();
+    var locations = this.props.locations,
+        location;
+
+    for (var key in locations) {
+      if (locations.hasOwnProperty(key)) {
+        if (locations[key].name.toLowerCase().match("^" + city)) {
+          location = locations[key];
+          break;
+        }
+      }
+    }
+
+    // debugger
+
+    if (this.submitValue === 'visit') {
+      ApiUtil.locationVisit({
+        location_id: parseInt(location.id),
+        user_id: parseInt(this.props.user.id)
+      });
+    } else if (this.submitValue === 'wish') {
+      ApiUtil.locationWish({
+        location_id: parseInt(location.id),
+        user_id: parseInt(this.props.user.id)
+      });
+    } else {
+      console.log("in here")
+    }
+  },
+
+  handleClick: function(e) {
+    this.submitValue = e.target.name
+  },
+
   render: function() {
     var errorMsgVisit = this.state.toggleErrorVisit ? <div className="error-msg">Invalid City</div> : <div></div>;
     var errorMsgWish = this.state.toggleErrorWish ? <div className="error-msg">Invalid City</div> : <div></div>;
@@ -106,7 +215,17 @@ var LocationVisit = React.createClass({
 
     return(
       <div>
+        <script language="javascript">{this.printCountry("country")};</script>
         {mapLocation}
+        <br></br>
+        Narrow down by Country <select onChange={this.printCity} id="country" name="country"></select><br></br>
+        Select City
+        <form onSubmit={this.handleSubmit}>
+          <select name="city" id="city"></select><br></br>
+          <input type="submit" value="I've been here" name="visit" onClick={this.handleClick} className="location-visit-wish-submit"></input>
+          <input type="submit" value="I want to go here" name="wish" onClick={this.handleClick} className="location-visit-wish-submit"></input>
+        </form>
+        <br></br>
         <br></br>
         <div className="location-visit-wish-div">
           <form className="location-visit-wish-form location-input-1" onSubmit={this.handleSubmitVisit}>
