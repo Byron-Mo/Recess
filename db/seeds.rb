@@ -460,7 +460,7 @@ reviews = [
   Review.create!(
     rating: rand(3..5),
     body: reviews[rand(reviews.length)],
-    user_id: rand(1..10),
+    user_id: rand(1..15),
     location_id: rand(1..43),
   )
 end
